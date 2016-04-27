@@ -44,7 +44,7 @@ ndvi.pair <- function(x,y,w,p){
 }
 
 
-#' Say Hello!
+#' Say Hello! {test fcn}
 view.datastr <- function() {
   str(c(x,y,w))
   print("Thansk for using this package!")
