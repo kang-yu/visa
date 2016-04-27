@@ -20,5 +20,5 @@ Imports:
     Matrix,
     reshape2
 Suggests:
-    testthat
+    devtools
 RoxygenNote: 5.0.1
