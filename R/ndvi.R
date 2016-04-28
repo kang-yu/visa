@@ -36,7 +36,7 @@ ndvi <- function(x,y,w){
 
   ## (Rj-Ri)/(Rj+Ri)
 
-  R2 <- Matrix(0,n,n,sparse = TRUE)  # Zero sparse matrix to storage Z coordinates
+  R2 <- Matrix(0,n,n,sparse = TRUE)  # Zero sparse matrix
 
   Rj <- x
 
@@ -44,14 +44,13 @@ ndvi <- function(x,y,w){
 
   for (cI in 1:n){
     Ri <- x[,cI]
-    Ri <- Ri %*% ones  # Turn Ri values to dimensional matrix
+    Ri <- Ri %*% ones  # to matrix
     # VI formular
     V <- (Rj-Ri)/(Rj+Ri)
 
     # Squared values (R2) of the Pearson Correlation coefficients
     Rcorr <- (cor(y, V))^2
-    # To store the value of R2 (Z)
-    # R2=R2+sparse([1:n],i,Rcorr,n,n);
+    # To store the value of R2
     spR <- sparseMatrix(i = c(1:n),j = rep(cI,n), x = as.numeric(Rcorr), dims = c(n,n))
     R2 <- R2 + spR
   }
@@ -67,7 +66,7 @@ ndvi <- function(x,y,w){
   #--------------------------------------------------------------------------
 
   R2max <- max(ZZ, na.rm = TRUE)
-  print(paste('The maximun value of R^2 is', as.character(round(R2max,4))))
+  print(paste('The max value of R^2 is', as.character(round(R2max,4))))
 
   ind_max <- which(ZZ == R2max, arr.ind = TRUE)
   ind_max
