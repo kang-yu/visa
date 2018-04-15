@@ -35,3 +35,4 @@ ndvi(x,y,w)
 \seealso{
 \code{\link{cor}}
 }
+

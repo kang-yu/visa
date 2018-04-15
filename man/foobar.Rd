@@ -2,8 +2,8 @@
 % Please edit documentation in R/foobar.R
 \name{foobar}
 \alias{foobar}
-\alias{foobar.character}
 \alias{foobar.numeric}
+\alias{foobar.character}
 \title{Foo bar generic}
 \usage{
 foobar(x)

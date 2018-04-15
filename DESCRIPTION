@@ -21,4 +21,4 @@ Imports:
     reshape2
 Suggests:
     devtools
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

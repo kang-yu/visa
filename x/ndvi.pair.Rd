@@ -28,3 +28,4 @@ w <- exampleData[1,-1]
 p <- c(440,444)
 ndvi.pair(x,y,w,p)
 }
+

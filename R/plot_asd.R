@@ -1,0 +1,28 @@
+#' Plot ASD Hyperspectral Data
+#'
+#' This function is to make a nice plot of hyperspectral data, e.g., ASD spectrometer,
+#' by using the \code{matplot} function. It customizes x ticks and labels to allow a
+#' better inspection on the spectral signials at each wavelength.
+#'
+#' @param x A numeric vector for wavelength.
+#' @param y A matrix of spectral data.
+#'
+#' @param \dots Arguments passed to \code{\link{matplot}}
+#' @seealso \code{\link{rug}}
+#' @export
+
+plot_asd <- function(x, y, type = "l", xlab = NULL, ylab = NULL,
+                    lwd = 1:3, col = 1:3, xaxt="n", show.xtick.text = TRUE,
+                    xtick = seq(400,2500,100), rug.interval = 50, ...){
+
+  matplot(x, y, type = type, xlab = xlab, ylab = ylab,
+          lwd = lwd, col = col, xaxt="n", ...)
+
+  axis(side=1, at=xtick, labels = FALSE)
+
+  rug(x = seq(min(x),max(x),rug.interval), ticksize = 0.01, side = 1, lwd = 1)
+
+  if (isTRUE(show.xtick.text)){
+    text(x=xtick, par("usr")[3], labels = xtick, pos = 1, offset = 1, xpd = TRUE)
+  }
+}

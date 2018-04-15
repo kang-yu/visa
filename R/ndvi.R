@@ -18,26 +18,25 @@
 #' x <- exampleData[-1,-1]
 #' w <- exampleData[1,-1]
 #' ndvi(x,y,w)
+#' @import ggplot2 Matrix RColorBrewer reshape2
 #' @export
 
 ndvi <- function(x,y,w){
 
-  library(ggplot2)
-  library(Matrix)
-  library(reshape2)
-  library(colorRamps)
-  library(RColorBrewer)
+  # library(ggplot2)
+  # library(Matrix)
+  # library(reshape2)
+  # library(colorRamps)
+  # library(RColorBrewer)
   # library(scales)
-
-  #  ------------------------------------------------------------------------
+  #----------------------------------------------------------
 
   n <- dim(x)[2] # Returns the Number of wavebands
   wavelength <- w
 
   ## (Rj-Ri)/(Rj+Ri)
 
-  R2 <- Matrix(0,n,n,sparse = TRUE)  # Zero sparse matrix
-
+  R2 <- Matrix::Matrix(0, n, n, sparse = TRUE)  # Zero sparse matrix
   Rj <- x
 
   ones <- matrix(1,1,n)
@@ -51,7 +50,7 @@ ndvi <- function(x,y,w){
     # Squared values (R2) of the Pearson Correlation coefficients
     Rcorr <- (cor(y, V))^2
     # To store the value of R2
-    spR <- sparseMatrix(i = c(1:n),j = rep(cI,n), x = as.numeric(Rcorr), dims = c(n,n))
+    spR <- Matrix::sparseMatrix(i = c(1:n),j = rep(cI,n), x = as.numeric(Rcorr), dims = c(n,n))
     R2 <- R2 + spR
   }
 
@@ -78,12 +77,14 @@ ndvi <- function(x,y,w){
   # plot ndvi
   #----------------------------------
 
-  ZZDF <- melt(ZZ)
+  ZZDF <- reshape2::melt(ZZ)
   w1_index <- ZZDF$Var1
   w2_index <- ZZDF$Var2
   ZZDF$Var1 <- wavelength[w1_index]
   ZZDF$Var2 <- wavelength[w2_index]
-  myPalette <- colorRampPalette(rev(brewer.pal(11, "Spectral")), space="Lab")
+
+  myPalette <- colorRampPalette(rev(RColorBrewer::brewer.pal(11, "Spectral")), space="Lab")
+
   zp1 <- ggplot(ZZDF, aes(Var1,Var2, fill=value)) # Var1+350-1
   zp1 <- zp1 + geom_tile()
   zp1 <- zp1 + scale_fill_gradientn(colours = myPalette(100))

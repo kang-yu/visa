@@ -15,4 +15,3 @@ times(x, y)
 \description{
 Basic arithmetic
 }
-

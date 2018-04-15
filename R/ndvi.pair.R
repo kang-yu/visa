@@ -12,25 +12,26 @@
 #' w <- exampleData[1,-1]
 #' p <- c(440,444)
 #' ndvi.pair(x,y,w,p)
+#' @import ggplot2 ggpmisc
 #' @export
 
 ndvi.pair <- function(x,y,w,p){
+
+  # library(ggplot2)
+  # library(ggpmisc)
 
   bandInd <- which(w %in% p)
 
   bestNDVI <- (x[,bandInd[2]] - x[,bandInd[1]]) / (x[,bandInd[2]] + x[,bandInd[1]])
   cor(bestNDVI,y)
 
-
-  library(ggplot2)
-  library(ggpmisc)
-
   x2 <- bestNDVI
   df <- data.frame(x2,y)
 
   my.formula <- y ~ x
-  p <- ggplot(data = df, aes(x = x2, y = y)) +
-    geom_smooth(method = "lm", se = FALSE, color = "blue",formula = my.formula) + geom_point()
+  p <- ggplot2::ggplot(data = df, aes(x = x2, y = y)) +
+    geom_smooth(method = "lm", se = FALSE, color = "blue",formula = my.formula) +
+    geom_point()
 
 
   yrange <- ggplot_build(p)$panel$ranges[[1]]$y.range
@@ -45,6 +46,7 @@ ndvi.pair <- function(x,y,w,p){
 
 
 #' Say Hello! {test fcn}
+#'
 view.datastr <- function() {
   str(c(x,y,w))
   print("Thansk for using this package!")

@@ -2,3 +2,9 @@
 
 export(ndvi)
 export(ndvi.pair)
+export(plot_asd)
+import(Matrix)
+import(RColorBrewer)
+import(ggplot2)
+import(ggpmisc)
+import(reshape2)
