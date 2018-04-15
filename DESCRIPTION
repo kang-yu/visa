@@ -1,8 +1,7 @@
 Package: visa
 Type: Package
 Title: Vegetation Index Simulation Algorithms (VISA) for Hyperspectral Remote Sensing Data
-Version: 0.1
-Date: 2016-03-16
+Version: 0.1.0
 Author: Kang Yu
 Maintainer: Kang Yu <kang.yu@usys.ethz.ch>
 Description: Functions for optimizing spectral band combinations for calculating
@@ -14,6 +13,7 @@ Description: Functions for optimizing spectral band combinations for calculating
 License: GPL-3
 LazyData: true
 URL: https://github.com/kang-yu/visa
+BugReports: https://github.com/kang-yu/visa/issues
 Imports:
     ggplot2,
     ggpmisc,
