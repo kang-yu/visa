@@ -3,7 +3,7 @@ Type: Package
 Title: Vegetation Index Simulation Algorithms (VISA) for Hyperspectral Remote Sensing Data
 Version: 0.1.0
 Author: Kang Yu
-Maintainer: Kang Yu <kang.yu@usys.ethz.ch>
+Maintainer: Kang Yu <kang.yu@kuleuven.be>
 Description: Functions for optimizing spectral band combinations for calculating
     the Normalized Difference Vegetation Index (NDVI), whcih is widely used in
     remote sensing studies for vegetation monitoring from space, and in precision
