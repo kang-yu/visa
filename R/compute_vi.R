@@ -7,7 +7,6 @@
 #' colnames should contain wavelength, rownames can be used for sample IDs.
 #' @return
 #' \item{v}{returns a dataframe of vegetation indices}
-#' @references
 #'
 #' @export
 

@@ -2,21 +2,18 @@
 % Please edit documentation in R/compute_vi.R
 \name{compute_vi}
 \alias{compute_vi}
-\title{Calculate Vegetation Indices}
+\title{Calculate Vegetation Indices in Remote Sensing Studies}
 \usage{
 compute_vi(x)
 }
 \arguments{
-\item{x}{matrix or dataframe with columns for wavebands and rows for observations,
+\item{x}{matrix or dataframe using columns for wavebands and rows for observations,
 colnames should contain wavelength, rownames can be used for sample IDs.}
 }
 \value{
 \item{v}{returns a dataframe of vegetation indices}
 }
 \description{
-This function calculated vegetation indices used in remote sensing studies
+This function calculates vegetation indices used in remote sensing studies
 and applications.
-}
-\references{
-
 }

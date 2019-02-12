@@ -1,6 +1,8 @@
 #' Foo bar generic
 #'
 #' @param x Object to foo.
+#' @importFrom stats cor median
+
 foobar <- function(x) UseMethod("foobar")
 
 #' @describeIn foobar Difference between the mean and the median

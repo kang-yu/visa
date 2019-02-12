@@ -16,14 +16,26 @@ visa.spectra <- exampleData
 devtools::use_data(exampleData, overwrite = TRUE)
 devtools::use_data(visa.spectra, overwrite = TRUE)
 
+# put s-matrix in 1 culumn
+rm(exampleData,visa.spectra)
+load("data/exampleData.rda")
+y <- matrix(exampleData[-1, 1]) # Variable of interest, e.g., Chl, N, LAI
+xS <- as.matrix(exampleData[-1, 2:ncol(exampleData)]) # Reflectance spectra
+w <- exampleData[1, 2:ncol(exampleData)]
+
+str(xS)
+dimnames(xS)
+dimnames(xS) <- list(rownames(xS), paste(w, "nm"))
+
+specDF <- data.frame(N = y, Spec = I(xS))
+str(specDF)
+
+devtools::use_data(specDF, overwrite = TRUE)
+
+
 # Internal data
 # Sometimes functions need pre-computed data tables
 # devtools::use_data(exampleData, internal = TRUE)
-
-rm(exampleData,visa.spectra)
-load("data/exampleData.rda")
-y <- matrix(exampleData[, 1]) # Variable of interest, e.g., Chl, N, LAI
-xS <- exampleData[, 2:ncol(exampleData)] # Reflectance spectra
 
 library(gdata)
 spec150629 <- read.xls("O:/FIP/2015/WW007/SPM3M/20150629_rad.xlsx")[,1:652]

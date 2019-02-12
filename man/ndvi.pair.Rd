@@ -22,9 +22,10 @@ Plotting the best NDVI calculated using \code{\link{ndvi}}
 This function plots the best NDVI against the y
 }
 \examples{
-y <- exampleData[-1,1]
-x <- exampleData[-1,-1]
-w <- exampleData[1,-1]
-p <- c(440,444)
+library(visa)
+y <- specDF$N
+x <- specDF$Spec
+w <- as.numeric(gsub("nm", "", colnames(specDF$Spec)))
+p <- c(440,445)
 ndvi.pair(x,y,w,p)
 }

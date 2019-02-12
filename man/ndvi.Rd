@@ -4,33 +4,37 @@
 \alias{ndvi}
 \title{Selecting the best 2-Band combinations for Normalized Difference Vegetation Index (NDVI)}
 \usage{
-ndvi(x, y, w)
+ndvi(X, y, w, plot.cm = FALSE)
 }
 \arguments{
-\item{x}{A matrix of spectral data, a row is a spectrum across all spectral bands.}
+\item{X}{A matrix of spectral data, a row is a spectrum across all spectral bands.}
 
 \item{y}{A vector.}
 
 \item{w}{A vector of wavelength.}
+
+\item{plot.cm}{A logic value for whether plotting the coefficient matrix or not, default FALSE.}
 }
 \value{
-NDVI = (b1 - b2)/(b1 + b2)
+\item{cm}{Returns a coorrelation coefficients matrix corresponding to each band combination for NDVI.}
 }
 \description{
 This function developes a optimization algorithm based on correlation analysis between spectral parameter 'X' and y, which
 determines the best spectral bands of the full spectrum that are most predictive for 'y'.
 }
 \details{
-This function runs, throughly, a calculation of NDVI = (Xi-Xj)/(Xi+Xj) using all the possible pairs/combinations of any two bands (Xi,Xj)
-within the full spectrum range. A correlation analysis is then performed between the y and all possible NDVIs (Xi,Xj), and it calculates
+This function runs a calculation of \deqn{ NDVI = (\lambda_i - \lambda_j)/(\lambda_i + \lambda_j) } using all the possible pairs/combinations of any two bands (i,j)
+within the full spectrum range thoroughly. A correlation analysis is then performed between the y and all possible NDVIs, and it calculates
 the correlation coefficients (r) which indicates the predictive performance of each NDVI and its corresponding two-band combination. The
 output is the wavelength (nm) indicating the best two bands that produce the highest value of r.
 }
 \examples{
-y <- exampleData[-1,1]
-x <- exampleData[-1,-1]
-w <- exampleData[1,-1]
-ndvi(x,y,w)
+library(visa)
+y <- specDF$N # nitrogen
+X <- specDF$Spec[, seq(1, ncol(specDF$Spec), 5)] # resampled to 5 nm steps
+w <- gsub("nm", "", colnames(specDF$Spec))
+w <- as.numeric(w)[seq(1, ncol(specDF$Spec), 5)] # resampled to 5 nm steps
+ndvi(X,y,w)
 }
 \seealso{
 \code{\link{cor}}
