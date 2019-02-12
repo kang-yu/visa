@@ -1,7 +1,8 @@
 # visa
 Vegetation Index Simulation Algorithms (VISA) for Hyperspectral Data
 
-# installation
+
+# Installation
 
 install the released version from [CRAN]
 
