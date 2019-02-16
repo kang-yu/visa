@@ -1,5 +1,5 @@
 # visa
-Vegetation Index Simulation Algorithms (VISA) for Hyperspectral Data
+This R package is to facilitate vegetation imaging spectroscopy analysis (VISA), where imaging spectroscopy is also known as hyperspectral remote sensing. 
 
 
 # Installation

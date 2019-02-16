@@ -5,3 +5,4 @@ x
 .Rproj.user
 .Rhistory
 .RData
+^foo

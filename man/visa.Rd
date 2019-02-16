@@ -4,11 +4,17 @@
 \name{visa}
 \alias{visa}
 \alias{visa-package}
-\title{visa: A package for vegetation imaging spectroscopy (e.g. hyperspectral) analysis.}
+\title{visa: Vegetation Imaging Spectroscopy Analyzer}
 \description{
-The visa package provides a set of functions for hyperspectral analysis, built on other r packages:
+Functions for optimizing spectral band combinations for calculating
+    the Normalized Difference Vegetation Index (NDVI), whcih is widely used in
+    remote sensing studies for vegetation monitoring from space, and in precision
+    agriculture for non-destructively estimation of plant growth status. The optimal
+    bands for NDVI are determined by comparing the correlations between vegetative
+    parameter and any possible two bands within the full spectrum.
 }
 \details{
+The visa package provides a set of functions for hyperspectral analysis, built on other r packages...
 It implement two categories of important functions:
 
 \itemize{
@@ -19,9 +25,10 @@ It implement two categories of important functions:
 To know more about visa, check the vignettes:
 `browseVignettes("visa")`
 }
-\section{Vegetation indices}{
+\section{VI}{
 
-The vegetation indices ...
+
+\subsection{Vegetation indices} The vegetation indices from literature ...
 }
 
 \section{Multivariate analysis}{
@@ -29,6 +36,15 @@ The vegetation indices ...
 The multivariate analysis use the data.frame format...
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/kang-yu/visa}
+  \item Report bugs at \url{https://github.com/kang-yu/visa/issues}
+}
+
+}
 \author{
 Kang Yu
 }
+\keyword{internal}

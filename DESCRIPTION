@@ -1,9 +1,9 @@
 Package: visa
 Type: Package
-Title: Vegetation Index Simulation Algorithms (VISA) for Hyperspectral Data
+Title: Vegetation Imaging Spectroscopy Analyzer
 Version: 0.1.0
 Author: Kang Yu
-Maintainer: Kang Yu <kang.yu@kuleuven.be>
+Maintainer: Kang Yu <kkaannggyu@gmail.com>
 Description: Functions for optimizing spectral band combinations for calculating
     the Normalized Difference Vegetation Index (NDVI), whcih is widely used in
     remote sensing studies for vegetation monitoring from space, and in precision
@@ -33,12 +33,12 @@ VignetteBuilder: knitr
 Collate: 
     'visa.R'
     'Spectra-class.R'
+    'Spectra.R'
     'Spectral-class.R'
     'Spectral-method.R'
-    'foo.R'
-    'foobar.R'
+    'data-specdf.R'
+    'data-specls.R'
     'ndvi.R'
     'ndvi.pair.R'
     'plot_spec.R'
-    'specDF.R'
     'sr.R'

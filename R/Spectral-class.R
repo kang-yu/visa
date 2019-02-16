@@ -1,5 +1,7 @@
 #' @include visa.R
 #'
+#' #' To be further developed ...
+#'
 #' An S4 class to represent a SpectralDataFrame.
 #'
 #' @slot entry A dataframe, with as many rows as observations (samples).

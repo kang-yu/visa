@@ -1,7 +1,5 @@
-#' visa: A package for vegetation imaging spectroscopy (e.g. hyperspectral) analysis.
-#'
-#' The visa package provides a set of functions for hyperspectral analysis, built on other r packages:
-#'
+#' @details
+#' The visa package provides a set of functions for hyperspectral analysis, built on other r packages...
 #' It implement two categories of important functions:
 #'
 #' \itemize{
@@ -12,16 +10,17 @@
 #' To know more about visa, check the vignettes:
 #' `browseVignettes("visa")`
 #'
-#' @section Vegetation indices:
-#' The vegetation indices ...
+#' @section VI:
+#'
+#' \subsection{Vegetation indices} The vegetation indices from literature ...
 #'
 #' @section Multivariate analysis:
 #' The multivariate analysis use the data.frame format...
 #'
-#'
+#' @keywords internal
 #' @docType package
 #' @name visa
 #' @author Kang Yu
 #'
 #' @import methods
-NULL
+"_PACKAGE"
