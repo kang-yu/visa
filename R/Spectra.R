@@ -8,6 +8,7 @@
 #'
 #' @name wavelength
 #' @rdname spectra-methods
+#'
 #' @param object A object of Spectra
 #' @param ... Other options (... T/F with unit)
 #' @examples
@@ -57,6 +58,7 @@ setMethod("wavelength", signature(object = "data.frame"),
 #'
 #' @export
 #' @exportMethod spectra
+
 # setOldClass("data.frame")
 # spectra <- function(object){
 #   if (is(object, "data.frame")) mat <- object$spectra
