@@ -33,6 +33,7 @@ setMethod("wavelength",
 
 
 
+
 #' Functions to access slot data of the Spectra object.
 #'
 #' @name spectra
@@ -40,11 +41,23 @@ setMethod("wavelength",
 #' @rdname spectra-methods
 #'
 #' @param object A Spectra object
+#' @param ... Other options
 #' @examples
+#' # for the Spectra class
 #' data(NSpec_List)
 #' spectra_matrix <- spectra(NSpec_List)
+#' # for spectra.data.frame
+#' data(NSpec_DF)
+#' spectra_matrix <- spectra(NSpec_DF)
+#'
 #' @export
 #' @exportMethod spectra
+# setOldClass("data.frame")
+spectra <- function(object){
+  if (is(object, "data.frame")) mat <- object$spectra
+  if (is(object, "Spectra")) mat <- object@spectra
+  mat
+}
 setGeneric("spectra", function(object, ...) standardGeneric("spectra"))
 setMethod("spectra",
           signature(object = "Spectra"),
@@ -54,3 +67,15 @@ setMethod("spectra",
             mat
           }
 )
+setMethod("spectra", signature(object = "data.frame"),
+          function(object, ...){
+            mat <- object$spectra
+            mat
+          }
+)
+
+# spectra.data.frame <- function(object, spectra.name = "spectra", ...) object[spectra.name]
+
+
+
+

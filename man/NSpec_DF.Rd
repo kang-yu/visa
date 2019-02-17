@@ -3,14 +3,21 @@
 \docType{data}
 \name{NSpec_DF}
 \alias{NSpec_DF}
+\alias{NSpecDF}
+\alias{\describe{}
+\alias{\item{N}{Plant}
+\alias{nitrogen}
+\alias{content}}
+\alias{\item{spectra}{A}
+\alias{variable}
+\alias{of}
+\alias{Matrix}
+\alias{plant}
+\alias{spectra}}
+\alias{...}
+\alias{}}
 \title{Example data in the Spectral data.frame. format}
-\format{A data frame with 19 rows and 2 variables:
-
-\describe{
-  \item{N}{Plant nitrogen content}
-  \item{spectra}{A variable of Matrix of plant spectra}
-  ...
-}}
+\format{A data frame with 19 rows and 2 variables:}
 \source{
 \url{visa}
 }

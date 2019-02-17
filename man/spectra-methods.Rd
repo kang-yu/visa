@@ -2,9 +2,10 @@
 % Please edit documentation in R/Spectra.R
 \name{wavelength}
 \alias{wavelength}
+\alias{get.wavelength}
 \alias{spectra}
 \alias{get.spectra}
-\title{Functions to access data of the Spectra object.}
+\title{Functions to access slot data of the Spectra object.}
 \usage{
 wavelength(object, ...)
 
@@ -16,14 +17,21 @@ spectra(object, ...)
 \item{...}{Other options (... T/F with unit)}
 
 \item{object}{A Spectra object}
+
+\item{...}{Other options}
 }
 \description{
-Functions to access data of the Spectra object.
+Functions to access slot data of the Spectra object.
 }
 \examples{
 \dontrun{
 wavelength(NSpec_List)
 }
+# for the Spectra class
 data(NSpec_List)
 spectra_matrix <- spectra(NSpec_List)
+# for spectra.data.frame
+data(NSpec_DF)
+spectra_matrix <- spectra(NSpec_DF)
+
 }

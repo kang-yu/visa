@@ -3,5 +3,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^data-raw$
-^x$
+^ZZZ-Rx$
 ^foo.*

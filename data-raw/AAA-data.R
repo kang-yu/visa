@@ -1,7 +1,9 @@
+############################################################
+#
+# prepare example data
+############################################################
 
-# prepare example data ----------------------------------------------------
-
-# devtools::use_data_raw()
+## devtools::use_data_raw()
 # * Add data creation scripts in data-raw
 # * Includes data-raw/ on .Rbuildignore
 
@@ -11,14 +13,13 @@ exampleData <- read.csv('data-raw/exampleData.csv', header=FALSE)[1:20,1:652]
 exampleData <- data.matrix(exampleData) # Convert a Data Frame to a Numeric Matrix
 exampleData <- matrix(as.numeric(unlist(exampleData)),nrow=nrow(exampleData))
 
-visa.spectra <- exampleData
-
 # devtools::use_data(exampleData, overwrite = TRUE)
+# visa.spectra <- exampleData
 # devtools::use_data(visa.spectra, overwrite = TRUE)
+# rm(visa.spectra)
 
-# put s-matrix in 1
+# put spec-matrix in 1 column
 
-rm(exampleData, visa.spectra)
 
 # load("data/spec_dataframe.rda")
 y <- matrix(exampleData[-1, 1]) # Variable of interest, e.g., Chl, N, LAI
@@ -26,41 +27,50 @@ xS <- as.matrix(exampleData[-1, 2:ncol(exampleData)]) # Reflectance spectra
 w <- exampleData[1, 2:ncol(exampleData)]
 
 str(xS)
-dimnames(xS)
-dimnames(xS) <- list(rownames(xS), paste(w, "nm"))
+dimnames(xS) #
+dimnames(xS) <- list(rownames(xS), paste(w, "nm")) # replace dim names
 
+#####################################
 # save the spectra as dataframe format
-spec_dataframe <- data.frame(N = y, Spec = I(xS))
-str(spec_dataframe)
+NSpec.DF <- data.frame("N" = y, "spectra" = I(xS))
+str(NSpec.DF)
 
-NSpec_DF <- spec_dataframe
-devtools::use_data(NSpec_DF, overwrite = TRUE)
+str(NSpec.DF$spectra)
+class(NSpec.DF) # AsIs
 
+devtools::use_data(NSpec.DF, overwrite = TRUE)
 
-## dave the spectra as list format
-class(spec_dataframe$Spec)
-if (is(spec_dataframe$Spec, "AsIs")) class(spec_dataframe$Spec) <- NULL
+#####################################
+## save the spectra as list format
+class(NSpec.DF$spectra)
+if (is(NSpec.DF$spectra, "AsIs")) class(NSpec.DF$spectra) <- "matrix" # or NULL
 
-smat <- as.matrix(spec_dataframe$Spec)
+smat <- as.matrix(NSpec.DF$spectra)
 class(smat)
 
-wavelength <- as.numeric(gsub("\\D", "", colnames(spec_dataframe$Spec)))
-s.id <- rownames(spec_dataframe)
-w.unit <- unique(gsub("\\d+\\s", "", colnames(spec_dataframe$Spec)))
-N <- spec_dataframe["N"]
-speclass <- as.spectra(smat, wavelength, as.numeric(s.id), w.unit, N = N)
+wavelength <- as.numeric(gsub("\\D", "", colnames(NSpec.DF$spectra)))
+s.id <- rownames(NSpec.DF)
+w.unit <- unique(gsub("\\d+\\s", "", colnames(NSpec.DF$spectra)))
+N <- NSpec.DF["N"]
 
+# test 'spectra'
+speclass <- as.spectra(smat, wavelength, as.numeric(s.id), w.unit, N = N)
 class(speclass)
+class(speclass@spectra)
 str(speclass)
 rownames(speclass@spectra)
 
-NSpec_List <- speclass
-devtools::use_data(NSpec_List, overwrite = TRUE)
+NSpec.LS <- speclass
+devtools::use_data(NSpec.LS, overwrite = TRUE)
 
 
 
 
+
+###############################################################
+#
 # Internal data
+#--------------------------------------------------------------
 # Sometimes functions need pre-computed data tables
 # devtools::use_data(exampleData, internal = TRUE)
 
