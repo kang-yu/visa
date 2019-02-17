@@ -22,12 +22,7 @@
 #             return(as.spectra(spectra, wavelength, ...))
 #           }
 # )
-setGeneric("wavelength",
-           function(object, ...){
-             value <- standardGeneric("wavelength")
-             value
-           }
-)
+setGeneric("wavelength", function(object, ...) standardGeneric("wavelength"))
 setMethod("wavelength",
           signature(object = "Spectra"),
           function(object, ...){
@@ -38,7 +33,7 @@ setMethod("wavelength",
 
 
 
-#' Functions to access data of the Spectra object.
+#' Functions to access slot data of the Spectra object.
 #'
 #' @name spectra
 #' @aliases get.spectra
@@ -50,12 +45,7 @@ setMethod("wavelength",
 #' spectra_matrix <- spectra(NSpec_List)
 #' @export
 #' @exportMethod spectra
-setGeneric("spectra",
-           function(object, ...){
-             value <- standardGeneric("spectra")
-             value
-           }
-)
+setGeneric("spectra", function(object, ...) standardGeneric("spectra"))
 setMethod("spectra",
           signature(object = "Spectra"),
           function(object, ...){

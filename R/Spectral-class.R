@@ -2,6 +2,9 @@
 #'
 #' #' To be further developed ...
 #'
+#' concert from different format? ???
+#'
+#'
 #' An S4 class to represent a SpectralDataFrame.
 #'
 #' @slot entry A dataframe, with as many rows as observations (samples).
