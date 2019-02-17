@@ -8,12 +8,14 @@
 #'
 #' @name wavelength
 #' @rdname spectra-methods
-#' @aliases get.wavelength
 #' @param object A object of Spectra
 #' @param ... Other options (... T/F with unit)
 #' @examples
 #' \dontrun{
-#' wavelength(NSpec_List)
+#' # for Spectra format
+#' wavelength(NSpec.LS)
+#' # for Spectra data.frame format
+#' wavelength(NSpec.DS)
 #' }
 #' @export
 # setMethod("as.spectra",
@@ -23,11 +25,15 @@
 #           }
 # )
 setGeneric("wavelength", function(object, ...) standardGeneric("wavelength"))
-setMethod("wavelength",
-          signature(object = "Spectra"),
+setMethod("wavelength", signature(object = "Spectra"),
           function(object, ...){
             w <- object@wavelength
             w
+          }
+)
+setMethod("wavelength", signature(object = "data.frame"),
+          function(object, ...){
+          as.numeric(gsub("\\D", "", colnames(object$spectra)))
           }
 )
 
@@ -37,7 +43,6 @@ setMethod("wavelength",
 #' Functions to access slot data of the Spectra object.
 #'
 #' @name spectra
-#' @aliases get.spectra
 #' @rdname spectra-methods
 #'
 #' @param object A Spectra object
@@ -53,11 +58,11 @@ setMethod("wavelength",
 #' @export
 #' @exportMethod spectra
 # setOldClass("data.frame")
-spectra <- function(object){
-  if (is(object, "data.frame")) mat <- object$spectra
-  if (is(object, "Spectra")) mat <- object@spectra
-  mat
-}
+# spectra <- function(object){
+#   if (is(object, "data.frame")) mat <- object$spectra
+#   if (is(object, "Spectra")) mat <- object@spectra
+#   mat
+# }
 setGeneric("spectra", function(object, ...) standardGeneric("spectra"))
 setMethod("spectra",
           signature(object = "Spectra"),

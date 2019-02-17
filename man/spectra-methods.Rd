@@ -4,7 +4,6 @@
 \alias{wavelength}
 \alias{get.wavelength}
 \alias{spectra}
-\alias{get.spectra}
 \title{Functions to access slot data of the Spectra object.}
 \usage{
 wavelength(object, ...)
@@ -25,7 +24,10 @@ Functions to access slot data of the Spectra object.
 }
 \examples{
 \dontrun{
-wavelength(NSpec_List)
+# for Spectra format
+wavelength(NSpec.LS)
+# for Spectra data.frame format
+wavelength(NSpec.DS)
 }
 # for the Spectra class
 data(NSpec_List)

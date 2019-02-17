@@ -3,7 +3,7 @@
 \name{sr}
 \alias{sr}
 \alias{nsr}
-\title{Calculate SR and NSR indices}
+\title{Calculate simple ratio (SR) indices.}
 \usage{
 sr(x, y)
 
@@ -13,5 +13,10 @@ nsr(x, y)
 \item{x, y}{numeric vectors.}
 }
 \description{
-Calculate SR and NSR indices
+descriptions
+
+descriptions
+}
+\details{
+details
 }

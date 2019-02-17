@@ -1,10 +1,19 @@
-#' Calculate SR and NSR indices
+#' Calculate simple ratio (SR) indices.
+#'
+#' descriptions
+#'
+#' details
 #'
 #' @param x,y numeric vectors.
-#' @return
-sr <- function(x, y) x / y
+sr <- function(x, y) x/y
 
+
+#' Calculate normalized simple ratio (NSR) indices.
+#'
+#' descriptions
+#'
 #' @rdname sr
 nsr <- function(x, y){
-  (x - y) /(x + y)
+  (x - y)/(x + y)
 }
+
