@@ -2,7 +2,6 @@
 % Please edit documentation in R/Spectra.R
 \name{wavelength}
 \alias{wavelength}
-\alias{get.wavelength}
 \alias{spectra}
 \title{Functions to access slot data of the Spectra object.}
 \usage{
