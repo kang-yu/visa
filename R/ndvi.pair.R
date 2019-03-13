@@ -7,15 +7,17 @@
 #' @details
 #' This function plots the best NDVI against the y
 #' @examples
+#'   \donotrun{
 #' library(visa)
 #' y <- specDF$N
 #' x <- specDF$Spec
 #' w <- as.numeric(gsub("nm", "", colnames(specDF$Spec)))
 #' p <- c(440,445)
 #' ndvi.pair(x,y,w,p)
+#' wavelength(spectra)
+#' }
 #' @import ggplot2 ggpmisc
 #' @export
-
 
 ndvi.pair <- function(x,y,w,p){
 
