@@ -2,7 +2,6 @@
 #'
 #' An S4 class to represent a `Spectra` object, with four slots.
 #'
-#'
 #' @name Spectra
 #' @rdname Spectra-class
 #' @export
@@ -147,3 +146,28 @@ as.spectra.data.frame <- function(spectra = matrix(0),
   sdf
 }
 
+#' Construct a SpectraMatrix object
+#'
+#' This function creates a SpectraMatrix object.
+#'
+#' @name as.spectra.matrix
+#' @rdname SpectraMaxtrix-class
+#' @param spectra A matrix
+#' @param wavelength A numeric vector
+#' @param s.id A numeric vector
+#' @param w.unit A character
+#'
+#' @examples
+#' smatr <- as.spectra.matrix(matrix(1:10, 1), 1:10, data.frame(a = 1, b =2), "nm")
+#' str(smatr)
+#' @export
+as.spectra.matrix <- function(spectra = matrix(0),
+                                  wavelength = numeric(0),
+                                  s.id = numeric(0),
+                                  w.unit = character(0)){
+  sls <- new("SpectraMatrix", spectra, wavelength, s.id, w.unit)
+  smat <- sls@spectra
+  colnames(smat) <- paste(wavelength, w.unit)
+  rownames(smat) <- sls@s.id
+  smat
+}

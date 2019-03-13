@@ -22,6 +22,10 @@ NSpec.DF
 A dataset containing the plant Nitrogen content and spectra.
 The Spectra matrix is stored as a variable (in a column) of a data.frame.
 }
+\examples{
+data(NSpec.DF)
+str(NSpec.DF)
+}
 \seealso{
 \link{data.frame}
 }

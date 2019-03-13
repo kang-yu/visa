@@ -37,6 +37,11 @@ setMethod("wavelength", signature(object = "data.frame"),
           as.numeric(gsub("\\D", "", colnames(object$spectra)))
           }
 )
+setMethod("wavelength", signature(object = "matrix"),
+          function(object, ...){
+            as.numeric(gsub("\\D", "", colnames(object)))
+          }
+)
 
 
 

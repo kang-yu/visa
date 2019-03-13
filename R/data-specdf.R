@@ -12,7 +12,8 @@
 #'   \item{spectra}{A variable of Matrix of plant spectra}
 #'   ...
 #' }
-#' @example
+#' @examples
+#' data(NSpec.DF)
 #' str(NSpec.DF)
 #' @seealso \link{data.frame}
 #' @source \url{visa}

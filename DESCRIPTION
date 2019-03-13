@@ -36,6 +36,7 @@ Collate:
     'Spectra.R'
     'Spectral-class.R'
     'Spectral-method.R'
+    'cm.nsr.R'
     'data-specdf.R'
     'data-specls.R'
     'ndvi.R'

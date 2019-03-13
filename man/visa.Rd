@@ -28,7 +28,7 @@ To know more about visa, check the vignettes:
 \section{VI}{
 
 
-\subsection{Vegetation indices} The vegetation indices from literature ...
+\subsection{Vegetation indices} The vegetation indices from literature...
 }
 
 \section{Multivariate analysis}{
