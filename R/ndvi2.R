@@ -1,5 +1,6 @@
-#' Plotting the best NDVI calculated using \code{\link{ndvi}}
+#' Calculate and plot the two NDVI and best NDVI calculated using \code{\link{ndvi}}
 #'
+#' @rdname ndvi2
 #' @param x A matrix of spectral data, a row is a spectrum across all spectral bands.
 #' @param y A vector.
 #' @param w A vector of wavelength.
@@ -9,17 +10,17 @@
 #' @examples
 #'   \donotrun{
 #' library(visa)
-#' y <- specDF$N
-#' x <- specDF$Spec
-#' w <- as.numeric(gsub("nm", "", colnames(specDF$Spec)))
+#' y <- NSpec.DF$N
+#' x <- NSpec.DF$Spec
+#' w <- as.numeric(gsub("nm", "", colnames(NSpec.DF$Spec)))
 #' p <- c(440,445)
-#' ndvi.pair(x,y,w,p)
+#' ndvi2(x,y,w,p)
 #' wavelength(spectra)
 #' }
 #' @import ggplot2 ggpmisc
 #' @export
 
-ndvi.pair <- function(x,y,w,p){
+ndvi2 <- function(x,y,w,p){
 
   bandInd <- which(w %in% p)
 

@@ -5,7 +5,8 @@
 \alias{plot.cm}
 \title{Selecting the best 2-Band combinations for Normalized Simple Ratio (NSR)}
 \usage{
-cm.nsr(spectra, x, w = wavelength(spectra), cm.plot = FALSE)
+cm.nsr(spectra, x, w = wavelength(spectra), w.unit = NULL,
+  cm.plot = FALSE)
 
 \method{plot}{cm}(cm)
 }
@@ -23,7 +24,7 @@ cm.nsr(spectra, x, w = wavelength(spectra), cm.plot = FALSE)
 \value{
 \item{cm}{Returns a coorrelation coefficients matrix corresponding to each band combination for NDVI.}
 
-\item{zp1}{Returns a coorrelation matrix plot.}
+\item{cmp}{Returns a coorrelation-matrix plot.}
 }
 \description{
 This function developes a optimization algorithm based on correlation analysis between spectral matrix 'spectra' and the
@@ -37,10 +38,12 @@ the correlation coefficients (r) which indicates the predictive performance of e
 output is the wavelength (nm) indicating the best two bands that produce the highest value of r.
 }
 \examples{
-data(NSpec.DF)
-x <- NSpec.DF$N # nitrogen
-S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 2)] # resampled to 10 nm steps
-cm.nsr(S, x, cm.plot = TRUE)
+  \\donotrun{
+  data(NSpec.DF)
+  x <- NSpec.DF$N # nitrogen
+  S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 10 nm steps
+  cm.nsr(S, x, cm.plot = TRUE)
+  }
 }
 \seealso{
 \code{\link{cor}}
