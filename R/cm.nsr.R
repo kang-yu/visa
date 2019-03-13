@@ -17,22 +17,24 @@
 #' output is the wavelength (nm) indicating the best two bands that produce the highest value of r.
 #' @seealso \code{\link{cor}}
 #' @examples
-#' data(NSpec.DF)
-#' x <- NSpec.DF$N # nitrogen
-#' S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 2)] # resampled to 10 nm steps
-#' cm.nsr(S, x, cm.plot = TRUE)
+#'   \donotrun{
+#'   data(NSpec.DF)
+#'   x <- NSpec.DF$N # nitrogen
+#'   S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 10 nm steps
+#'   cm.nsr(S, x, cm.plot = TRUE)
+#'   }
 #' @import ggplot2 Matrix reshape2 grDevices
 #' @export
 
-cm.nsr <- function(spectra, x, w = wavelength(spectra), cm.plot = FALSE){
+cm.nsr <- function(spectra, x, w = wavelength(spectra), w.unit = NULL, cm.plot = FALSE){
 
   # determin the format of spectra
   # if (is(spectra, "Spectra")) w <- wavelength(spectra)
   # if (is(spectra, "data.frame")) w <- wavelength(spectra) # shoudl be numeric
   # if (is(spectra, "matrix")) w <- wavelength(spectra) # shoudl be numeric
-
   # n <- length(spectra)
-  n <- dim(spectra)[2] # Returns the Number of wavebands
+
+  n <- dim(spectra)[2] # Returns the Number of wavebands, should equal w
 
   ## (Rj-Ri)/(Rj+Ri)
 
@@ -61,19 +63,17 @@ cm.nsr <- function(spectra, x, w = wavelength(spectra), cm.plot = FALSE){
 
 }
 
-
 #' Plot the correlation matrix derived from the cm.nsr and cm.sr function
 #' @rdname cm.nsr
 #' @param cm A square matrix
 #' @return
-#'   \item{zp1}{Returns a coorrelation matrix plot.}
+#'   \item{cmp}{Returns a coorrelation-matrix plot.}
 #' @import ggplot2 reshape2 grDevices RColorBrewer
 #' @export
 plot.cm <- function(cm){
 
-  #--------------------------------------------------------------------------
-  # identify the max R2 and its corresponding bands in a correlation matrix
-  #--------------------------------------------------------------------------
+  # Identify the max R2 and its corresponding bands in a correlation matrix
+
   w <- as.numeric(gsub("\\D", "", colnames(cm)))
   R2max <- max(cm, na.rm = TRUE)
   print(paste('The max value of R^2 is', as.character(round(R2max,4))))
@@ -84,27 +84,25 @@ plot.cm <- function(cm){
   bestBands = w[ind_max[1,]]
   print(as.vector(bestBands))
 
-  #----------------------------------
-  # plot ndvi
-  #----------------------------------
+  # plot correlation matrix
 
-  ZZDF <- reshape2::melt(cm)
-
-  w1_index <- ZZDF$Var1
-  w2_index <- ZZDF$Var2
-  ZZDF$Var1 <- w[w1_index]
-  ZZDF$Var2 <- w[w2_index]
+  cmDF <- reshape2::melt(cm)
+  w1_index <- cmDF$Var1
+  w2_index <- cmDF$Var2
+  cmDF$Var1 <- w[w1_index]
+  cmDF$Var2 <- w[w2_index]
 
   myPalette <- colorRampPalette(rev(RColorBrewer::brewer.pal(11, "Spectral")), space="Lab")
 
-  zp1 <- ggplot(ZZDF, aes(Var1, Var2, fill = value))+
+  cmp <- ggplot(cmDF, aes(Var1, Var2, fill = value))+
     geom_tile()+
-    scale_fill_gradientn(colours = myPalette(100))
-  # zp1 <- zp1 + scale_x_discrete(expand = c(0, 0))
-  # zp1 <- zp1 + scale_y_discrete(expand = c(0, 0))
-  zp1 <- zp1 + coord_equal()
-  zp1 <- zp1 + theme_bw()
-  zp1 <- zp1 + xlab("Wavelength i") + ylab("Wavelength j")
-  zp1
-  print(zp1)
+    scale_fill_gradientn(colours = myPalette(100))+
+    coord_equal()+
+    theme_bw()
+  cmp <- cmp + xlab("Wavelength i") + ylab("Wavelength j")
+  cmp
+
+  # cmp <- cmp + scale_x_discrete(expand = c(0, 0))+
+  #   scale_y_discrete(expand = c(0, 0))
+  # print(cmp)
 }

@@ -1,6 +1,6 @@
 #' @include Spectra-class.R
 
-#' Construct generic functions for the Spectra object.
+#' Construct generic functions for the Spectra object, spectra.data.frame, and spectra.matrix.
 #'
 #' A call to {new} returns a newly allocated object from the class identified by the first argument.
 #' This call in turn calls the method for the generic function `initialize`.

@@ -115,7 +115,8 @@ setMethod("initialize", "SpectraDataFrame",
           }
 )
 
-#' Construct a SpectraDataFrame object
+
+#' Construct a SpectraDataFrame object.
 #'
 #' This function creates a SpectraDataFrame object, which is equivalent to the use of \link{as.specdf}.
 #'
