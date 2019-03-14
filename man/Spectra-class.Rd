@@ -3,16 +3,14 @@
 \docType{class}
 \name{Spectra}
 \alias{Spectra}
+\alias{SpectraEntry}
 \alias{as.spectra}
 \alias{as.spectra.entry}
-\title{Construct a Spectra object (S4)}
+\title{Construct a Spectra}
 \usage{
 as.spectra(spectra = matrix(0), wavelength = numeric(0),
-  s.id = numeric(0), w.unit = character(0), ...)
-
-as.spectra.entry(entry = data.frame(0), spectra = matrix(0),
-  wavelength = numeric(0), s.id = numeric(0), w.unit = character(0),
-  ...)
+  s.id = seq_len(nrow(spectra)), w.unit = character(0),
+  entry = data.frame(), ...)
 }
 \arguments{
 \item{spectra}{A matrix}
@@ -21,30 +19,19 @@ as.spectra.entry(entry = data.frame(0), spectra = matrix(0),
 
 \item{s.id}{A numeric vector}
 
-\item{w.unit}{A character}
-
-\item{...}{Other parameters}
-
-\item{entry}{A data.frame}
-
-\item{spectra}{A matrix}
-
-\item{wavelength}{A numeric vector}
-
-\item{s.id}{A numeric vector}
-
-\item{w.unit}{A character}
+\item{w.unit}{A character string}
 
 \item{entry}{A data.frame}
 
 \item{...}{Other parameters}
 }
 \description{
-This function create a Spectra object
+This function create a Spectra object.
 }
 \examples{
 \dontrun{
+new("Spectra", matrix(1:100,4), 1:25, 1:4, "nm")
 s <- as.spectra(matrix(1:100,4), 1:25, 1:4, "nm")
-s <- as.spectra.entry(data.frame(x = letters[1:4]), matrix(1:100, 4), 1:25, 1:4, "nm")
+s <- as.spectra.entry(matrix(1:100, 4), 1:25, 1:4, "nm", data.frame(x = letters[1:4]))
 }
 }

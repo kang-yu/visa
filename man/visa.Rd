@@ -14,8 +14,11 @@ Functions for optimizing spectral band combinations for calculating
     parameter and any possible two bands within the full spectrum.
 }
 \details{
-The visa package provides a set of functions for hyperspectral analysis, built on other r packages...
-It implement two categories of important functions:
+The visa package provides a set of functions for hyperspectral data analysis, with the main idea
+of simplifying the analysis and interpretation of vegetation spectral data.
+
+It implement two categories of important functions, including its own function and also
+some built on other r packages.
 
 \itemize{
 \item vegetation indices, and
@@ -25,17 +28,6 @@ It implement two categories of important functions:
 To know more about visa, check the vignettes:
 `browseVignettes("visa")`
 }
-\section{VI}{
-
-
-\subsection{Vegetation indices} The vegetation indices from literature...
-}
-
-\section{Multivariate analysis}{
-
-The multivariate analysis use the data.frame format...
-}
-
 \seealso{
 Useful links:
 \itemize{

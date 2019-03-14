@@ -20,7 +20,7 @@
 #' @importFrom graphics matplot axis par rug text
 #' @export
 
-plot_spec <- function(x, y, type = "l", xlab = NULL, ylab = NULL,
+plot.spec <- function(x, y, type = "l", xlab = NULL, ylab = NULL,
                     lwd = 1:3, col = 1:3, xaxt="n", show.xtick.text = TRUE,
                     xtick = seq(400,2500,100), rug.interval = 50, ...){
 

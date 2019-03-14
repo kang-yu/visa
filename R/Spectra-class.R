@@ -1,16 +1,19 @@
 #' @include visa.R
 #'
-#' An S4 class to represent a `Spectra` object, with four slots.
+#' An S4 class to represent a `Spectra` object, with five slots.
+#' It use `SpectraEntry` as the alias.
 #'
 #' @name Spectra
+#' @aliases SpectraEntry
 #' @rdname Spectra-class
 #' @export
 #' @exportClass Spectra
 Spectra <- setClass("Spectra",
                     slots = c(spectra = "matrix",
                               wavelength = "numeric",
-                              s.id = "numeric",
-                              w.unit = "character"))
+                              s.id = "vector",
+                              w.unit = "character",
+                              entry = "data.frame"))
 setValidity("Spectra",
             function(object){
               w <- length(object)
@@ -23,74 +26,63 @@ setMethod("initialize", "Spectra",
           function(.Object,
                    spectra = matrix(0),
                    wavelength = numeric(0),
-                   s.id = numeric(0),
-                   w.unit = character(0), ...){
+                   s.id = vector(),
+                   w.unit = character(0),
+                   entry = data.frame(), ...){
             .Object <- callNextMethod()
-            if(ncol(.Object@spectra) != length(.Object@wavelength) && length(.Object@wavelength) >1)
+            if(length(.Object@entry) == 0 && ncol(.Object@spectra) != length(.Object@wavelength)){
               stop("specified spectra and wavelength of different lengths")
-            .Object
+            } else if (length(.Object@entry) >= 1 && nrow(.Object@spectra) != nrow(.Object@entry)){
+              stop("specified spectra and entry data of different lengths")
+            } else
+              .Object
           }
 )
-
-#'  Construct a Spectra object (S4)
+#' Construct a Spectra
 #'
-#' This function create a Spectra object
+#' This function create a Spectra object.
 #'
 #' @name as.spectra
+#' @aliases as.spectra.entry
 #' @rdname Spectra-class
 #' @param spectra A matrix
 #' @param wavelength A numeric vector
 #' @param s.id A numeric vector
-#' @param w.unit A character
+#' @param w.unit A character string
 #' @param entry A data.frame
 #' @param ... Other parameters
 #' @examples
 #' \dontrun{
+#' new("Spectra", matrix(1:100,4), 1:25, 1:4, "nm")
 #' s <- as.spectra(matrix(1:100,4), 1:25, 1:4, "nm")
-#' s <- as.spectra.entry(data.frame(x = letters[1:4]), matrix(1:100, 4), 1:25, 1:4, "nm")
+#' s <- as.spectra.entry(matrix(1:100, 4), 1:25, 1:4, "nm", data.frame(x = letters[1:4]))
 #' }
 #' @export
-as.spectra <- function(spectra = matrix(0),
-                       wavelength = numeric(0),
-                       s.id = numeric(0),
-                       w.unit = character(0), ...){
-  return(new("Spectra", spectra, wavelength, s.id, w.unit))
-}
-#' @rdname Spectra-class
-#' @param spectra A matrix
-#' @param wavelength A numeric vector
-#' @param s.id A numeric vector
-#' @param w.unit A character
-#' @param entry A data.frame
-#' @param ... Other parameters
-#' @export
-as.spectra.entry <- function(entry = data.frame(0),
-                             spectra = matrix(0),
-                             wavelength = numeric(0),
-                             s.id = numeric(0),
-                             w.unit = character(0), ...){
-  return(new("Spectra", entry, spectra, wavelength, s.id, w.unit, ...))
+as.spectra <- as.spectra.entry <- function(spectra = matrix(0),
+                                           wavelength = numeric(0),
+                                           s.id = seq_len(nrow(spectra)),
+                                           w.unit = character(0),
+                                           entry = data.frame(), ...){
+  return(new("Spectra", spectra, wavelength, s.id, w.unit, entry, ...))
 }
 
 
-#' The SpectraDataFrame/SpectraEntry S4 class:
+#' Class 'SpectraDataFrame'
 #'
-#' SpectraDataFrame is an extended the Spectra class, with associated vegetation data (entry)
+#' SpectraDataFrame is an extended 'Spectra' class, with associated vegetation data ('entry')
 #' in a \link{data.frame} or \link{list}.
 #'
 #' @name SpectraDataFrame
 #' @rdname SpectraDataFrame-class
-#' @aliases SpectraEntry
-#'
-#' @slot entry A data.frame
+#' @aliases spectra.data.frame
 #' @slot spectra A matrix
 #' @slot wavelength A numeric vector
 #' @slot s.id A vector
-#' @slot w.unit A character
+#' @slot w.unit A character string
+#' @slot entry A data.frame
 #' @examples
-#' new("Spectra", matrix(1:100,4), 1:25, 1:4, "nm", data.frame(entry=letters[1:4]))
-#' @export
-#' @exportClass SpectraDataFrame
+#' new("SpectraDataFrame", matrix(1:100,4), 1:25, 1:4, "nm", data.frame(entry=letters[1:4]))
+#'
 setClass("SpectraDataFrame",
          contains = "Spectra",
          slots = c(entry="data.frame"),
@@ -105,7 +97,7 @@ setMethod("initialize", "SpectraDataFrame",
           function(.Object,
                    spectra = matrix(0),
                    wavelength = numeric(0),
-                   s.id = numeric(0),
+                   s.id = vector(),
                    w.unit = character(0),
                    entry = data.frame(0), ...){
             .Object <- callNextMethod()
@@ -114,8 +106,6 @@ setMethod("initialize", "SpectraDataFrame",
             .Object
           }
 )
-
-
 #' Construct a SpectraDataFrame object.
 #'
 #' This function creates a SpectraDataFrame object, which is equivalent to the use of \link{as.specdf}.
@@ -126,8 +116,8 @@ setMethod("initialize", "SpectraDataFrame",
 #' @param entry A data.frame
 #' @param spectra A matrix
 #' @param wavelength A numeric vector
-#' @param s.id A numeric vector
-#' @param w.unit A character
+#' @param s.id A vector
+#' @param w.unit A character string
 #' @param ... Other options for similar format of variables
 #'
 #' @examples
@@ -135,10 +125,10 @@ setMethod("initialize", "SpectraDataFrame",
 #' str(sdf)
 #' @export
 as.spectra.data.frame <- function(spectra = matrix(0),
-                       wavelength = numeric(0),
-                       s.id = numeric(0),
-                       w.unit = character(0),
-                       entry = data.frame(0), ...){
+                                  wavelength = numeric(0),
+                                  s.id = vector(),
+                                  w.unit = character(0),
+                                  entry = data.frame(0), ...){
   sls <- new("SpectraDataFrame", spectra, wavelength, s.id, w.unit, entry)
   spec <- sls@spectra
   colnames(spec) <- paste(wavelength, w.unit)
@@ -147,6 +137,34 @@ as.spectra.data.frame <- function(spectra = matrix(0),
   sdf
 }
 
+
+#' Class 'SpectraMatrix'
+#'
+#' @name SpectraMatrix
+#' @rdname SpectraMaxtrix-class
+#' @export
+#' @exportClass SpectraMatrix
+setClass("SpectraMatrix",
+         contains = "Spectra",
+         validity = function(object){
+           w <- length(object)
+           if (length(w) != 0L && any(w != w[[1]]))
+             return("object width is not constant")
+           TRUE
+         }
+)
+setMethod("initialize", "SpectraMatrix",
+          function(.Object,
+                   spectra = matrix(0),
+                   wavelength = numeric(0),
+                   s.id = vector(),
+                   w.unit = character(0), ...){
+            .Object <- callNextMethod()
+            if(ncol(.Object@spectra) != length(.Object@wavelength))
+              stop("specified spectra and wavelength are of different lengths")
+            .Object
+          }
+)
 #' Construct a SpectraMatrix object
 #'
 #' This function creates a SpectraMatrix object.
@@ -155,17 +173,16 @@ as.spectra.data.frame <- function(spectra = matrix(0),
 #' @rdname SpectraMaxtrix-class
 #' @param spectra A matrix
 #' @param wavelength A numeric vector
-#' @param s.id A numeric vector
-#' @param w.unit A character
-#'
+#' @param s.id A vector of spectral IDs, can be numeric or character
+#' @param w.unit A character string
 #' @examples
-#' smatr <- as.spectra.matrix(matrix(1:10, 1), 1:10, data.frame(a = 1, b =2), "nm")
-#' str(smatr)
+#' smatrix <- as.spectra.matrix(matrix(1:10, 1), 1:10, 1, "nm")
+#' str(smatrix)
 #' @export
 as.spectra.matrix <- function(spectra = matrix(0),
-                                  wavelength = numeric(0),
-                                  s.id = numeric(0),
-                                  w.unit = character(0)){
+                              wavelength = numeric(0),
+                              s.id = vector(),
+                              w.unit = character(0)){
   sls <- new("SpectraMatrix", spectra, wavelength, s.id, w.unit)
   smat <- sls@spectra
   colnames(smat) <- paste(wavelength, w.unit)

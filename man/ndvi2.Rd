@@ -22,7 +22,7 @@ Calculate and plot the two NDVI and best NDVI calculated using \code{\link{ndvi}
 This function plots the best NDVI against the y
 }
 \examples{
-  \\donotrun{
+\dontrun{
 library(visa)
 y <- NSpec.DF$N
 x <- NSpec.DF$Spec

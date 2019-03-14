@@ -38,5 +38,7 @@ Collate:
     'data-specdf.R'
     'data-specls.R'
     'ndvi2.R'
-    'plot_spec.R'
+    'plot.fit.R'
+    'plot.spec.R'
     'sr.R'
+    'wavelength.R'

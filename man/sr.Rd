@@ -3,20 +3,45 @@
 \name{sr}
 \alias{sr}
 \alias{nsr}
-\title{Calculate simple ratio (SR) indices.}
+\alias{lm.sr}
+\title{Calculate Simple Ratio (SR).}
 \usage{
-sr(x, y)
+sr(s, b1, b2)
 
-nsr(x, y)
+nsr(s, b1, b2)
+
+lm.sr(s, b1, b2, y)
 }
 \arguments{
-\item{x, y}{numeric vectors.}
+\item{s}{Spectral data in the format of visa's Spectra object, spectra.data.frame or spectra.matrix.}
+
+\item{b1}{A integer number which defines the wavelength of the 1st spectral band.}
+
+\item{b2}{A integer number which defines the wavelength of the 2nd spectral band.}
+
+\item{y}{A numeric variable to correlate with SR}
 }
 \description{
-descriptions
+Simple Ratio is the ratio of the spectra (mostly reflectance) between two bands
+in the format of \deqn{SR = \lambda_i/\lambda_j}
 
-descriptions
+It is a normalization of SR by doing NSR = (1-SR)/(1+SR), with the same two spectral bands.
 }
 \details{
-details
+Simple ratio and NDVI looking indices are the two groups of mostly used spectral indices in remote sensing.
+
+As it exactly reads in its name, it is a normalization of the SR and ranges in (0,1).
+}
+\examples{
+\dontrun{
+library(visa)
+x <- NSpec.DF$N
+s <- NSpec.DF$spectra
+sr1 <- sr(s, 440, 445)
+}
+\dontrun{
+s <- NSpec.DF
+y <- NSpec.DF$N
+lm.sr(s,400,500,y)
+}
 }
