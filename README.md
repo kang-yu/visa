@@ -1,5 +1,5 @@
 # visa
-This R package is to facilitate vegetation imaging spectroscopy analysis (VISA), where imaging spectroscopy is also known as hyperspectral remote sensing. 
+This R package is to facilitate vegetation imaging spectroscopy analysis (VISA). Imaging Spectroscopy is also known as Hyperspectral Remote Sensing. 
 
 
 # Installation
