@@ -94,7 +94,7 @@ $SR = \lambda_i / \lambda_j$
 
 $NSR = (\lambda_i - \lambda_j)/(\lambda_i + \lambda_j)$
 
-To know more about NDVI, please also check the Wikipedia page for Normalized difference vegetation index^[ https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index].
+To know more about the NDVI, please also check on Wikipedia^[Normalized difference vegetation index (https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index)].
 
 
 #### Example data `NSpec.DB`
