@@ -59,7 +59,7 @@ speclass <- as.spectra(smat, wavelength, as.numeric(s.id), w.unit, data = N)
 class(speclass)
 class(speclass@spectra)
 str(speclass)
-rownames(speclass@spectra)
+rownames(speclass@spectra) # can be NULL or 's.id'
 
 NSpec.LS <- speclass
 devtools::use_data(NSpec.LS, overwrite = TRUE)

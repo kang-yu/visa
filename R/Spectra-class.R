@@ -9,7 +9,7 @@
 #' @aliases SpectraDatabase
 #' @rdname Spectra-class
 #' @export
-#' @exportClass Spectra SpectraDatabase
+#' @exportClass Spectra
 Spectra <- setClass("Spectra",
                     slots = c(spectra = "matrix",
                               wavelength = "numeric",

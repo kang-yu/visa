@@ -4,31 +4,10 @@
 \name{SpectraDataFrame}
 \alias{SpectraDataFrame}
 \alias{spectra.data.frame}
-\alias{as.spectra.data.frame}
-\alias{as.specdf}
 \title{Class 'SpectraDataFrame'}
-\usage{
-as.spectra.data.frame(spectra = matrix(0), wavelength = numeric(0),
-  s.id = vector(), w.unit = character(0), data = data.frame(0), ...)
-}
-\arguments{
-\item{spectra}{A matrix}
-
-\item{wavelength}{A numeric vector}
-
-\item{s.id}{A vector}
-
-\item{w.unit}{A character string}
-
-\item{data}{A data.frame}
-
-\item{...}{Other options for similar format of variables}
-}
 \description{
 SpectraDataFrame is an extended 'Spectra' class, with associated vegetation data ('data')
 in a \link{data.frame} or \link{list}.
-
-This function creates a SpectraDataFrame object, which is equivalent to the use of \link{as.specdf}.
 }
 \section{Slots}{
 
@@ -47,6 +26,4 @@ This function creates a SpectraDataFrame object, which is equivalent to the use 
 \examples{
 new("SpectraDataFrame", matrix(1:100,4), 1:25, 1:4, "nm", data.frame(data=letters[1:4]))
 
-sdf <- as.spectra.data.frame(matrix(1:10, 1), 1:10, 1, "nm", data.frame(a = 1, b =2))
-str(sdf)
 }
