@@ -21,7 +21,7 @@ Imaging Spectroscopy (also knowns as Hyperspectral Remote Sensing, HRS) technolo
 
 Future development of this tool has a long-term goal to include: i) implement the state-of-the-art applications of vegetation spectral indicators, ii) provide a platform to share vegetation spectral data to address certain questions of interest or applications in a broad context, and iii) make it compatible with more data formats and tools, such as the r package hsdar^[ Lukas W. Lehnert, Hanna Meyer, Joerg Bendix (2018). hsdar: Manage, analyse and simulate hyperspectral data in R].
 
-Currently, `visa` can be installed via my [GitHub repository visa](https://github.com/kang-yu/visa), and submission to CRAN is in progress. This vignette will introduces the design and features of `visa` from the following aspects:
+Currently, `visa` can be installed via my [GitHub repository visa](https://github.com/kang-yu/visa), by `devtools::install_github("kang-yu/visa")`, and its submission to CRAN is in progress. This vignette will introduces the design and features of `visa` from the following aspects:
 
 - Data
 - Functions 
