@@ -17,11 +17,15 @@ knitr::opts_chunk$set(
 )
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+Imaging Spectroscopy (also knowns as Hyperspectral Remote Sensing, HRS) technology and data are increasingly used in environmental sciences, and nowadays much more beyond that, thus requiring accessable data and analytical tools (especially open source) for students and scientists with a diverse background. Therefore, I come up with such a idea since i was a PhD student at the University of Cologne, inspired by the growing community of R and R users. I have been mainly working with spectral data of plants, and that is reason i use the name VISA for this package, with the aim to facilitate the use of imaging spectroscopy techniques and data for the extraction of vegetation signatures for plant stresses and biodiversity.
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+Future development of this tool has a long-term goal to include: i) implement the state-of-the-art applications of vegetation spectral indicators, ii) provide a platform to share vegetation spectral data to address certain questions of interest or applications in a broad context. Currently, `visa` can be installed via my [GitHub repository visa](https://github.com/kang-yu/visa), and submission to CRAN is in progress.
+
+This vignette will introduces the design and features of `visa` from the following aspects:
+
+- Data format
+- Functions 
+- Compatibility
 
 ## Vignette Info
 
@@ -32,6 +36,7 @@ Note the various macros within the `vignette` section of the metadata block abov
 The first idea of writing this package was to compute the correlation matrix for the thorough analysis of correlations between, on one hand, the combinations of spectral bands, and on the other hand, the vegetation variables of interest. 
 
 Here gives the example using the `cm.nsr` function, which can be used for non-spectra data as well.
+
 ```{r, echo=FALSE, warning=FALSE}
 library(visa)
 data(NSpec.DF)
@@ -41,9 +46,9 @@ cm <- cm.nsr(S, x, cm.plot = TRUE)
 ```
 
 
-## Figures
+## Plotting correlation matrix
 
-The figure sizes have been customised so that you can easily put two images side-by-side. 
+The correlation matrix plot is the plot of correlation coefficients (r/r2) by bands in x- and y-axis. 
 
 ```{r, fig.show='hold', fig.cap = "Plot of correlation matrix"}
 # use the output from last example
@@ -53,13 +58,6 @@ visa::plot.cm(cm)
 
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
-
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
 
 ## More Examples
 
@@ -72,7 +70,7 @@ The package visa comes with two types of data formats. The first typle is the 'N
 ```{r, echo=FALSE, results='asis'}
 library(visa)
 # check the data type
-class(NSpec.DB)
+class(NSpec.DB) 
 # data structure
 # str(NSpec.DB)
 # print the first 10 columns
@@ -81,7 +79,7 @@ knitr::kable(head(NSpec.DB@spectra[,1:10]))
 
 The second typle is a data.frame format, i.e., NSpec.DF.
 ```{r, echo=FALSE, results='asis'}
-str(NSpec.DF)
+str(NSpec.DF) 
 # check whether it contains the same data as 'NSpec.DB'
 knitr::kable(head(NSpec.DF$spectra[,1:10]))
 ```
