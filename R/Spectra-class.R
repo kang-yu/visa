@@ -40,7 +40,7 @@ setMethod("initialize", "Spectra",
               .Object
           }
 )
-#' Construct a Spectra/SpectraDatabase
+#' Create a Spectra or SpectraDatabase
 #'
 #' This function create a Spectra object.
 #'
@@ -108,7 +108,7 @@ setMethod("initialize", "SpectraDataFrame",
             .Object
           }
 )
-#' Construct a SpectraDataFrame object.
+#' Create a SpectraDataFrame
 #'
 #' This function creates a SpectraDataFrame object, which is equivalent to the use of \link{as.specdf}.
 #'
@@ -167,7 +167,7 @@ setMethod("initialize", "SpectraMatrix",
             .Object
           }
 )
-#' Construct a SpectraMatrix object
+#' Create a SpectraMatrix
 #'
 #' This function creates a SpectraMatrix object.
 #'
