@@ -19,6 +19,14 @@ devtools::install_github("kang-yu/visa")
 
 # Usage
 
+```
+library(visa)
+x <- NSpec.DF$N
+s <- NSpec.DF$spectra
+sr1 <- sr(s, 440, 445)
+
+```
+
 
 # Bug report
 
