@@ -37,7 +37,7 @@ The first idea of writing this package was to compute the correlation matrix for
 
 Here gives the example using the `cm.nsr` function, which can be used for non-spectra data as well.
 
-```{r, echo=FALSE, warning=FALSE}
+```{r, echo=TRUE, warning=FALSE}
 library(visa)
 data(NSpec.DF)
 x <- NSpec.DF$N # nitrogen
@@ -63,11 +63,13 @@ visa::plot.cm(cm)
 
 You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
 
+The package `visa` comes with example hyperspectral data, in two types of format.  
 
-### visa example data: 
+### Example data `NSpec.DB`
 
-The package visa comes with two types of data formats. The first typle is the 'NSpec.DB' in the default S4 class 'Spctra'.
-```{r, echo=FALSE, results='asis'}
+ The first typle is the 'NSpec.DB' in the default S4 class 'Spctra'.
+
+```{r, echo=TRUE, results='asis'}
 library(visa)
 # check the data type
 class(NSpec.DB) 
@@ -77,8 +79,11 @@ class(NSpec.DB)
 knitr::kable(head(NSpec.DB@spectra[,1:10]))
 ```
 
-The second typle is a data.frame format, i.e., NSpec.DF.
-```{r, echo=FALSE, results='asis'}
+### Example data `NSpec.DF`
+
+The second typle is a data.frame format, i.e., `NSpec.DF`.
+
+```{r, echo=TRUE, results='asis'}
 str(NSpec.DF) 
 # check whether it contains the same data as 'NSpec.DB'
 knitr::kable(head(NSpec.DF$spectra[,1:10]))
