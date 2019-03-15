@@ -24,9 +24,8 @@ library(visa)
 x <- NSpec.DF$N
 s <- NSpec.DF$spectra
 sr1 <- sr(s, 440, 445)
-
+plot(sr1)
 ```
-
 
 # Bug report
 

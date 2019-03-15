@@ -1,7 +1,7 @@
 Meta
 doc
 inst/doc
-^ZZZ-Rx$
+ZZZ-Rx
 .Rproj.user
 .Rhistory
 .RData

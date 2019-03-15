@@ -25,12 +25,12 @@ Currently, `visa` can be installed via my [GitHub repository visa](https://githu
 
 - Data
 - Functions 
-- Compatibility
+- Compatibility 
 
 
 ## Data 
 
-`visa` intends to simplify the use and reduce the limit of data format and structure. `visa` uses two data formats, and a hacking use of R's `data.frame` and, a S4^[The S4 object system http://adv-r.had.co.nz/S4.html] class specificlly for `visa`.
+The `visa` package intends to simplify the use and reduce the limit of data format and structure. `visa` uses two data formats, and a hacking use of R's `data.frame` and, a S4^[The S4 object system http://adv-r.had.co.nz/S4.html] class specificlly for `visa`.
 
 ### Built on `data.frame`
 
@@ -91,6 +91,7 @@ visa::plot.cm(cm)
 The computation of SR and NSR follow the equations, e.g.:
 
 $SR = \lambda_i / \lambda_j$
+
 $NSR = (\lambda_i - \lambda_j)/(\lambda_i + \lambda_j)$
 
 To know more about NDVI, please also check the Wikipedia page for Normalized difference vegetation index^[ https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index].
