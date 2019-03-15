@@ -1,10 +1,10 @@
 #' @include visa.R
 #'
-#' An S4 class to represent a `Spectra` object, with five slots.
-#' It use `SpectraEntry` as the alias.
+#' An S4 Class `Spectra`, with five slots of data.
+#' It has `SpectraDatabase` as the alias.
 #'
 #' @name Spectra
-#' @aliases SpectraEntry
+#' @aliases SpectraDatabase
 #' @rdname Spectra-class
 #' @export
 #' @exportClass Spectra
@@ -43,7 +43,7 @@ setMethod("initialize", "Spectra",
 #' This function create a Spectra object.
 #'
 #' @name as.spectra
-#' @aliases as.spectra.entry
+#' @aliases as.spectra.database
 #' @rdname Spectra-class
 #' @param spectra A matrix
 #' @param wavelength A numeric vector
@@ -58,18 +58,18 @@ setMethod("initialize", "Spectra",
 #' s <- as.spectra.entry(matrix(1:100, 4), 1:25, 1:4, "nm", data.frame(x = letters[1:4]))
 #' }
 #' @export
-as.spectra <- as.spectra.entry <- function(spectra = matrix(0),
+as.spectra <- as.spectra.database <- function(spectra = matrix(0),
                                            wavelength = numeric(0),
                                            s.id = seq_len(nrow(spectra)),
                                            w.unit = character(0),
-                                           entry = data.frame(), ...){
-  return(new("Spectra", spectra, wavelength, s.id, w.unit, entry, ...))
+                                           data = data.frame(), ...){
+  return(new("Spectra", spectra, wavelength, s.id, w.unit, data, ...))
 }
 
 
 #' Class 'SpectraDataFrame'
 #'
-#' SpectraDataFrame is an extended 'Spectra' class, with associated vegetation data ('entry')
+#' SpectraDataFrame is an extended 'Spectra' class, with associated vegetation data ('data')
 #' in a \link{data.frame} or \link{list}.
 #'
 #' @name SpectraDataFrame
@@ -79,13 +79,13 @@ as.spectra <- as.spectra.entry <- function(spectra = matrix(0),
 #' @slot wavelength A numeric vector
 #' @slot s.id A vector
 #' @slot w.unit A character string
-#' @slot entry A data.frame
+#' @slot data A data.frame of vegetation data corresponding to the spectra
 #' @examples
-#' new("SpectraDataFrame", matrix(1:100,4), 1:25, 1:4, "nm", data.frame(entry=letters[1:4]))
+#' new("SpectraDataFrame", matrix(1:100,4), 1:25, 1:4, "nm", data.frame(data=letters[1:4]))
 #'
 setClass("SpectraDataFrame",
          contains = "Spectra",
-         slots = c(entry="data.frame"),
+         slots = c(data="data.frame"),
          validity = function(object){
            w <- length(object)
            if (length(w) != 0L && any(w != w[[1]]))
@@ -99,10 +99,10 @@ setMethod("initialize", "SpectraDataFrame",
                    wavelength = numeric(0),
                    s.id = vector(),
                    w.unit = character(0),
-                   entry = data.frame(0), ...){
+                   data = data.frame(0), ...){
             .Object <- callNextMethod()
-            if(nrow(.Object@spectra) != nrow(.Object@entry) && length(.Object@wavelength) >1)
-              stop("specified spectra and entry data of different lengths")
+            if(nrow(.Object@spectra) != nrow(.Object@data) && length(.Object@wavelength) >1)
+              stop("specified 'spectra' and 'data' of different lengths")
             .Object
           }
 )
@@ -113,7 +113,7 @@ setMethod("initialize", "SpectraDataFrame",
 #' @name as.spectra.data.frame
 #' @aliases as.specdf
 #' @rdname SpectraDataFrame-class
-#' @param entry A data.frame
+#' @param data A data.frame
 #' @param spectra A matrix
 #' @param wavelength A numeric vector
 #' @param s.id A vector
@@ -128,11 +128,11 @@ as.spectra.data.frame <- function(spectra = matrix(0),
                                   wavelength = numeric(0),
                                   s.id = vector(),
                                   w.unit = character(0),
-                                  entry = data.frame(0), ...){
-  sls <- new("SpectraDataFrame", spectra, wavelength, s.id, w.unit, entry)
+                                  data = data.frame(0), ...){
+  sls <- new("SpectraDataFrame", spectra, wavelength, s.id, w.unit, data)
   spec <- sls@spectra
   colnames(spec) <- paste(wavelength, w.unit)
-  sdf <- sls@entry
+  sdf <- sls@data
   sdf$spec <- I(spec)
   sdf
 }

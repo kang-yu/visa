@@ -55,8 +55,19 @@ Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr*
 
 You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
 
+### visa example data: 
+
+NSpec.LS
 ```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+library(visa)
+data(NSpec.LS)
+str(NSpec.LS)
+knitr::kable(head(NSpec.LS@spectra, 10))
+```
+NSpec.DF
+```{r, echo=FALSE, results='asis'}
+str(NSpec.DF)
+knitr::kable(head(NSpec.DF$spectra, 10))
 ```
 
 Also a quote using `>`:

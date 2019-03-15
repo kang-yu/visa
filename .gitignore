@@ -1,6 +1,7 @@
 Meta
 doc
 inst/doc
+^ZZZ-Rx$
 .Rproj.user
 .Rhistory
 .RData
