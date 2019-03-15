@@ -1,5 +1,7 @@
 #' @include visa.R
 #'
+#' Class 'Spectra' or 'SpectraDatabase'
+#'
 #' An S4 Class `Spectra`, with five slots of data.
 #' It has `SpectraDatabase` as the alias.
 #'
@@ -7,13 +9,13 @@
 #' @aliases SpectraDatabase
 #' @rdname Spectra-class
 #' @export
-#' @exportClass Spectra
+#' @exportClass Spectra SpectraDatabase
 Spectra <- setClass("Spectra",
                     slots = c(spectra = "matrix",
                               wavelength = "numeric",
                               s.id = "vector",
                               w.unit = "character",
-                              entry = "data.frame"))
+                              data = "data.frame"))
 setValidity("Spectra",
             function(object){
               w <- length(object)
@@ -28,17 +30,17 @@ setMethod("initialize", "Spectra",
                    wavelength = numeric(0),
                    s.id = vector(),
                    w.unit = character(0),
-                   entry = data.frame(), ...){
+                   data = data.frame(), ...){
             .Object <- callNextMethod()
-            if(length(.Object@entry) == 0 && ncol(.Object@spectra) != length(.Object@wavelength)){
+            if(length(.Object@data) == 0 && ncol(.Object@spectra) != length(.Object@wavelength)){
               stop("specified spectra and wavelength of different lengths")
-            } else if (length(.Object@entry) >= 1 && nrow(.Object@spectra) != nrow(.Object@entry)){
-              stop("specified spectra and entry data of different lengths")
+            } else if (length(.Object@data) >= 1 && nrow(.Object@spectra) != nrow(.Object@data)){
+              stop("specified spectra and data of different lengths")
             } else
               .Object
           }
 )
-#' Construct a Spectra
+#' Construct a Spectra/SpectraDatabase
 #'
 #' This function create a Spectra object.
 #'
@@ -49,13 +51,13 @@ setMethod("initialize", "Spectra",
 #' @param wavelength A numeric vector
 #' @param s.id A numeric vector
 #' @param w.unit A character string
-#' @param entry A data.frame
+#' @param data A data.frame
 #' @param ... Other parameters
 #' @examples
 #' \dontrun{
 #' new("Spectra", matrix(1:100,4), 1:25, 1:4, "nm")
 #' s <- as.spectra(matrix(1:100,4), 1:25, 1:4, "nm")
-#' s <- as.spectra.entry(matrix(1:100, 4), 1:25, 1:4, "nm", data.frame(x = letters[1:4]))
+#' s <- as.spectra.data(matrix(1:100, 4), 1:25, 1:4, "nm", data.frame(x = letters[1:4]))
 #' }
 #' @export
 as.spectra <- as.spectra.database <- function(spectra = matrix(0),
