@@ -61,8 +61,8 @@ class(speclass@spectra)
 str(speclass)
 rownames(speclass@spectra) # can be NULL or 's.id'
 
-NSpec.LS <- speclass
-devtools::use_data(NSpec.LS, overwrite = TRUE)
+NSpec.DB <- speclass
+devtools::use_data(NSpec.DB, overwrite = TRUE)
 
 
 
@@ -70,6 +70,8 @@ devtools::use_data(NSpec.LS, overwrite = TRUE)
 
 
 ###############################################################
+#
+# Following to be revised
 #
 # Internal data
 #--------------------------------------------------------------

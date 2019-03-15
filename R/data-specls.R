@@ -13,7 +13,7 @@
 #'   ...
 #' }
 #' @examples
-#' data(NSpec.LS)
-#' str(NSpec.LS)
+#' data(NSpec.DB)
+#' str(NSpec.DB)
 #' @source \url{visa}
-"NSpec.LS"
+"NSpec.DB"

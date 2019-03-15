@@ -69,7 +69,7 @@ cm.nsr <- function(spectra, x, w = wavelength(spectra), w.unit = NULL, cm.plot =
 #' @return
 #'   \item{cmp}{Returns a coorrelation-matrix plot.}
 #' @import ggplot2 reshape2 grDevices RColorBrewer
-#' @export
+#' @export plot.cm
 plot.cm <- function(cm){
 
   # Identify the max R2 and its corresponding bands in a correlation matrix
