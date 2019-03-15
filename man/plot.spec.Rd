@@ -4,9 +4,9 @@
 \alias{plot.spec}
 \title{Plot ASD Hyperspectral Data}
 \usage{
-plot.spec(x, y, type = "l", xlab = NULL, ylab = NULL, lwd = 1:3,
-  col = 1:3, xaxt = "n", show.xtick.text = TRUE, xtick = seq(400,
-  2500, 100), rug.interval = 50, ...)
+\method{plot}{spec}(x, y, type = "l", xlab = NULL, ylab = NULL,
+  lwd = 1:3, col = 1:3, xaxt = "n", show.xtick.text = TRUE,
+  xtick = seq(400, 2500, 100), rug.interval = 50, ...)
 }
 \arguments{
 \item{x}{A numeric vector for wavelength.}

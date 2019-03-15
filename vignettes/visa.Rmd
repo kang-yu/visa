@@ -60,8 +60,8 @@ You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footn
 NSpec.LS
 ```{r, echo=FALSE, results='asis'}
 library(visa)
-data(NSpec.LS)
-str(NSpec.LS)
+# data(NSpec.LS)
+# str(NSpec.LS)
 knitr::kable(head(NSpec.LS@spectra, 10))
 ```
 NSpec.DF

@@ -4,7 +4,7 @@
 \alias{plot.fit}
 \title{Plot model fit with equation and R2.}
 \usage{
-plot.fit(x, y)
+\method{plot}{fit}(x, y)
 }
 \arguments{
 \item{x}{A numeric variable}

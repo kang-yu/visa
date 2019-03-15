@@ -41,8 +41,9 @@ class(NSpec.DF) # AsIs
 devtools::use_data(NSpec.DF, overwrite = TRUE)
 
 #####################################
-## save the spectra as list format
-class(NSpec.DF$spectra)
+## save the spectra as S4 class format
+
+class(NSpec.DF$spectra) # !!! to assure the spectra class
 if (is(NSpec.DF$spectra, "AsIs")) class(NSpec.DF$spectra) <- "matrix" # or NULL
 
 smat <- as.matrix(NSpec.DF$spectra)
@@ -54,7 +55,7 @@ w.unit <- unique(gsub("\\d+\\s", "", colnames(NSpec.DF$spectra)))
 N <- NSpec.DF["N"]
 
 # test 'spectra'
-speclass <- as.spectra(smat, wavelength, as.numeric(s.id), w.unit, N = N)
+speclass <- as.spectra(smat, wavelength, as.numeric(s.id), w.unit, data = N)
 class(speclass)
 class(speclass@spectra)
 str(speclass)
@@ -62,6 +63,7 @@ rownames(speclass@spectra)
 
 NSpec.LS <- speclass
 devtools::use_data(NSpec.LS, overwrite = TRUE)
+
 
 
 
