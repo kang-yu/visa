@@ -12,6 +12,7 @@ Description: Functions for optimizing spectral band combinations for calculating
     parameter and any possible two bands within the full spectrum.
 License: GPL-3
 LazyData: true
+Encoding: UTF-8
 URL: https://github.com/kang-yu/visa
 BugReports: https://github.com/kang-yu/visa/issues
 Depends:
@@ -30,15 +31,3 @@ Suggests:
     rmarkdown
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
-Collate: 
-    'visa.R'
-    'Spectra-class.R'
-    'Spectra.R'
-    'cm.nsr.R'
-    'data-specdf.R'
-    'data-specls.R'
-    'ndvi2.R'
-    'plot.fit.R'
-    'plot.spec.R'
-    'sr.R'
-    'wavelength.R'
