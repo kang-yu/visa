@@ -4,12 +4,7 @@ Title: Vegetation Imaging Spectroscopy Analyzer
 Version: 0.1.0
 Author: Kang Yu
 Maintainer: Kang Yu <kkaannggyu@gmail.com>
-Description: Functions for optimizing spectral band combinations for calculating
-    the Normalized Difference Vegetation Index (NDVI), whcih is widely used in
-    remote sensing studies for vegetation monitoring from space, and in precision
-    agriculture for non-destructively estimation of plant growth status. The optimal
-    bands for NDVI are determined by comparing the correlations between vegetative
-    parameter and any possible two bands within the full spectrum.
+Description: A easy-to-use tool for working with hyperspectral (imaging spectroscopy) data. 
 License: GPL-3
 LazyData: true
 Encoding: UTF-8
