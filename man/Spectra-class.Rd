@@ -9,7 +9,7 @@
 \title{Create a Spectra or SpectraDatabase}
 \usage{
 as.spectra(spectra = matrix(0), wavelength = numeric(0), s.id = NULL,
-  w.unit = character(0), data = data.frame(), ...)
+  w.unit = "nm", data = data.frame(), ...)
 }
 \arguments{
 \item{spectra}{A matrix}

@@ -61,10 +61,10 @@ setMethod("initialize", "Spectra",
 #' }
 #' @export
 as.spectra <- as.spectra.database <- function(spectra = matrix(0),
-                                           wavelength = numeric(0),
-                                           s.id = NULL,
-                                           w.unit = character(0),
-                                           data = data.frame(), ...){
+                                              wavelength = numeric(0),
+                                              s.id = NULL,
+                                              w.unit = "nm",
+                                              data = data.frame(), ...){
   return(new("Spectra", spectra, wavelength, s.id, w.unit, data, ...))
 }
 
