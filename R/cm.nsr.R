@@ -9,7 +9,7 @@
 #' @param w A vector of wavelength.
 #' @param cm.plot A logic value for whether plotting the coefficient matrix or not, default FALSE.
 #' @return
-#'   \item{cm.res}{Returns a list of coorrelation coefficients matrix and a ggplot-based plot.}
+#'   \item{cm}{Returns a coorrelation coefficients matrix.}
 #'
 #' @details
 #' This function runs a calculation of \deqn{ NDVI = (\lambda_i - \lambda_j)/(\lambda_i + \lambda_j) } using all the possible pairs/combinations of any two bands (i,j)
@@ -36,6 +36,9 @@ cm.nsr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
   # n <- length(spectra)
 
   spectra <- spectra(S)
+  if (is(spectra, "matrix") && is.null(colnames(spectra)) && length(w) == 0)
+    stop("Wavelength for the spectra matrix is not correctly defined")
+
   n <- dim(spectra)[2] # Returns the Number of wavebands, should equal w
 
   ## (Rj-Ri)/(Rj+Ri)
@@ -60,17 +63,18 @@ cm.nsr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
   # str(cm)
   # max(cm, na.rm = TRUE)
   colnames(cm) <- paste(w, "nm")
-  cm_plot <- plot.cm(cm)
-  if (isTRUE(cm.plot)) print(cm_plot)
-  cm.res <- list(cm = cm, cm.plot = cm_plot)
 
+  # cm plot
+  if (isTRUE(cm.plot)) print(plot.cm(cm))
+  # cm.res <- list(cm = cm, cm.plot = cm_plot)
+  cm
 }
 
 #' Plot the correlation matrix derived from the cm.nsr and cm.sr function
 #' @rdname cm.nsr
 #' @param cm A square matrix
 #' @return
-#'   \item{cmp}{Returns a coorrelation-matrix plot.}
+#'   \item{cm_plot}{Returns a coorrelation-matrix plot.}
 #' @import ggplot2 reshape2 grDevices RColorBrewer
 #' @export plot.cm
 plot.cm <- function(cm){
@@ -102,8 +106,8 @@ plot.cm <- function(cm){
     scale_fill_gradientn(colours = myPalette(100))+
     coord_equal()+
     theme_bw()
-  cmp <- cmp + xlab("Wavelength i") + ylab("Wavelength j")
-  cmp
+  cm_plot <- cmp + xlab("Wavelength i") + ylab("Wavelength j")
+  cm_plot
 
   # cmp <- cmp + scale_x_discrete(expand = c(0, 0))+
   #   scale_y_discrete(expand = c(0, 0))
