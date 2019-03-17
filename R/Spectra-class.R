@@ -13,7 +13,7 @@
 Spectra <- setClass("Spectra",
                     slots = c(spectra = "matrix",
                               wavelength = "numeric",
-                              s.id = "vector",
+                              s.id = NULL,
                               w.unit = "character",
                               data = "data.frame"))
 setValidity("Spectra",
