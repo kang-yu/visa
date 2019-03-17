@@ -13,16 +13,10 @@
 #' To know more about visa, check the vignettes:
 #' `browseVignettes("visa")`
 #'
-#' @section Vegetation Indices
+#' @section Vegetation Indices:
+#' Support the calculation of vegetation indices from literature, as well as creation of new indices.
 #'
-#' \subsection{Well known vegetation indices
-#' The vegetation indices from literature...
-#' }
-#' \subsection{New indices
-#' create new indices
-#' }
-#'
-#' @section Multivariate analysis
+#' @section Multivariate analysis:
 #' ... not implemented yet
 #' The multivariate analysis use the spectra.data.frame format.
 #'

@@ -23,6 +23,17 @@ some built on other r packages.
 To know more about visa, check the vignettes:
 `browseVignettes("visa")`
 }
+\section{Vegetation Indices}{
+
+Support the calculation of vegetation indices from literature, as well as creation of new indices.
+}
+
+\section{Multivariate analysis}{
+
+... not implemented yet
+The multivariate analysis use the spectra.data.frame format.
+}
+
 \seealso{
 Useful links:
 \itemize{

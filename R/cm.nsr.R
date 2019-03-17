@@ -9,7 +9,8 @@
 #' @param w A vector of wavelength.
 #' @param cm.plot A logic value for whether plotting the coefficient matrix or not, default FALSE.
 #' @return
-#'   \item{cm}{Returns a coorrelation coefficients matrix corresponding to each band combination for NDVI.}
+#'   \item{cm.res}{Returns a list of coorrelation coefficients matrix and a ggplot-based plot.}
+#'
 #' @details
 #' This function runs a calculation of \deqn{ NDVI = (\lambda_i - \lambda_j)/(\lambda_i + \lambda_j) } using all the possible pairs/combinations of any two bands (i,j)
 #' within the full spectrum range thoroughly. A correlation analysis is then performed between the x and all possible NDVIs, and it calculates
@@ -59,8 +60,9 @@ cm.nsr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
   # str(cm)
   # max(cm, na.rm = TRUE)
   colnames(cm) <- paste(w, "nm")
-  if (isTRUE(cm.plot)) plot.cm(cm)
-  cm
+  cm_plot <- plot.cm(cm)
+  if (isTRUE(cm.plot)) print(cm_plot)
+  cm.res <- list(cm = cm, cm.plot = cm_plot)
 
 }
 

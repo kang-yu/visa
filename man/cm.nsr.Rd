@@ -21,7 +21,7 @@ cm.nsr(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE)
 \item{cm}{A square matrix}
 }
 \value{
-\item{cm}{Returns a coorrelation coefficients matrix corresponding to each band combination for NDVI.}
+\item{cm.res}{Returns a list of coorrelation coefficients matrix and a ggplot-based plot.}
 
 \item{cmp}{Returns a coorrelation-matrix plot.}
 }
