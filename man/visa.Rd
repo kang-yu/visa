@@ -6,12 +6,7 @@
 \alias{visa-package}
 \title{visa: Vegetation Imaging Spectroscopy Analyzer}
 \description{
-Functions for optimizing spectral band combinations for calculating
-    the Normalized Difference Vegetation Index (NDVI), whcih is widely used in
-    remote sensing studies for vegetation monitoring from space, and in precision
-    agriculture for non-destructively estimation of plant growth status. The optimal
-    bands for NDVI are determined by comparing the correlations between vegetative
-    parameter and any possible two bands within the full spectrum.
+A easy-to-use tool for working with hyperspectral (imaging spectroscopy) data.
 }
 \details{
 The visa package provides a set of functions for hyperspectral data analysis, with the main idea

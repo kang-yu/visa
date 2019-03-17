@@ -57,12 +57,12 @@ setMethod("initialize", "Spectra",
 #' \dontrun{
 #' new("Spectra", matrix(1:100,4), 1:25, 1:4, "nm")
 #' s <- as.spectra(matrix(1:100,4), 1:25, 1:4, "nm")
-#' s <- as.spectra.data(matrix(1:100, 4), 1:25, 1:4, "nm", data.frame(x = letters[1:4]))
+#' s <- as.spectra.database(matrix(1:100, 4), 1:25, 1:4, "nm", data.frame(x = letters[1:4]))
 #' }
 #' @export
 as.spectra <- as.spectra.database <- function(spectra = matrix(0),
                                            wavelength = numeric(0),
-                                           s.id = seq_len(nrow(spectra)),
+                                           s.id = NULL,
                                            w.unit = character(0),
                                            data = data.frame(), ...){
   return(new("Spectra", spectra, wavelength, s.id, w.unit, data, ...))

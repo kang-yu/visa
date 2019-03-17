@@ -26,3 +26,15 @@ Suggests:
     rmarkdown
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
+Collate: 
+    'visa.R'
+    'Spectra-class.R'
+    'Spectra.R'
+    'cm.nsr.R'
+    'data-specdf.R'
+    'data-specls.R'
+    'ndvi2.R'
+    'plot.fit.R'
+    'plot.spec.R'
+    'sr.R'
+    'wavelength.R'
