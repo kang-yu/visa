@@ -28,7 +28,7 @@ setMethod("initialize", "Spectra",
           function(.Object,
                    spectra = matrix(0),
                    wavelength = numeric(0),
-                   s.id = vector(),
+                   s.id = NULL,
                    w.unit = character(0),
                    data = data.frame(), ...){
             .Object <- callNextMethod()
@@ -69,23 +69,23 @@ as.spectra <- as.spectra.database <- function(spectra = matrix(0),
 }
 
 
-#' Class 'SpectraDataFrame'
+#' Class 'SpectraDatabase'
 #'
-#' SpectraDataFrame is an extended 'Spectra' class, with associated vegetation data ('data')
-#' in a \link{data.frame} or \link{list}.
+#' SpectraDatabase is an extended 'Spectra' class, with associated vegetation data ('data')
+#' in a \link{data.frame}.
 #'
-#' @name SpectraDataFrame
-#' @rdname SpectraDataFrame-class
-#' @aliases spectra.data.frame
+#' @name SpectraDatabase
+#' @rdname SpectraDatabase-class
+#' @aliases Spectra
 #' @slot spectra A matrix
 #' @slot wavelength A numeric vector
 #' @slot s.id A vector
 #' @slot w.unit A character string
 #' @slot data A data.frame of vegetation data corresponding to the spectra
 #' @examples
-#' new("SpectraDataFrame", matrix(1:100,4), 1:25, 1:4, "nm", data.frame(data=letters[1:4]))
+#' new("SpectraDatabase", matrix(1:100,4), 1:25, 1:4, "nm", data.frame(data=letters[1:4]))
 #'
-setClass("SpectraDataFrame",
+setClass("SpectraDatabase",
          contains = "Spectra",
          slots = c(data="data.frame"),
          validity = function(object){
@@ -95,7 +95,7 @@ setClass("SpectraDataFrame",
            TRUE
          }
 )
-setMethod("initialize", "SpectraDataFrame",
+setMethod("initialize", "SpectraDatabase",
           function(.Object,
                    spectra = matrix(0),
                    wavelength = numeric(0),
