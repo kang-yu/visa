@@ -65,10 +65,13 @@ cm.nsr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
   colnames(cm) <- paste(w, "nm")
 
   # cm plot
-  if (isTRUE(cm.plot)) print(plot.cm(cm))
+  cm_plot <- plot.cm(cm)
+  if (isTRUE(cm.plot)) print(cm_plot)
   # cm.res <- list(cm = cm, cm.plot = cm_plot)
-  cm
+
+  return(cm)
 }
+
 
 #' Plot the correlation matrix derived from the cm.nsr and cm.sr function
 #' @rdname cm.nsr
