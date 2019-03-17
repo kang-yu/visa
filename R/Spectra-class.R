@@ -13,7 +13,6 @@
 Spectra <- setClass("Spectra",
                     slots = c(spectra = "matrix",
                               wavelength = "numeric",
-                              s.id = "vector",
                               w.unit = "character",
                               data = "data.frame"))
 setValidity("Spectra",
@@ -28,46 +27,17 @@ setMethod("initialize", "Spectra",
           function(.Object,
                    spectra = matrix(0),
                    wavelength = numeric(0),
-                   s.id = NULL,
                    w.unit = character(0),
                    data = data.frame(), ...){
             .Object <- callNextMethod()
             if(length(.Object@data) == 0 && ncol(.Object@spectra) != length(.Object@wavelength)){
-              stop("specified spectra and wavelength of different lengths")
+              stop("specified spectra and wavelength of different dimensions")
             } else if (length(.Object@data) >= 1 && nrow(.Object@spectra) != nrow(.Object@data)){
               stop("specified spectra and data of different lengths")
             } else
               .Object
           }
 )
-#' Create a Spectra or SpectraDatabase
-#'
-#' This function create a Spectra object.
-#'
-#' @name as.spectra
-#' @aliases as.spectra.database
-#' @rdname Spectra-class
-#' @param spectra A matrix
-#' @param wavelength A numeric vector
-#' @param s.id A vector
-#' @param w.unit A character string
-#' @param data A data.frame
-#' @param ... Other parameters
-#' @examples
-#' \dontrun{
-#' new("Spectra", matrix(1:100,4), 1:25, 1:4, "nm")
-#' s <- as.spectra(matrix(1:100,4), 1:25, 1:4, "nm")
-#' s <- as.spectra.database(matrix(1:100, 4), 1:25, 1:4, "nm", data.frame(x = letters[1:4]))
-#' }
-#' @export
-as.spectra <- as.spectra.database <- function(spectra = matrix(0),
-                                              wavelength = numeric(0),
-                                              s.id = NULL,
-                                              w.unit = "nm",
-                                              data = data.frame(), ...){
-  return(new("Spectra", spectra, wavelength, s.id, w.unit, data, ...))
-}
-
 
 #' Class 'SpectraDatabase'
 #'
@@ -79,12 +49,11 @@ as.spectra <- as.spectra.database <- function(spectra = matrix(0),
 #' @aliases Spectra
 #' @slot spectra A matrix
 #' @slot wavelength A numeric vector
-#' @slot s.id A vector
 #' @slot w.unit A character string
 #' @slot data A data.frame of vegetation data corresponding to the spectra
 #' @examples
-#' new("SpectraDatabase", matrix(1:100,4), 1:25, 1:4, "nm", data.frame(data=letters[1:4]))
-#'
+#' new("SpectraDatabase", matrix(1:100,4), 1:25, "nm", data.frame(data=letters[1:4]))
+#' @export
 setClass("SpectraDatabase",
          contains = "Spectra",
          slots = c(data="data.frame"),
@@ -99,7 +68,6 @@ setMethod("initialize", "SpectraDatabase",
           function(.Object,
                    spectra = matrix(0),
                    wavelength = numeric(0),
-                   s.id = vector(),
                    w.unit = character(0),
                    data = data.frame(0), ...){
             .Object <- callNextMethod()
@@ -108,6 +76,32 @@ setMethod("initialize", "SpectraDatabase",
             .Object
           }
 )
+
+#' Create a Spectra or SpectraDatabase
+#'
+#' This function create a Spectra object.
+#'
+#' @name as.spectra
+#' @aliases as.spectra.database
+#' @rdname Spectra-class
+#' @param spectra A matrix
+#' @param wavelength A numeric vector
+#' @param w.unit A character string
+#' @param data A data.frame
+#' @param ... Other parameters
+#' @examples
+#' \dontrun{
+#' new("Spectra", matrix(1:100,4), 1:25, "nm")
+#' s <- as.spectra(matrix(1:100,4), 1:25, "nm")
+#' s <- as.spectra.database(matrix(1:100, 4), 1:25, "nm", data.frame(x = letters[1:4]))
+#' }
+#' @export
+as.spectra <- as.spectra.database <- function(spectra = matrix(0),
+                                              wavelength = numeric(0),
+                                              w.unit = "nm",
+                                              data = data.frame(), ...){
+  return(new("Spectra", spectra, wavelength, w.unit, data, ...))
+}
 
 
 #' Class 'SpectraMatrix'
@@ -129,7 +123,6 @@ setMethod("initialize", "SpectraMatrix",
           function(.Object,
                    spectra = matrix(0),
                    wavelength = numeric(0),
-                   s.id = vector(),
                    w.unit = character(0), ...){
             .Object <- callNextMethod()
             if(ncol(.Object@spectra) != length(.Object@wavelength))
@@ -145,19 +138,17 @@ setMethod("initialize", "SpectraMatrix",
 #' @rdname SpectraMaxtrix-class
 #' @param spectra A matrix
 #' @param wavelength A numeric vector
-#' @param s.id A vector of spectral IDs, can be numeric or character
 #' @param w.unit A character string
 #' @examples
-#' smatrix <- as.spectra.matrix(matrix(1:10, 1), 1:10, 1, "nm")
+#' smatrix <- as.spectra.matrix(matrix(1:10, 1), 1:10, "nm")
 #' str(smatrix)
 #' @export
 as.spectra.matrix <- function(spectra = matrix(0),
                               wavelength = numeric(0),
-                              s.id = NULL,
                               w.unit = character(0)){
-  sls <- new("SpectraMatrix", spectra, wavelength, s.id, w.unit)
+  sls <- new("SpectraMatrix", spectra, wavelength, w.unit)
   smat <- sls@spectra
   colnames(smat) <- paste(wavelength, w.unit)
-  rownames(smat) <- sls@s.id
+  # rownames(smat) <- sls@s.id
   smat
 }

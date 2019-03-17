@@ -16,14 +16,11 @@ in a \link{data.frame}.
 
 \item{\code{wavelength}}{A numeric vector}
 
-\item{\code{s.id}}{A vector}
-
 \item{\code{w.unit}}{A character string}
 
 \item{\code{data}}{A data.frame of vegetation data corresponding to the spectra}
 }}
 
 \examples{
-new("SpectraDatabase", matrix(1:100,4), 1:25, 1:4, "nm", data.frame(data=letters[1:4]))
-
+new("SpectraDatabase", matrix(1:100,4), 1:25, "nm", data.frame(data=letters[1:4]))
 }

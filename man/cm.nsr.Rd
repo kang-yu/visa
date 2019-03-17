@@ -5,13 +5,12 @@
 \alias{plot.cm}
 \title{Selecting the best 2-Band combinations for Normalized Simple Ratio (NSR)}
 \usage{
-cm.nsr(spectra, x, w = wavelength(spectra), w.unit = NULL,
-  cm.plot = FALSE)
+cm.nsr(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE)
 
 \method{plot}{cm}(cm)
 }
 \arguments{
-\item{spectra}{A matrix of spectral data, a row is a spectrum across all spectral bands.}
+\item{S}{A matrix of spectral data, a row is a spectrum across all spectral bands.}
 
 \item{x}{A vector.}
 

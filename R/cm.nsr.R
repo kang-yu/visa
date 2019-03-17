@@ -4,7 +4,7 @@
 #' getation variable of interest x, which
 #' determines the best spectral band combinations of the full spectrum that are most predictive for 'x'.
 #'
-#' @param spectra A matrix of spectral data, a row is a spectrum across all spectral bands.
+#' @param S A matrix of spectral data, a row is a spectrum across all spectral bands.
 #' @param x A vector.
 #' @param w A vector of wavelength.
 #' @param cm.plot A logic value for whether plotting the coefficient matrix or not, default FALSE.
@@ -26,7 +26,7 @@
 #' @import ggplot2 Matrix reshape2 grDevices
 #' @export
 
-cm.nsr <- function(spectra, x, w = wavelength(spectra), w.unit = NULL, cm.plot = FALSE){
+cm.nsr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
 
   # determin the format of spectra
   # if (is(spectra, "Spectra")) w <- wavelength(spectra)
@@ -34,6 +34,7 @@ cm.nsr <- function(spectra, x, w = wavelength(spectra), w.unit = NULL, cm.plot =
   # if (is(spectra, "matrix")) w <- wavelength(spectra) # shoudl be numeric
   # n <- length(spectra)
 
+  spectra <- spectra(S)
   n <- dim(spectra)[2] # Returns the Number of wavebands, should equal w
 
   ## (Rj-Ri)/(Rj+Ri)

@@ -7,14 +7,12 @@
 \title{Class 'SpectraMatrix'}
 \usage{
 as.spectra.matrix(spectra = matrix(0), wavelength = numeric(0),
-  s.id = NULL, w.unit = character(0))
+  w.unit = character(0))
 }
 \arguments{
 \item{spectra}{A matrix}
 
 \item{wavelength}{A numeric vector}
-
-\item{s.id}{A vector of spectral IDs, can be numeric or character}
 
 \item{w.unit}{A character string}
 }
@@ -22,6 +20,6 @@ as.spectra.matrix(spectra = matrix(0), wavelength = numeric(0),
 This function creates a SpectraMatrix object.
 }
 \examples{
-smatrix <- as.spectra.matrix(matrix(1:10, 1), 1:10, 1, "nm")
+smatrix <- as.spectra.matrix(matrix(1:10, 1), 1:10, "nm")
 str(smatrix)
 }
