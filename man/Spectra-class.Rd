@@ -16,7 +16,7 @@ as.spectra(spectra = matrix(0), wavelength = numeric(0), s.id = NULL,
 
 \item{wavelength}{A numeric vector}
 
-\item{s.id}{A numeric vector}
+\item{s.id}{A vector}
 
 \item{w.unit}{A character string}
 

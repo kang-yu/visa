@@ -7,7 +7,7 @@
 \title{Class 'SpectraMatrix'}
 \usage{
 as.spectra.matrix(spectra = matrix(0), wavelength = numeric(0),
-  s.id = vector(), w.unit = character(0))
+  s.id = NULL, w.unit = character(0))
 }
 \arguments{
 \item{spectra}{A matrix}

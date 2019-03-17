@@ -49,7 +49,7 @@ setMethod("initialize", "Spectra",
 #' @rdname Spectra-class
 #' @param spectra A matrix
 #' @param wavelength A numeric vector
-#' @param s.id A numeric vector
+#' @param s.id A vector
 #' @param w.unit A character string
 #' @param data A data.frame
 #' @param ... Other parameters
@@ -153,7 +153,7 @@ setMethod("initialize", "SpectraMatrix",
 #' @export
 as.spectra.matrix <- function(spectra = matrix(0),
                               wavelength = numeric(0),
-                              s.id = vector(),
+                              s.id = NULL,
                               w.unit = character(0)){
   sls <- new("SpectraMatrix", spectra, wavelength, s.id, w.unit)
   smat <- sls@spectra
