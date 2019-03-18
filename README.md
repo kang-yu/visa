@@ -17,6 +17,8 @@ install the dev-version of visa from github with:
 devtools::install_github("kang-yu/visa")
 ``` 
 
+You might encounter problem of package dependencies, such as some functions depend on `ggplot`, `ggpmisc`. In such cases, you would have to install the all the dependencies.
+
 # Usage
 
 ```
