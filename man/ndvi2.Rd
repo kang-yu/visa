@@ -14,15 +14,21 @@ ndvi2(s, b1, b2)
 \item{b2}{A integer number which defines the wavelength of the 2nd spectral band.}
 }
 \value{
-\item{ndvi}{The returned values are the new NDVI}
+\item{ndvi}{The returned values are the new NDVI.}
 }
 \description{
 This function calculates a 2-band NDVI using the \code{\link{nsr}} function.
 }
+\details{
+Calculate a NDVI with two specific bands of choice. The new NDVI follows the
+the standard fromula \deqn{NDVI = (\lambda_i + \lambda_j)/(\lambda_i - \lambda_j)}.
+Bands i and j correspond to the b1 and b2 input arguments, respectively. Wavelength
+indexes are determined based on the first argument 's'.
+}
 \examples{
 \dontrun{
 library(visa)
-s <- NSpec.DF$Spec
-ndvi2(x, 780, 680)
+s <- NSpec.DF$spectra
+ndvi2(s, 780, 680)
 }
 }

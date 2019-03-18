@@ -4,26 +4,23 @@
 #'
 #' @details
 #' Calculate a NDVI with two specific bands of choice. The new NDVI follows the
-#' the standard fromula \deqn{NDVI = (\lambda_i + \lambda_j)/(\lambda_i - \lambda_j).
+#' the standard fromula \deqn{NDVI = (\lambda_i + \lambda_j)/(\lambda_i - \lambda_j)}.
 #' Bands i and j correspond to the b1 and b2 input arguments, respectively. Wavelength
 #' indexes are determined based on the first argument 's'.
 #'
 #' @rdname ndvi2
 #' @inheritParams nsr
 #' @return
-#' \item{ndvi}{The returned values are the new NDVI}
+#' \item{ndvi}{The returned values are the new NDVI.}
 #' @examples
 #' \dontrun{
 #' library(visa)
-#' s <- NSpec.DF$Spec
+#' s <- NSpec.DF$spectra
 #' ndvi2(s, 780, 680)
 #' }
 #' @import ggplot2 ggpmisc
 #' @export
-
-ndvi2 <- function(s,b1,b2){
-
-  ndvi <- nsr(s,b1,b2)
-
+ndvi2 <- function(s, b1, b2){
+  if (is(s, "NULL")) stop("input s is not valid spectra")
+  ndvi <- nsr(s, b1, b2)
 }
-
