@@ -2,13 +2,7 @@
 % Please edit documentation in R/spectra.R
 \name{spectra}
 \alias{spectra}
-\title{Access the spectra data of Spectra.
-
-Functions to access slot data of the Class Spectra.
-
-Construct generic functions for the Spectra object, spectra.data.frame, and spectra.matrix.
-A call to {new} returns a newly allocated object from the class identified by the first argument.
-This call in turn calls the method for the generic function `initialize`.}
+\title{Access the spectra data of Spectra.}
 \usage{
 spectra(object, ...)
 }
@@ -18,10 +12,9 @@ spectra(object, ...)
 \item{...}{Other options}
 }
 \description{
-Access the spectra data of Spectra.
-
 Functions to access slot data of the Class Spectra.
-
+}
+\details{
 Construct generic functions for the Spectra object, spectra.data.frame, and spectra.matrix.
 A call to {new} returns a newly allocated object from the class identified by the first argument.
 This call in turn calls the method for the generic function `initialize`.

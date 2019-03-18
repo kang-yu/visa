@@ -4,7 +4,7 @@ Title: Vegetation Imaging Spectroscopy Analyzer
 Version: 0.1.0
 Author: Kang Yu
 Maintainer: Kang Yu <kkaannggyu@gmail.com>
-Description: A easy-to-use tool for working with hyperspectral (imaging spectroscopy) data. 
+Description: For an easy-to-use tool for working with hyperspectral (imaging spectroscopy) data. 
 License: GPL-3
 LazyData: true
 Encoding: UTF-8

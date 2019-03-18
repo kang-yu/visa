@@ -6,7 +6,7 @@
 \alias{visa-package}
 \title{visa: Vegetation Imaging Spectroscopy Analyzer}
 \description{
-A easy-to-use tool for working with hyperspectral (imaging spectroscopy) data.
+For an easy-to-use tool for working with hyperspectral (imaging spectroscopy) data.
 }
 \details{
 The visa package provides a set of functions for hyperspectral data analysis, with the main idea
