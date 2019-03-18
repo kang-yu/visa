@@ -56,13 +56,20 @@ cm.nsr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
     # Squared values (R2) of the Pearson Correlation coefficients
     Rcorr <- (cor(x, V))^2
     # To store the value of R2
-    spR <- Matrix::sparseMatrix(i = c(1:n),j = rep(cI,n), x = as.numeric(Rcorr), dims = c(n,n))
+    # spR <- Matrix::sparseMatrix(i = c(1:n),j = rep(cI,n), x = as.numeric(Rcorr), dims = c(n,n))
+    spR <- Matrix::sparseMatrix(i = rep(cI,n), j =  c(1:n), x = as.numeric(Rcorr), dims = c(n,n))
     R2 <- R2 + spR
   }
   cm <- as.matrix(R2)
   # str(cm)
   # max(cm, na.rm = TRUE)
   colnames(cm) <- paste(w, "nm")
+
+  R2max <- max(cm, na.rm = TRUE)
+  print(paste('The max value of R^2 is', as.character(round(R2max,4))))
+  ind_max <- which(cm == R2max, arr.ind = TRUE)
+  bestBands = w[ind_max[1,]]
+  print(paste(c("i", "j"), as.vector(bestBands), sep = "_"))
 
   # cm plot
   cm_plot <- plot.cm(cm, show.stat = FALSE)
