@@ -91,14 +91,29 @@ setMethod("initialize", "SpectraDatabase",
 #' @param ... Other parameters
 #' @examples
 #' \dontrun{
-#' new("SpectraDatabase", matrix(1:100,4), 1:25, "nm", data.frame(x = letters[1:4]))
-#' s <- as.spectra.database(matrix(1:100, 4), 1:25, "nm", data.frame(x = letters[1:4]))
+#' s <- as.spectra(matrix(1:100, 4), 1:25, "nm", data.frame(x = letters[1:4]))
+#' str(s)
 #' }
 #' @export
-as.spectra.database <- as.spectra <- function(spectra = matrix(0),
-                                              wavelength = numeric(0),
-                                              w.unit = "nm",
-                                              data = data.frame(), ...){
+as.spectra <- function(spectra = matrix(0),
+                       wavelength = numeric(0),
+                       w.unit = "nm",
+                       data = data.frame(), ...){
+  return(new("Spectra", spectra, wavelength, w.unit, data, ...))
+}
+#' Create a Spectra or SpectraDatabase
+#'
+#' This function creates a Spectra object.
+#'
+#' @describeIn as.spectra
+#' @examples
+#' s <- as.spectra.database(matrix(1:100, 4), 1:25, "nm", data.frame(x = letters[1:4]))
+#' str(s)
+#' @export
+as.spectra.database <- function(spectra = matrix(0),
+                                wavelength = numeric(0),
+                                w.unit = "nm",
+                                data = data.frame(), ...){
   return(new("Spectra", spectra, wavelength, w.unit, data, ...))
 }
 

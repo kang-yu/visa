@@ -30,7 +30,6 @@ VignetteBuilder: knitr
 Collate: 
     'visa.R'
     'Spectra-class.R'
-    'Spectra.R'
     'cm.nsr.R'
     'cm.sr.R'
     'data-specdf.R'
@@ -38,5 +37,6 @@ Collate:
     'ndvi2.R'
     'plot.fit.R'
     'plot.spec.R'
+    'spectra.R'
     'sr.R'
     'wavelength.R'

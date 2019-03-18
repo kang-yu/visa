@@ -16,9 +16,9 @@ Construct a Spectra class by using the
 }
 \examples{
 \dontrun{
-# for Spectra format
+# For S4 class Spectra
 wavelength(NSpec.DB)
-# for spectra data.frame format
+# For spectra data.frame format
 wavelength(NSpec.DF)
 }
 }

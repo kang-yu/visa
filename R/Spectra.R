@@ -1,5 +1,7 @@
 #' @include Spectra-class.R
 #'
+#' @title Access the spectra data of Spectra.
+#'
 #' Functions to access slot data of the Class Spectra.
 #'
 #' Construct generic functions for the Spectra object, spectra.data.frame, and spectra.matrix.
@@ -7,15 +9,14 @@
 #' This call in turn calls the method for the generic function `initialize`.
 #'
 #' @name spectra
-#' @rdname spectra-methods
 #' @param object A Spectra object, spectra.data.frame, or spectra.matrix.
 #' @param ... Other options
 #' @examples
 #' \dontrun{
-#' # for the Spectra class
+#' # For the S4 class 'Spectra'
 #' data(NSpec.DB)
 #' spectra_matrix <- spectra(NSpec.DB)
-#' # for spectra data.frame
+#' # For spectra data.frame
 #' data(NSpec.DF)
 #' spectra_matrix <- spectra(NSpec.DF)
 #' }

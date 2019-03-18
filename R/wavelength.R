@@ -12,9 +12,9 @@
 # @param ... Other options (... T/F with unit)
 #' @examples
 #' \dontrun{
-#' # for Spectra format
+#' # For S4 class Spectra
 #' wavelength(NSpec.DB)
-#' # for spectra data.frame format
+#' # For spectra data.frame format
 #' wavelength(NSpec.DF)
 #' }
 #' @export
