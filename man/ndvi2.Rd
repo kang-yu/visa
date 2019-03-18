@@ -2,33 +2,27 @@
 % Please edit documentation in R/ndvi2.R
 \name{ndvi2}
 \alias{ndvi2}
-\title{Calculate and plot the two NDVI and best NDVI calculated using \code{\link{ndvi}}}
+\title{Calculate and plot a 2-band NDVI.}
 \usage{
-ndvi2(x, y, w, p)
+ndvi2(s, b1, b2)
 }
 \arguments{
-\item{x}{A matrix of spectral data, a row is a spectrum across all spectral bands.}
+\item{s}{Spectral data in the format of visa's Spectra object, spectra.data.frame or spectra.matrix.}
 
-\item{y}{A vector.}
+\item{b1}{A integer number which defines the wavelength of the 1st spectral band.}
 
-\item{w}{A vector of wavelength.}
-
-\item{p}{A vector of two elements (the pair of bands used for NDVI calculation).}
+\item{b2}{A integer number which defines the wavelength of the 2nd spectral band.}
+}
+\value{
+\item{ndvi}{The returned values are the new NDVI}
 }
 \description{
-Calculate and plot the two NDVI and best NDVI calculated using \code{\link{ndvi}}
-}
-\details{
-This function plots the best NDVI against the y
+This function calculates a 2-band NDVI using the \code{\link{nsr}} function.
 }
 \examples{
 \dontrun{
 library(visa)
-y <- NSpec.DF$N
-x <- NSpec.DF$Spec
-w <- as.numeric(gsub("nm", "", colnames(NSpec.DF$Spec)))
-p <- c(440,445)
-ndvi2(x,y,w,p)
-wavelength(spectra)
+s <- NSpec.DF$Spec
+ndvi2(x, 780, 680)
 }
 }
