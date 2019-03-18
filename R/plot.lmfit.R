@@ -5,6 +5,7 @@
 #' Visualization of linear fit (y = ax + b), using scatter plots and with regression line, as well as
 #' added details of regression equation and R^2.
 #'
+#' @aliases plot.fit
 #' @param x A numeric variable
 #' @param y A numeric variable
 #' @examples
@@ -15,9 +16,9 @@
 #' plot.fit(x,y)
 #' }
 #' @import ggplot2 ggpmisc
-#' @export
+#' @export plot.lmfit
 
-plot.fit <- function(x,y){
+plot.lmfit <- function(x,y){
 
   df <- data.frame(x,y)
   my.formula <- y ~ x

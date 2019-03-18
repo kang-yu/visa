@@ -35,7 +35,7 @@ Collate:
     'data-specdf.R'
     'data-specls.R'
     'ndvi2.R'
-    'plot.fit.R'
+    'plot.lmfit.R'
     'plot.spec.R'
     'spectra.R'
     'sr.R'
