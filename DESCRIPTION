@@ -23,7 +23,8 @@ Suggests:
     RColorBrewer,
     flux,
     knitr,
-    rmarkdown
+    rmarkdown,
+    stringi
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
 Collate: 

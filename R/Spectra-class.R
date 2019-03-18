@@ -168,6 +168,7 @@ as.spectra.matrix <- function(spectra = matrix(0),
 #' @examples
 #' new("SpectraDataFrame", matrix(1:100,4), 1:25, "nm", data.frame(data=letters[1:4]))
 #' @export
+#' @exportClass SpectraDataFrame
 setClass("SpectraDataFrame",
          contains = "Spectra",
          slots = c(data="data.frame"),
@@ -202,7 +203,6 @@ setMethod("initialize", "SpectraDataFrame",
 #' @param wavelength A numeric vector
 #' @param w.unit A character string
 #' @param ... Other options for similar format of variables
-#'
 #' @examples
 #' sdf <- as.spectra.data.frame(matrix(1:10, 1), 1:10, "nm", data.frame(a = 1, b =2))
 #' str(sdf)
