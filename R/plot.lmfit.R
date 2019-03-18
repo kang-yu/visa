@@ -6,7 +6,6 @@
 #' added details of regression equation and R^2.
 #'
 #' @rdname plot-method
-#' @aliases plot.fit
 #' @param x A numeric variable
 #' @param y A numeric variable
 #' @examples
@@ -14,7 +13,7 @@
 #' library(visa)
 #' x <- 1:10
 #' y <- 2:11+0.5
-#' plot.fit(x,y)
+#' plot.lmfit(x,y)
 #' }
 #' @import ggplot2 ggpmisc
 #' @export plot.lmfit

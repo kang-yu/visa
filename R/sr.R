@@ -64,7 +64,7 @@ lm.sr <- function(s,b1,b2,y){
   x <- sr(s,b1,b2)
   bstr <- paste("SR = R", b1, "/R", b2, sep = "")
 
-  p <- plot.fit(x,y)+
+  p <- plot.lmfit(x,y)+
     labs(x = bstr)
   p
 }
@@ -85,7 +85,7 @@ lm.nsr <- function(s,b1,b2,y){
   x <- sr(s,b1,b2)
   bstr <- paste("SR = R", b1, "/R", b2, sep = "")
 
-  p <- plot.fit(x,y)+
+  p <- plot.lmfit(x,y)+
     labs(x = bstr)
   p
 }

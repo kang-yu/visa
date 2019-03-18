@@ -3,7 +3,6 @@
 \name{plot-method}
 \alias{plot-method}
 \alias{plot.lmfit}
-\alias{plot.fit}
 \title{Plot functions}
 \usage{
 \method{plot}{lmfit}(x, y)
@@ -27,6 +26,6 @@ added details of regression equation and R^2.
 library(visa)
 x <- 1:10
 y <- 2:11+0.5
-plot.fit(x,y)
+plot.lmfit(x,y)
 }
 }
