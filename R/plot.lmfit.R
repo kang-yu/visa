@@ -5,6 +5,7 @@
 #' Visualization of linear fit (y = ax + b), using scatter plots and with regression line, as well as
 #' added details of regression equation and R^2.
 #'
+#' @rdname plot-method
 #' @aliases plot.fit
 #' @param x A numeric variable
 #' @param y A numeric variable
