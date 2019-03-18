@@ -8,14 +8,14 @@
 #'
 #' @name wavelength
 #' @rdname spectra-methods
-#' @param object A object of Spectra
-#' @param ... Other options (... T/F with unit)
+# @param object A object of Spectra
+# @param ... Other options (... T/F with unit)
 #' @examples
 #' \dontrun{
 #' # for Spectra format
-#' wavelength(NSpec.LS)
-#' # for Spectra data.frame format
-#' wavelength(NSpec.DS)
+#' wavelength(NSpec.DB)
+#' # for spectra data.frame format
+#' wavelength(NSpec.DF)
 #' }
 #' @export
 # setMethod("as.spectra",

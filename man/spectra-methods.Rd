@@ -2,15 +2,10 @@
 % Please edit documentation in R/Spectra.R, R/wavelength.R
 \name{spectra}
 \alias{spectra}
-\alias{as.spectra.data.frame}
-\alias{as.specdf}
 \alias{wavelength}
-\title{Create a SpectraDataFrame}
+\title{access the wavelength of Spectra}
 \usage{
 spectra(object, ...)
-
-as.spectra.data.frame(spectra = matrix(0), wavelength = numeric(0),
-  s.id = vector(), w.unit = character(0), data = data.frame(0), ...)
 
 wavelength(object, ...)
 }
@@ -18,26 +13,8 @@ wavelength(object, ...)
 \item{object}{A Spectra object, spectra.data.frame, or spectra.matrix.}
 
 \item{...}{Other options}
-
-\item{spectra}{A matrix}
-
-\item{wavelength}{A numeric vector}
-
-\item{s.id}{A vector}
-
-\item{w.unit}{A character string}
-
-\item{data}{A data.frame}
-
-\item{...}{Other options for similar format of variables}
-
-\item{object}{A object of Spectra}
-
-\item{...}{Other options (... T/F with unit)}
 }
 \description{
-This function creates a SpectraDataFrame object, which is equivalent to the use of \link{as.specdf}.
-
 Construct generic functions for the Spectra object, spectra.data.frame, and spectra.matrix.
 }
 \details{
@@ -48,18 +25,16 @@ Construct a Spectra class by using the
 \examples{
 \dontrun{
 # for the Spectra class
-data(NSpec_List)
-spectra_matrix <- spectra(NSpec_List)
-# for spectra.data.frame
-data(NSpec_DF)
-spectra_matrix <- spectra(NSpec_DF)
+data(NSpec.DB)
+spectra_matrix <- spectra(NSpec.DB)
+# for spectra data.frame
+data(NSpec.DF)
+spectra_matrix <- spectra(NSpec.DF)
 }
-sdf <- as.spectra.data.frame(matrix(1:10, 1), 1:10, 1, "nm", data.frame(a = 1, b =2))
-str(sdf)
 \dontrun{
 # for Spectra format
-wavelength(NSpec.LS)
-# for Spectra data.frame format
-wavelength(NSpec.DS)
+wavelength(NSpec.DB)
+# for spectra data.frame format
+wavelength(NSpec.DF)
 }
 }
