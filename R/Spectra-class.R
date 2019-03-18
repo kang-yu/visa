@@ -223,10 +223,10 @@ as.spectra.data.frame <- function(spectra = matrix(0),
                                   w.unit = character(0),
                                   data = data.frame(0), ...){
   sls <- new("SpectraDataFrame", spectra, wavelength, w.unit, data)
-  spec <- sls@spectra
-  colnames(spec) <- paste(wavelength, w.unit)
+  spectra <- sls@spectra
+  colnames(spectra) <- paste(wavelength, w.unit)
   sdf <- sls@data
-  sdf$spec <- I(spec)
+  sdf$spectra <- spectra
   sdf
 }
 
