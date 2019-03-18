@@ -69,7 +69,7 @@ cm.nsr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
   if (isTRUE(cm.plot)) print(cm_plot)
   # cm.res <- list(cm = cm, cm.plot = cm_plot)
 
-  return(cm)
+  cm <- cm
 }
 
 
