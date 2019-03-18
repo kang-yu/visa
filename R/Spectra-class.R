@@ -38,7 +38,6 @@ setMethod("initialize", "Spectra",
               .Object
           }
 )
-
 #' Class 'SpectraDatabase'
 #'
 #' SpectraDatabase is an extended 'Spectra' class, with associated vegetation data ('data')
@@ -54,6 +53,7 @@ setMethod("initialize", "Spectra",
 #' @examples
 #' new("SpectraDatabase", matrix(1:100,4), 1:25, "nm", data.frame(data=letters[1:4]))
 #' @export
+#' @exportClass SpectraDatabase
 setClass("SpectraDatabase",
          contains = "Spectra",
          slots = c(data="data.frame"),
@@ -79,7 +79,7 @@ setMethod("initialize", "SpectraDatabase",
 
 #' Create a Spectra or SpectraDatabase
 #'
-#' This function create a Spectra object.
+#' This function creates a Spectra object.
 #'
 #' @name as.spectra
 #' @aliases as.spectra.database
@@ -91,12 +91,11 @@ setMethod("initialize", "SpectraDatabase",
 #' @param ... Other parameters
 #' @examples
 #' \dontrun{
-#' new("Spectra", matrix(1:100,4), 1:25, "nm")
-#' s <- as.spectra(matrix(1:100,4), 1:25, "nm")
+#' new("SpectraDatabase", matrix(1:100,4), 1:25, "nm", data.frame(x = letters[1:4]))
 #' s <- as.spectra.database(matrix(1:100, 4), 1:25, "nm", data.frame(x = letters[1:4]))
 #' }
 #' @export
-as.spectra <- as.spectra.database <- function(spectra = matrix(0),
+as.spectra.database <- as.spectra <- function(spectra = matrix(0),
                                               wavelength = numeric(0),
                                               w.unit = "nm",
                                               data = data.frame(), ...){

@@ -1,9 +1,10 @@
-#' Plot ASD Hyperspectral Data
+#' Plot Hyperspectral Data
 #'
 #' This function is to make a nice plot of hyperspectral data, e.g., ASD spectrometer,
 #' by using the \code{matplot} function. It customizes x ticks and labels to allow a
 #' better inspection on the spectral signials at each wavelength.
 #'
+#' @aliases plot.spectra
 #' @param x A numeric vector for wavelength.
 #' @param y A matrix of spectral data.
 #' @param type Inheritated from plot 'type'
@@ -16,6 +17,11 @@
 #' @param xtick Define x-ticks labels, default seq(400,2500,100)
 #' @param rug.interval Define the interval of rugs for wavelength.
 #' @param \dots Arguments passed to \code{\link{matplot}}
+#' @examples
+#' \dontrun{
+#' s <- spectra(NSpec.DB)
+#' plot.spec(s)
+#' }
 #' @seealso \code{\link{rug}}
 #' @importFrom graphics matplot axis par rug text
 #' @export

@@ -1,6 +1,9 @@
-#' Plot model fit with equation and R2.
+#' Plot Model Fit with Equation and R^2.
 #'
-#' this functions plots model fit using ggplot.
+#' This functions plots model fit using ggplot.
+#'
+#' Visualization of linear fit (y = ax + b), using scatter plots and with regression line, as well as
+#' added details of regression equation and R^2.
 #'
 #' @param x A numeric variable
 #' @param y A numeric variable

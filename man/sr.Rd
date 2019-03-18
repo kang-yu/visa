@@ -4,6 +4,7 @@
 \alias{sr}
 \alias{nsr}
 \alias{lm.sr}
+\alias{lm.nsr}
 \title{Calculate Simple Ratio (SR).}
 \usage{
 sr(s, b1, b2)
@@ -11,6 +12,8 @@ sr(s, b1, b2)
 nsr(s, b1, b2)
 
 lm.sr(s, b1, b2, y)
+
+lm.nsr(s, b1, b2, y)
 }
 \arguments{
 \item{s}{Spectral data in the format of visa's Spectra object, spectra.data.frame or spectra.matrix.}
@@ -20,6 +23,8 @@ lm.sr(s, b1, b2, y)
 \item{b2}{A integer number which defines the wavelength of the 2nd spectral band.}
 
 \item{y}{A numeric variable to correlate with SR}
+
+\item{y}{A numeric variable to correlate with NSR}
 }
 \description{
 Simple Ratio is the ratio of the spectra (mostly reflectance) between two bands
@@ -35,13 +40,21 @@ As it exactly reads in its name, it is a normalization of the SR and ranges in (
 \examples{
 \dontrun{
 library(visa)
-x <- NSpec.DF$N
 s <- NSpec.DF$spectra
-sr1 <- sr(s, 440, 445)
+sr1 <- sr(s, 480, 550)
+}
+\dontrun{
+s <- NSpec.DF$spectra
+nsr1 <- nsr(s, 480, 550)
 }
 \dontrun{
 s <- NSpec.DF
 y <- NSpec.DF$N
-lm.sr(s,400,500,y)
+lm.sr(s,600,500,y)
+}
+\dontrun{
+s <- NSpec.DF
+y <- NSpec.DF$N
+lm.nsr(s,600,500,y)
 }
 }

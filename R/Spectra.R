@@ -1,6 +1,6 @@
 #' @include Spectra-class.R
 #'
-#' Functions to access slot data of the Spectra object.
+#' Functions to access slot data of the Class Spectra.
 #'
 #' Construct generic functions for the Spectra object, spectra.data.frame, and spectra.matrix.
 #' A call to {new} returns a newly allocated object from the class identified by the first argument.

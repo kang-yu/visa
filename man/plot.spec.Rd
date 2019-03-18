@@ -2,7 +2,8 @@
 % Please edit documentation in R/plot.spec.R
 \name{plot.spec}
 \alias{plot.spec}
-\title{Plot ASD Hyperspectral Data}
+\alias{plot.spectra}
+\title{Plot Hyperspectral Data}
 \usage{
 \method{plot}{spec}(x, y, type = "l", xlab = NULL, ylab = NULL,
   lwd = 1:3, col = 1:3, xaxt = "n", show.xtick.text = TRUE,
@@ -37,6 +38,12 @@
 This function is to make a nice plot of hyperspectral data, e.g., ASD spectrometer,
 by using the \code{matplot} function. It customizes x ticks and labels to allow a
 better inspection on the spectral signials at each wavelength.
+}
+\examples{
+\dontrun{
+s <- spectra(NSpec.DB)
+plot.spec(s)
+}
 }
 \seealso{
 \code{\link{rug}}

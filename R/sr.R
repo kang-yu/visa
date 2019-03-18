@@ -11,9 +11,8 @@
 #' @examples
 #' \dontrun{
 #' library(visa)
-#' x <- NSpec.DF$N
 #' s <- NSpec.DF$spectra
-#' sr1 <- sr(s, 440, 445)
+#' sr1 <- sr(s, 480, 550)
 #' }
 #' @import ggplot2 ggpmisc
 #' @export
@@ -36,6 +35,11 @@ sr <- function(s, b1, b2){
 #'
 #' @rdname sr
 #' @inheritParams sr
+#' @examples
+#' \dontrun{
+#' s <- NSpec.DF$spectra
+#' nsr1 <- nsr(s, 480, 550)
+#' }
 #' @export
 nsr <- function(s, b1, b2){
   sr <- sr(s, b1, b2)
@@ -52,7 +56,7 @@ nsr <- function(s, b1, b2){
 #' \dontrun{
 #' s <- NSpec.DF
 #' y <- NSpec.DF$N
-#' lm.sr(s,400,500,y)
+#' lm.sr(s,600,500,y)
 #' }
 #' @export
 lm.sr <- function(s,b1,b2,y){
@@ -64,5 +68,27 @@ lm.sr <- function(s,b1,b2,y){
     labs(x = bstr)
   p
 }
+#' Fit linear model for the Normalized Simple Ratio (SR) and another variable.
+#'
+#' @rdname sr
+#' @inheritParams lm.sr
+#' @param y A numeric variable to correlate with NSR
+#' @examples
+#' \dontrun{
+#' s <- NSpec.DF
+#' y <- NSpec.DF$N
+#' lm.nsr(s,600,500,y)
+#' }
+#' @export
+lm.nsr <- function(s,b1,b2,y){
+
+  x <- sr(s,b1,b2)
+  bstr <- paste("SR = R", b1, "/R", b2, sep = "")
+
+  p <- plot.fit(x,y)+
+    labs(x = bstr)
+  p
+}
+
 
 

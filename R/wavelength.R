@@ -1,4 +1,4 @@
-#' access the wavelength of Spectra
+#' Access the wavelength of Spectra
 #'
 #' Construct generic functions for the Spectra object, spectra.data.frame, and spectra.matrix.
 #'
@@ -7,7 +7,7 @@
 #' Construct a Spectra class by using the
 #'
 #' @name wavelength
-#' @rdname spectra-methods
+#' @describeIn spectra
 # @param object A object of Spectra
 # @param ... Other options (... T/F with unit)
 #' @examples

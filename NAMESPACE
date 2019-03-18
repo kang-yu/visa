@@ -2,11 +2,12 @@
 
 S3method(plot,fit)
 S3method(plot,spec)
-export(as.spectra)
 export(as.spectra.data.frame)
+export(as.spectra.database)
 export(as.spectra.matrix)
 export(cm.nsr)
 export(cm.sr)
+export(lm.nsr)
 export(lm.sr)
 export(ndvi2)
 export(nsr)

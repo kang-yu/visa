@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.fit.R
 \name{plot.fit}
 \alias{plot.fit}
-\title{Plot model fit with equation and R2.}
+\title{Plot Model Fit with Equation and R^2.}
 \usage{
 \method{plot}{fit}(x, y)
 }
@@ -12,7 +12,11 @@
 \item{y}{A numeric variable}
 }
 \description{
-this functions plots model fit using ggplot.
+This functions plots model fit using ggplot.
+}
+\details{
+Visualization of linear fit (y = ax + b), using scatter plots and with regression line, as well as
+added details of regression equation and R^2.
 }
 \examples{
 \dontrun{
