@@ -18,7 +18,7 @@
 #' output is the wavelength (nm) indicating the best two bands that produce the highest value of r.
 #' @seealso \code{\link{cor}}
 #' @examples
-#'   \dontrun{
+#' \dontrun{
 #'   data(NSpec.DF)
 #'   x <- NSpec.DF$N # nitrogen
 #'   S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 10 nm steps
@@ -65,7 +65,7 @@ cm.nsr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
   colnames(cm) <- paste(w, "nm")
 
   # cm plot
-  cm_plot <- plot.cm(cm)
+  cm_plot <- plot.cm(cm, show.stat = FALSE)
   if (isTRUE(cm.plot)) print(cm_plot)
   # cm.res <- list(cm = cm, cm.plot = cm_plot)
 
@@ -80,19 +80,19 @@ cm.nsr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
 #'   \item{cm_plot}{Returns a coorrelation-matrix plot.}
 #' @import ggplot2 reshape2 grDevices RColorBrewer
 #' @export plot.cm
-plot.cm <- function(cm){
+plot.cm <- function(cm, show.stat = TRUE){
 
   # Identify the max R2 and its corresponding bands in a correlation matrix
 
   w <- as.numeric(gsub("\\D", "", colnames(cm)))
   R2max <- max(cm, na.rm = TRUE)
-  print(paste('The max value of R^2 is', as.character(round(R2max,4))))
+  if (show.stat) print(paste('The max value of R^2 is', as.character(round(R2max,4))))
 
   ind_max <- which(cm == R2max, arr.ind = TRUE)
   # ind_max
 
   bestBands = w[ind_max[1,]]
-  print(as.vector(bestBands))
+  if (show.stat) print(paste(c("i", "j"), as.vector(bestBands), sep = "_"))
 
   # plot correlation matrix
 

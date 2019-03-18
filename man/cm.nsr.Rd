@@ -7,7 +7,7 @@
 \usage{
 cm.nsr(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE)
 
-\method{plot}{cm}(cm)
+\method{plot}{cm}(cm, show.stat = TRUE)
 }
 \arguments{
 \item{S}{A matrix of spectral data, a row is a spectrum across all spectral bands.}
@@ -37,7 +37,7 @@ the correlation coefficients (r) which indicates the predictive performance of e
 output is the wavelength (nm) indicating the best two bands that produce the highest value of r.
 }
 \examples{
-  \dontrun{
+\dontrun{
   data(NSpec.DF)
   x <- NSpec.DF$N # nitrogen
   S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 10 nm steps

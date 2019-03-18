@@ -1,11 +1,11 @@
 #' Selecting the best 2-Band combinations for Simple Ratio (SR)
 #'
-#' This function developes a optimization algorithm based on correlation analysis between spectral matrix 'spectra' and the
+#' @name cm.sr
+#' @description This function developes a optimization algorithm based on correlation analysis between spectral matrix 'spectra' and the
 #' getation variable of interest x, which
 #' determines the best spectral band combinations of the full spectrum that are most predictive for 'x'.
 #'
-#' @details
-#' This function runs a calculation of \deqn{ NDVI = \lambda_i / \lambda_j } using all the possible pairs/combinations of any two bands (i,j)
+#' @details This function runs a calculation of \deqn{ NDVI = \lambda_i / \lambda_j } using all the possible pairs/combinations of any two bands (i,j)
 #' within the full spectrum range thoroughly. A correlation analysis is then performed between the x and all possible NDVIs, and it calculates
 #' the correlation coefficients (r) which indicates the predictive performance of each NDVI and its corresponding two-band combination. The
 #' output is the wavelength (nm) indicating the best two bands that produce the highest value of r.
@@ -15,7 +15,7 @@
 #'   \item{cm}{Returns a coorrelation coefficients matrix.}
 #' @seealso \code{\link{cm.nsr}}
 #' @examples
-#'   \dontrun{
+#' \dontrun{
 #'   data(NSpec.DF)
 #'   x <- NSpec.DF$N # nitrogen
 #'   S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 10 nm steps
@@ -70,7 +70,7 @@ cm.sr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
   colnames(cm) <- paste(w, "nm")
 
   # cm plot
-  cm_plot <- plot.cm(cm)
+  cm_plot <- plot.cm(cm, show.stat = FALSE)
   if (isTRUE(cm.plot)) print(cm_plot)
   # cm.res <- list(cm = cm, cm.plot = cm_plot)
 
