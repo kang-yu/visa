@@ -10,6 +10,11 @@ as.spectra.database(spectra = matrix(0), wavelength = numeric(0),
 \description{
 This function creates a Spectra object.
 }
+\section{Functions}{
+\itemize{
+\item \code{as.spectra.database}: Create S4 class Spectra
+}}
+
 \examples{
 s <- as.spectra.database(matrix(1:100, 4), 1:25, "nm", data.frame(x = letters[1:4]))
 str(s)

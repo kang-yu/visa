@@ -10,7 +10,7 @@
 #' the correlation coefficients (r) which indicates the predictive performance of each NDVI and its corresponding two-band combination. The
 #' output is the wavelength (nm) indicating the best two bands that produce the highest value of r.
 #'
-#' @describeIn cm.nsr
+#' @inheritParams cm.nsr
 #' @return
 #'   \item{cm}{Returns a coorrelation coefficients matrix.}
 #' @seealso \code{\link{cm.nsr}}

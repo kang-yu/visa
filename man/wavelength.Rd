@@ -6,6 +6,11 @@
 \usage{
 wavelength(object, ...)
 }
+\arguments{
+\item{object}{A Spectra object, spectra.data.frame, or spectra.matrix.}
+
+\item{...}{Other options}
+}
 \description{
 Construct generic functions for the Spectra object, spectra.data.frame, and spectra.matrix.
 }

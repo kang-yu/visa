@@ -1,14 +1,13 @@
 #' @include visa.R
 #'
-#' Class 'Spectra' or 'SpectraDatabase'
+#' Class 'Spectra'/'SpectraDatabase'
 #'
 #' An S4 Class `Spectra`, with five slots of data.
 #' It has `SpectraDatabase` as the alias.
 #'
 #' @name Spectra
-#' @aliases SpectraDatabase
 #' @rdname Spectra-class
-#' @export
+# @export
 #' @exportClass Spectra
 Spectra <- setClass("Spectra",
                     slots = c(spectra = "matrix",
@@ -45,7 +44,6 @@ setMethod("initialize", "Spectra",
 #'
 #' @name SpectraDatabase
 #' @rdname SpectraDatabase-class
-#' @aliases Spectra
 #' @slot spectra A matrix
 #' @slot wavelength A numeric vector
 #' @slot w.unit A character string
@@ -82,7 +80,6 @@ setMethod("initialize", "SpectraDatabase",
 #' This function creates a Spectra object.
 #'
 #' @name as.spectra
-#' @aliases as.spectra.database
 #' @rdname Spectra-class
 #' @param spectra A matrix
 #' @param wavelength A numeric vector
@@ -105,7 +102,7 @@ as.spectra <- function(spectra = matrix(0),
 #'
 #' This function creates a Spectra object.
 #'
-#' @describeIn as.spectra
+#' @describeIn as.spectra Create S4 class Spectra
 #' @examples
 #' s <- as.spectra.database(matrix(1:100, 4), 1:25, "nm", data.frame(x = letters[1:4]))
 #' str(s)

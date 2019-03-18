@@ -7,7 +7,7 @@
 #' Construct a Spectra class by using the
 #'
 #' @name wavelength
-#' @describeIn spectra
+#' @inheritParams spectra
 # @param object A object of Spectra
 # @param ... Other options (... T/F with unit)
 #' @examples

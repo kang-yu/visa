@@ -3,9 +3,7 @@
 \docType{class}
 \name{Spectra}
 \alias{Spectra}
-\alias{SpectraDatabase}
 \alias{as.spectra}
-\alias{as.spectra.database}
 \title{Create a Spectra or SpectraDatabase}
 \usage{
 as.spectra(spectra = matrix(0), wavelength = numeric(0),

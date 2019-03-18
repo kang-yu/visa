@@ -6,6 +6,15 @@
 \usage{
 cm.sr(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE)
 }
+\arguments{
+\item{S}{A matrix of spectral data, a row is a spectrum across all spectral bands.}
+
+\item{x}{A vector.}
+
+\item{w}{A vector of wavelength.}
+
+\item{cm.plot}{A logic value for whether plotting the coefficient matrix or not, default FALSE.}
+}
 \value{
 \item{cm}{Returns a coorrelation coefficients matrix.}
 }

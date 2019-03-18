@@ -19,11 +19,11 @@
 #' @seealso \code{\link{cor}}
 #' @examples
 #' \dontrun{
-#'   data(NSpec.DF)
-#'   x <- NSpec.DF$N # nitrogen
-#'   S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 10 nm steps
-#'   cm.nsr(S, x, cm.plot = TRUE)
-#'   }
+#' data(NSpec.DF)
+#' x <- NSpec.DF$N # nitrogen
+#' S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 10 nm steps
+#' cm.nsr(S, x, cm.plot = TRUE)
+#' }
 #' @import ggplot2 Matrix reshape2 grDevices
 #' @export
 
