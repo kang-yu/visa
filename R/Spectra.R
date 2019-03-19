@@ -1,10 +1,11 @@
-#' Access the spectra data of Spectra.
+#' Access the spectra data of `SpectraDatabase`.
 #'
 #' Functions to access slot data of the Class Spectra.
 #'
-#' Construct generic functions for the Spectra object, spectra.data.frame, and spectra.matrix.
-#' A call to {new} returns a newly allocated object from the class identified by the first argument.
-#' This call in turn calls the method for the generic function `initialize`.
+#' Construct generic functions for the Spectra object, spectra.data.frame,
+#' and spectra.matrix. A call to {new} returns a newly allocated object
+#' from the class identified by the first argument. This call in turn calls
+#' the method for the generic function `initialize`.
 #'
 #' @include Spectra-class.R
 #'
@@ -16,7 +17,7 @@
 #' # For the S4 class 'Spectra'
 #' data(NSpec.DB)
 #' spectra_matrix <- spectra(NSpec.DB)
-#' # For spectra data.frame
+#' # For the spectra data.frame
 #' data(NSpec.DF)
 #' spectra_matrix <- spectra(NSpec.DF)
 #' }
