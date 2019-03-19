@@ -9,16 +9,16 @@ spectra(object, ...)
 \arguments{
 \item{object}{A Spectra object, spectra.data.frame, or spectra.matrix.}
 
-\item{...}{Other options}
+\item{...}{Other options.}
 }
 \description{
 Functions to access slot data of the Class Spectra.
 }
 \details{
 Construct generic functions for the Spectra object, spectra.data.frame,
-and spectra.matrix. A call to {new} returns a newly allocated object
+and spectra.matrix. A call to \code{\link{new}} returns a newly allocated object
 from the class identified by the first argument. This call in turn calls
-the method for the generic function \link{initialize}.
+the method for the generic function \code{\link{initialize}}.
 }
 \examples{
 \dontrun{

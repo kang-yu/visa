@@ -3,15 +3,14 @@
 #' Functions to access slot data of the Class Spectra.
 #'
 #' Construct generic functions for the Spectra object, spectra.data.frame,
-#' and spectra.matrix. A call to {new} returns a newly allocated object
+#' and spectra.matrix. A call to \code{\link{new}} returns a newly allocated object
 #' from the class identified by the first argument. This call in turn calls
-#' the method for the generic function \link{initialize}.
+#' the method for the generic function \code{\link{initialize}}.
 #'
 #' @include Spectra-class.R
 #'
-#' @name spectra
 #' @param object A Spectra object, spectra.data.frame, or spectra.matrix.
-#' @param ... Other options
+#' @param ... Other options.
 #' @examples
 #' \dontrun{
 #' # For the S4 class 'Spectra'

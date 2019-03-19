@@ -31,11 +31,11 @@ output is the wavelength (nm) indicating the best two bands that produce the hig
 }
 \examples{
 \dontrun{
-  data(NSpec.DF)
-  x <- NSpec.DF$N # nitrogen
-  S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 10 nm steps
-  cm.sr(S, x, cm.plot = TRUE)
-  }
+data(NSpec.DF)
+x <- NSpec.DF$N # nitrogen
+S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 10 nm steps
+cm.sr(S, x, cm.plot = TRUE)
+}
 }
 \seealso{
 \code{\link{cm.nsr}}
