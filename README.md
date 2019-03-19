@@ -10,14 +10,17 @@ install the released version from [CRAN]
 # install.packages() # does not work currently
 ``` 
 
+You might encounter problem of package dependencies, such as some functions depend on `ggplot`, `ggpmisc`. In such cases, you would have to install the all the dependencies.
+
+
 install the dev-version of visa from github with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("kang-yu/visa")
 ``` 
+You might encounter [this problem of install_github()](# https://github.com/r-lib/devtools/issues/1978), and in such cases, you could try update the {remotes} `devtools::install_github("r-lib/remotes")`.
 
-You might encounter problem of package dependencies, such as some functions depend on `ggplot`, `ggpmisc`. In such cases, you would have to install the all the dependencies.
 
 # Usage
 
@@ -30,5 +33,7 @@ plot(sr1)
 ```
 
 # Bug report
+
+You can report your [issues of using visa here](https://github.com/kang-yu/visa/issues)
 
 RStudio's Instructions on [Writing Good Bug Reports](https://github.com/rstudio/rstudio/wiki/Writing-Good-Bug-Reports)
