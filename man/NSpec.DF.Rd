@@ -8,9 +8,9 @@
 \format{A data frame with 19 rows and 2 variables:
 
 \describe{
-  \item{N}{Plant nitrogen content}
-  \item{spectra}{A variable of Matrix of plant spectra}
-  ...
+\item{N}{Plant nitrogen content}
+\item{spectra}{A variable of Matrix of plant spectra}
+...
 }}
 \source{
 \url{visa}

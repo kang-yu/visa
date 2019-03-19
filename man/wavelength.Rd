@@ -16,7 +16,7 @@ Construct generic functions for the Spectra object, spectra.data.frame, and spec
 }
 \details{
 A call to {new} returns a newly allocated object from the class identified by the first argument.
-This call in turn calls the method for the generic function `initialize`.
+This call in turn calls the method for the generic function \code{initialize}.
 Construct a Spectra class by using the
 }
 \examples{
