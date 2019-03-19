@@ -4,9 +4,11 @@
 #' by using the \code{matplot} function. It customizes x ticks and labels to allow a
 #' better inspection on the spectral signials at each wavelength.
 #'
+#' @rdname plot-method
 #' @aliases plot.spectra
-#' @param x A numeric vector for wavelength.
-#' @param y A matrix of spectral data.
+#'
+#' @param S A matrix of spectral data.
+#' @param w A numeric vector for wavelength.
 #' @param type Inheritated from plot 'type'
 #' @param xlab X label.
 #' @param ylab Y label.
@@ -20,15 +22,19 @@
 #' @examples
 #' \dontrun{
 #' s <- spectra(NSpec.DB)
-#' plot.spec(s)
+#' w <- wavelength(NSpec.DB)
+#' plot.spec(s, w)
 #' }
 #' @seealso \code{\link{rug}}
 #' @importFrom graphics matplot axis par rug text
-#' @export
+#' @export plot.spec
 
-plot.spec <- function(x, y, type = "l", xlab = NULL, ylab = NULL,
-                    lwd = 1:3, col = 1:3, xaxt="n", show.xtick.text = TRUE,
-                    xtick = seq(400,2500,100), rug.interval = 50, ...){
+plot.spec <- function(S, w = wavelength(S), type = "l", xlab = NULL, ylab = NULL,
+                      lwd = 1:3, col = 1:3, xaxt="n", show.xtick.text = TRUE,
+                      xtick = seq(400,2500,100), rug.interval = 50, ...){
+  # prepare data
+  x <- w
+  y <- t(spectra(S))
 
   matplot(x, y, type = type, xlab = xlab, ylab = ylab,
           lwd = lwd, col = col, xaxt="n", ...)
