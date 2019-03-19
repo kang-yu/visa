@@ -8,11 +8,11 @@
 \format{A Spectra object with 19 rows and 4 slots (spectra, wavelength, s.id, w.unit).
 
 \describe{
-\item{N}{Plant nitrogen content}
-\item{spectra}{A variable of Matrix of plant spectra}
-\item{s.id}{A vector of spectra IDs}
-\item{w.unit}{A character string of wavelength unit ("nm")}
-...
+  \item{N}{Plant nitrogen content}
+  \item{spectra}{A variable of Matrix of plant spectra}
+  \item{s.id}{A vector of spectra IDs}
+  \item{w.unit}{A character string of wavelength unit ("nm")}
+  ...
 }}
 \source{
 \url{visa}

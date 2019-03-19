@@ -26,7 +26,6 @@ Suggests:
     rmarkdown,
     stringi
 RoxygenNote: 6.1.1
-Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 VignetteBuilder: knitr
 Collate: 
     'visa.R'

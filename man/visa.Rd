@@ -21,7 +21,7 @@ some built on other r packages.
 }
 
 To know more about visa, check the vignettes:
-\code{browseVignettes("visa")}
+`browseVignettes("visa")`
 }
 \section{Vegetation Indices}{
 
