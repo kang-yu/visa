@@ -38,7 +38,7 @@ Collate:
     'ndvi2.R'
     'plot-method.R'
     'plot.lmfit.R'
-    'plot.spec.R'
+    'plot.spectra.R'
     'spectra.R'
     'sr.R'
     'wavelength.R'

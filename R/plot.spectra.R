@@ -5,7 +5,6 @@
 #' better inspection on the spectral signials at each wavelength.
 #'
 #' @rdname plot-method
-#' @aliases plot.spectra
 #'
 #' @param S A matrix of spectral data.
 #' @param w A numeric vector for wavelength.
@@ -23,15 +22,15 @@
 #' \dontrun{
 #' s <- spectra(NSpec.DB)
 #' w <- wavelength(NSpec.DB)
-#' plot.spec(s, w)
+#' plot.spectra(s, w)
 #' }
 #' @seealso \code{\link{rug}}
 #' @importFrom graphics matplot axis par rug text
-#' @export plot.spec
+#' @export plot.spectra
 
-plot.spec <- function(S, w = wavelength(S), type = "l", xlab = NULL, ylab = NULL,
-                      lwd = 1:3, col = 1:3, xaxt="n", show.xtick.text = TRUE,
-                      xtick = seq(400,2500,100), rug.interval = 50, ...){
+plot.spectra <- function(S, w = wavelength(S), type = "l", xlab = NULL, ylab = NULL,
+                         lwd = 1:3, col = 1:3, xaxt="n", show.xtick.text = TRUE,
+                         xtick = seq(400,2500,100), rug.interval = 50, ...){
   # prepare data
   x <- w
   y <- t(spectra(S))
