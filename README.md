@@ -34,6 +34,6 @@ plot(sr1)
 
 # Bug report
 
-You can report your [issues of using visa here](https://github.com/kang-yu/visa/issues)
+You can report your [issues of using visa here](https://github.com/kang-yu/visa/issues).
 
-RStudio's Instructions on [Writing Good Bug Reports](https://github.com/rstudio/rstudio/wiki/Writing-Good-Bug-Reports)
+RStudio's Instructions on [Writing Good Bug Reports](https://github.com/rstudio/rstudio/wiki/Writing-Good-Bug-Reports).
