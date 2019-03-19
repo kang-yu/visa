@@ -63,7 +63,7 @@ plot.lmfit(x,y)
 \dontrun{
 s <- spectra(NSpec.DB)
 w <- wavelength(NSpec.DB)
-plot.spec(s, w)
+plot.spectra(s, w)
 }
 }
 \seealso{
