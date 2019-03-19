@@ -31,3 +31,4 @@ plot(sr1)
 
 # Bug report
 
+RStudio's Instructions on [Writing Good Bug Reports](https://github.com/rstudio/rstudio/wiki/Writing-Good-Bug-Reports)
