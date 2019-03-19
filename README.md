@@ -19,7 +19,7 @@ install the dev-version of visa from github with:
 # install.packages("devtools")
 devtools::install_github("kang-yu/visa")
 ``` 
-You might encounter [this problem of install_github()](https://github.com/r-lib/devtools/issues/1978), and in such cases, you could try update the {remotes} `devtools::install_github("r-lib/remotes")`.
+You might encounter [this problem of install_github()](https://github.com/r-lib/devtools/issues/1978), and in this case, you could try update the {remotes} `devtools::install_github("r-lib/remotes")`.
 
 
 # Usage
