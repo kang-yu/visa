@@ -18,6 +18,7 @@ You might encounter problem of package dependencies, such as some functions depe
 install the dev-version of visa from github with:
 
 ``` r
+# devtools::install_github(build_vignettes = TRUE). # to also install vignettes and suggested packages
 # install.packages("devtools")
 devtools::install_github("kang-yu/visa")
 ``` 
