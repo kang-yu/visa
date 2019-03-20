@@ -72,7 +72,6 @@ lm.sr <- function(s,b1,b2,y){
 #'
 #' @rdname sr
 #' @inheritParams lm.sr
-#' @param y A numeric variable to correlate with NSR
 #' @examples
 #' \dontrun{
 #' s <- NSpec.DF
