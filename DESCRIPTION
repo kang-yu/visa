@@ -17,7 +17,8 @@ Imports:
     ggpmisc,
     methods,
     Matrix,
-    reshape2
+    reshape2,
+    RColorBrewer
 Suggests:
     devtools,
     testthat,
