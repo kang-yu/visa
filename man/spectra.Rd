@@ -16,9 +16,7 @@ Functions to access slot data of the Class Spectra.
 }
 \details{
 Construct generic functions for the Spectra object, spectra.data.frame,
-and spectra.matrix. A call to \code{\link{new}} returns a newly allocated object
-from the class identified by the first argument. This call in turn calls
-the method for the generic function \code{\link{initialize}}.
+and spectra.matrix.
 }
 \examples{
 \dontrun{

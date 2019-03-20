@@ -25,5 +25,5 @@
 #' @name visa
 #' @author Kang Yu
 #'
-#' @import methods ggpmisc
+#' @import ggpmisc
 "_PACKAGE"

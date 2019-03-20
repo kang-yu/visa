@@ -7,6 +7,7 @@
 #' @param S A matrix of spectral data, a row is a spectrum across all spectral bands.
 #' @param x A vector.
 #' @param w A vector of wavelength.
+#' @param w.unit Character string, default = NULL,
 #' @param cm.plot A logic value for whether plotting the coefficient matrix or not, default FALSE.
 #' @return
 #'   \item{cm}{Returns a coorrelation coefficients matrix.}
@@ -36,7 +37,7 @@ cm.nsr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
   # n <- length(spectra)
 
   spectra <- spectra(S)
-  if (is(spectra, "matrix") && is.null(colnames(spectra)) && length(w) == 0)
+  if (is.matrix(spectra) && is.null(colnames(spectra)) && length(w) == 0)
     stop("Wavelength for the spectra matrix is not correctly defined")
 
   n <- dim(spectra)[2] # Returns the Number of wavebands, should equal w
@@ -54,7 +55,7 @@ cm.nsr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
     # VI formular
     V <- (Rj-Ri)/(Rj+Ri)
     # Squared values (R2) of the Pearson Correlation coefficients
-    Rcorr <- (cor(x, V))^2
+    Rcorr <- (stats::cor(x, V))^2
     # To store the value of R2
     # spR <- Matrix::sparseMatrix(i = c(1:n),j = rep(cI,n), x = as.numeric(Rcorr), dims = c(n,n))
     spR <- Matrix::sparseMatrix(i = rep(cI,n), j =  c(1:n), x = as.numeric(Rcorr), dims = c(n,n))
@@ -83,6 +84,7 @@ cm.nsr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
 #' Plot the correlation matrix derived from the cm.nsr and cm.sr function
 #' @rdname cm.nsr
 #' @param cm A square matrix
+#' @param show.stat A logic value. whether show the best R^2 and bands.
 #' @return
 #'   \item{cm_plot}{Returns a coorrelation-matrix plot.}
 #' @import ggplot2 reshape2 grDevices

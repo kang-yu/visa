@@ -20,6 +20,3 @@ in a \link{data.frame}.
 \item{\code{data}}{A data.frame of vegetation data corresponding to the spectra}
 }}
 
-\examples{
-new("SpectraDatabase", matrix(1:100,4), 1:25, "nm", data.frame(data=letters[1:4]))
-}

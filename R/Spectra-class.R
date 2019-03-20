@@ -7,7 +7,7 @@
 #'
 #' @name Spectra
 #' @rdname Spectra-class
-# @export
+#' @export
 #' @exportClass Spectra
 Spectra <- setClass("Spectra",
                     slots = c(spectra = "matrix",
@@ -28,7 +28,7 @@ setMethod("initialize", "Spectra",
                    wavelength = numeric(0),
                    w.unit = character(0),
                    data = data.frame(), ...){
-            .Object <- callNextMethod()
+            .Object <- methods::callNextMethod()
             if(length(.Object@data) == 0 && ncol(.Object@spectra) != length(.Object@wavelength)){
               stop("specified spectra and wavelength of different dimensions")
             } else if (length(.Object@data) >= 1 && nrow(.Object@spectra) != nrow(.Object@data)){
@@ -48,8 +48,6 @@ setMethod("initialize", "Spectra",
 #' @slot wavelength A numeric vector
 #' @slot w.unit A character string
 #' @slot data A data.frame of vegetation data corresponding to the spectra
-#' @examples
-#' new("SpectraDatabase", matrix(1:100,4), 1:25, "nm", data.frame(data=letters[1:4]))
 #' @export
 #' @exportClass SpectraDatabase
 setClass("SpectraDatabase",
@@ -68,7 +66,7 @@ setMethod("initialize", "SpectraDatabase",
                    wavelength = numeric(0),
                    w.unit = character(0),
                    data = data.frame(0), ...){
-            .Object <- callNextMethod()
+            .Object <- methods::callNextMethod()
             if(nrow(.Object@spectra) != nrow(.Object@data) && length(.Object@wavelength) >1)
               stop("specified 'spectra' and 'data' of different lengths")
             .Object
@@ -96,13 +94,13 @@ as.spectra <- function(spectra = matrix(0),
                        wavelength = numeric(0),
                        w.unit = "nm",
                        data = data.frame(), ...){
-  return(new("Spectra", spectra, wavelength, w.unit, data, ...))
+  return(methods::new("Spectra", spectra, wavelength, w.unit, data, ...))
 }
 #' Create a Spectra or SpectraDatabase
 #'
 #' This function creates a Spectra object.
 #'
-#' @describeIn as.spectra Create S4 class Spectra
+#' @rdname Spectra-class
 #' @examples
 #' s <- as.spectra.database(matrix(1:100, 4), 1:25, "nm", data.frame(x = letters[1:4]))
 #' str(s)
@@ -111,7 +109,7 @@ as.spectra.database <- function(spectra = matrix(0),
                                 wavelength = numeric(0),
                                 w.unit = "nm",
                                 data = data.frame(), ...){
-  return(new("Spectra", spectra, wavelength, w.unit, data, ...))
+  return(methods::new("Spectra", spectra, wavelength, w.unit, data, ...))
 }
 
 
@@ -135,7 +133,7 @@ setMethod("initialize", "SpectraMatrix",
                    spectra = matrix(0),
                    wavelength = numeric(0),
                    w.unit = character(0), ...){
-            .Object <- callNextMethod()
+            .Object <- methods::callNextMethod()
             if(ncol(.Object@spectra) != length(.Object@wavelength))
               stop("specified spectra and wavelength are of different lengths")
             .Object
@@ -157,7 +155,7 @@ setMethod("initialize", "SpectraMatrix",
 as.spectra.matrix <- function(spectra = matrix(0),
                               wavelength = numeric(0),
                               w.unit = character(0)){
-  sls <- new("SpectraMatrix", spectra, wavelength, w.unit)
+  sls <- methods::new("SpectraMatrix", spectra, wavelength, w.unit)
   smat <- sls@spectra
   colnames(smat) <- paste(wavelength, w.unit)
   # rownames(smat) <- sls@s.id
@@ -176,8 +174,6 @@ as.spectra.matrix <- function(spectra = matrix(0),
 #' @slot wavelength A numeric vector
 #' @slot w.unit A character string
 #' @slot data A data.frame of vegetation data corresponding to the spectra
-#' @examples
-#' new("SpectraDataFrame", matrix(1:100,4), 1:25, "nm", data.frame(data=letters[1:4]))
 #' @export
 #' @exportClass SpectraDataFrame
 setClass("SpectraDataFrame",
@@ -196,7 +192,7 @@ setMethod("initialize", "SpectraDataFrame",
                    wavelength = numeric,
                    w.unit = character,
                    data = data.frame, ...){
-            .Object <- callNextMethod()
+            .Object <- methods::callNextMethod()
             if(nrow(.Object@spectra) != nrow(.Object@data) && length(.Object@wavelength) >1)
               stop("specified 'spectra' and 'data' of different lengths")
             .Object
@@ -222,12 +218,11 @@ as.spectra.data.frame <- function(spectra = matrix(0),
                                   wavelength = numeric(0),
                                   w.unit = character(0),
                                   data = data.frame(0), ...){
-  sls <- new("SpectraDataFrame", spectra, wavelength, w.unit, data)
+  sls <- methods::new("SpectraDataFrame", spectra, wavelength, w.unit, data)
   spectra <- sls@spectra
   colnames(spectra) <- paste(wavelength, w.unit)
   sdf <- sls@data
   sdf$spectra <- spectra
   sdf
 }
-
 

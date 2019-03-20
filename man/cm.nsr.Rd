@@ -16,9 +16,13 @@ cm.nsr(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE)
 
 \item{w}{A vector of wavelength.}
 
+\item{w.unit}{Character string, default = NULL,}
+
 \item{cm.plot}{A logic value for whether plotting the coefficient matrix or not, default FALSE.}
 
 \item{cm}{A square matrix}
+
+\item{show.stat}{A logic value. whether show the best R^2 and bands.}
 }
 \value{
 \item{cm}{Returns a coorrelation coefficients matrix.}

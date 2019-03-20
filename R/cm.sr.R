@@ -30,7 +30,7 @@ cm.sr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
   # check nsr
 
   spectra <- spectra(S)
-  if (is(spectra, "matrix") && is.null(colnames(spectra)) && length(w) == 0)
+  if (is.matrix(spectra) && is.null(colnames(spectra)) && length(w) == 0)
     stop("Wavelength for the spectra matrix is not correctly defined")
 
   n <- dim(spectra)[2] # Returns the Number of wavebands, should equal w
@@ -50,7 +50,7 @@ cm.sr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
     # VI formular
     V <- Ri/Rj
     # Squared values (R2) of the Pearson Correlation coefficients
-    Rcorr <- (cor(x, V))^2
+    Rcorr <- (stats::cor(x, V))^2
     # To store the value of R2
     spR <- Matrix::sparseMatrix(i = rep(cI,n),j = c(1:n), x = as.numeric(Rcorr), dims = c(n,n), dimnames = dn)
     R2 <- R2 + spR

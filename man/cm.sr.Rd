@@ -13,6 +13,8 @@ cm.sr(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE)
 
 \item{w}{A vector of wavelength.}
 
+\item{w.unit}{Character string, default = NULL,}
+
 \item{cm.plot}{A logic value for whether plotting the coefficient matrix or not, default FALSE.}
 }
 \value{

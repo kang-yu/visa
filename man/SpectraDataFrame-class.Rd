@@ -41,7 +41,6 @@ This function creates a SpectraDataFrame object, which is equivalent to the use 
 }}
 
 \examples{
-new("SpectraDataFrame", matrix(1:100,4), 1:25, "nm", data.frame(data=letters[1:4]))
 sdf <- as.spectra.data.frame(matrix(1:10, 1), 1:10, "nm", data.frame(a = 1, b =2))
 str(sdf)
 }

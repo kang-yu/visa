@@ -4,9 +4,13 @@
 \name{Spectra}
 \alias{Spectra}
 \alias{as.spectra}
+\alias{as.spectra.database}
 \title{Create a Spectra or SpectraDatabase}
 \usage{
 as.spectra(spectra = matrix(0), wavelength = numeric(0),
+  w.unit = "nm", data = data.frame(), ...)
+
+as.spectra.database(spectra = matrix(0), wavelength = numeric(0),
   w.unit = "nm", data = data.frame(), ...)
 }
 \arguments{
@@ -22,10 +26,14 @@ as.spectra(spectra = matrix(0), wavelength = numeric(0),
 }
 \description{
 This function creates a Spectra object.
+
+This function creates a Spectra object.
 }
 \examples{
 \dontrun{
 s <- as.spectra(matrix(1:100, 4), 1:25, "nm", data.frame(x = letters[1:4]))
 str(s)
 }
+s <- as.spectra.database(matrix(1:100, 4), 1:25, "nm", data.frame(x = letters[1:4]))
+str(s)
 }

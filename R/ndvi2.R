@@ -21,6 +21,6 @@
 #' @import ggplot2 ggpmisc
 #' @export
 ndvi2 <- function(s, b1, b2){
-  if (is(s, "NULL")) stop("input s is not valid spectra")
+  if (is.null(s)) stop("input s is not valid spectra")
   ndvi <- nsr(s, b1, b2)
 }
