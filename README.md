@@ -37,3 +37,5 @@ plot(sr1)
 You can report your [issues of using visa here](https://github.com/kang-yu/visa/issues).
 
 RStudio's Instructions on [Writing Good Bug Reports](https://github.com/rstudio/rstudio/wiki/Writing-Good-Bug-Reports).
+
+[![Travis build status](https://travis-ci.org/kang-yu/visa.svg?branch=master)](https://travis-ci.org/kang-yu/visa)
