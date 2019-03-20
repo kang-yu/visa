@@ -25,6 +25,5 @@
 #' @name visa
 #' @author Kang Yu
 #'
-#' @import methods
-#' @importFrom pkgconfig get_config
+#' @import methods ggpmisc
 "_PACKAGE"

@@ -85,7 +85,7 @@ cm.nsr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
 #' @param cm A square matrix
 #' @return
 #'   \item{cm_plot}{Returns a coorrelation-matrix plot.}
-#' @import ggplot2 reshape2 grDevices RColorBrewer
+#' @import ggplot2 reshape2 grDevices
 #' @export plot.cm
 plot.cm <- function(cm, show.stat = TRUE){
 

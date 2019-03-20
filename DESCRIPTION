@@ -20,7 +20,6 @@ Imports:
 Suggests:
     devtools,
     testthat,
-    RColorBrewer,
     flux,
     knitr,
     rmarkdown,
