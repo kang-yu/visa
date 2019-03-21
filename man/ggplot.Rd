@@ -15,8 +15,7 @@
 \arguments{
 \item{data}{Default spectra database to use for plot. If not a spectra database, the
 methods used will be those defined in package \code{ggplot2}. See \code{\link[ggplot2]{ggplot}}.
-If not specified,
-must be suppled in each layer added to the plot.}
+If not specified, must be suppled in each layer added to the plot.}
 
 \item{mapping}{Default list of aesthetic mappings to use for plot.
 If not specified, in the case of spectra objects, a default mapping will
@@ -50,25 +49,6 @@ existing ggplot object. This is advantageous in that the
 code is explicit about which layers are added and the order
 in which they are added. For complex graphics with multiple
 layers, initialization with \code{ggplot} is recommended.
-
-There are three common ways to invoke \code{ggplot}:
-\itemize{
-   \item \code{ggplot(ts, aes(x, y, <other aesthetics>))}
-   \item \code{ggplot(ts)}
-  }
-The first method is recommended if all layers use the same
-data and the same set of aesthetics, although this method
-can also be used to add a layer using data from another
-data frame. See the first example below. The second
-method specifies the default spectrum object to use for the plot, and the
-units to be used for y in the plot,
-but no aesthetics are defined up front. This is useful when
-one data frame is used predominantly as layers are added,
-but the aesthetics may vary from one layer to another. The
-third method specifies the default spectrum object to use for the plot,
-but no aesthetics are defined up front. This is useful when
-one spectrum is used predominantly as layers are added,
-but the aesthetics may vary from one layer to another.
 }
 \note{
 Current implementation does not merge default mapping with user

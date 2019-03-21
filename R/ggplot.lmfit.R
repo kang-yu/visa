@@ -30,13 +30,13 @@ ggplot.lmfit <- function(x, y,
 
   df <- data.frame(x,y)
   my.formula <- y ~ x
-  p <- ggplot2::ggplot(data = df, aes(x = x, y = y),
+  p <- ggplot2::ggplot(data = df, aes(x, y),
                        ... = ...,
                        environment = environment) +
-    geom_smooth(method = "lm", se = FALSE, color = "blue", formula = my.formula) +
     geom_point() +
-    stat_poly_eq(data = df, formula = my.formula, eq.with.lhs = "italic(y)~`=`~",
-                 aes(label = paste(stat(eq.label), stat(rr.label), sep = "~~~")),
+    geom_smooth(method = "lm", se = FALSE, color = "blue", formula = my.formula) +
+    stat_poly_eq(aes(label = paste(stat(eq.label), stat(rr.label), sep = "~~~")),
+                 formula = my.formula, rr.digits = 4,
                  parse = TRUE, col = "blue", size = 4)
 
   # yrange <- ggplot_build(p)$panel$ranges[[1]]$y.range
