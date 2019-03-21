@@ -23,8 +23,6 @@ lm.nsr(s, b1, b2, y)
 \item{b2}{A integer number which defines the wavelength of the 2nd spectral band.}
 
 \item{y}{A numeric variable to correlate with SR}
-
-\item{y}{A numeric variable to correlate with NSR}
 }
 \description{
 Simple Ratio is the ratio of the spectra (mostly reflectance) between two bands

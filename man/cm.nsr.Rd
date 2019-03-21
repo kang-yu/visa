@@ -7,7 +7,7 @@
 \usage{
 cm.nsr(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE)
 
-\method{plot}{cm}(cm, show.stat = TRUE)
+plot.cm(cm, show.stat = TRUE)
 }
 \arguments{
 \item{S}{A matrix of spectral data, a row is a spectrum across all spectral bands.}

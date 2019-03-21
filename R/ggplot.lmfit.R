@@ -5,7 +5,7 @@
 #' Visualization of linear fit (y = ax + b), using scatter plots and with regression line, as well as
 #' added details of regression equation and R^2.
 #'
-#' @rdname plot-method
+#' @rdname ggplot-method
 #' @param x A numeric variable
 #' @param y A numeric variable
 #' @examples
@@ -13,16 +13,16 @@
 #' library(visa)
 #' x <- 1:10
 #' y <- 2:11+0.5
-#' plot.lmfit(x,y)
+#' ggplot.lmfit(x,y)
 #' }
 #' @import ggplot2 ggpmisc
-#' @export plot.lmfit
+#' @export ggplot.lmfit
 
-plot.lmfit <- function(x,y){
+ggplot.lmfit <- function(x, y, environment = parent.frame()){
 
   df <- data.frame(x,y)
   my.formula <- y ~ x
-  p <- ggplot2::ggplot(data = df, aes(x = x, y = y)) +
+  p <- ggplot2::ggplot(data = df, aes(x = x, y = y), environment = parent.frame()) +
     geom_smooth(method = "lm", se = FALSE, color = "blue", formula = my.formula) +
     geom_point()
 
