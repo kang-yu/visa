@@ -37,8 +37,7 @@ ggplot.lmfit <- function(x, y,
     geom_point() +
     stat_poly_eq(data = df, formula = my.formula, eq.with.lhs = "italic(y)~`=`~",
                  aes(label = paste(stat(eq.label), stat(rr.label), sep = "~~~")),
-                 parse = TRUE, col = "blue", label.x = xrange[2]*0.5,
-                 label.y = yrange[2]*0.95, size = 4)
+                 parse = TRUE, col = "blue", size = 4)
 
   # yrange <- ggplot_build(p)$panel$ranges[[1]]$y.range
   # xrange <- ggplot_build(p)$panel$ranges[[1]]$x.range

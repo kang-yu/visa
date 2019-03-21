@@ -5,9 +5,9 @@
 #' An S4 Class `Spectra`, with five slots of data.
 #' It has `SpectraDatabase` as the alias.
 #'
-#' @name Spectra
+#' @name Spectra-class
 #' @rdname Spectra-class
-#' @aliases Spectra
+#' @aliases Spectra,Spectra-class
 #' @docType class
 #' @slot spectra A matrix
 #' @slot wavelength A numeric vector
@@ -48,9 +48,10 @@ setMethod("initialize", "Spectra",
 #' SpectraDatabase is an extended 'Spectra' class, with associated vegetation data ('data')
 #' in a \link{data.frame}.
 #'
-#' @name SpectraDatabase
+#' @name SpectraDatabase-class
 #' @rdname SpectraDatabase-class
-#' @aliases spectra.database
+#' @aliases SpectraDatabase-class,spectra.database
+#' @docType class
 #' @slot spectra A matrix
 #' @slot wavelength A numeric vector
 #' @slot w.unit A character string
@@ -82,7 +83,7 @@ setMethod("initialize", "SpectraDatabase",
 
 #' Create a Spectra or SpectraDatabase
 #'
-#' \code{as.spectra} creates a Spectra object.
+#' Constructor \code{as.spectra} creates a Spectra object.
 #'
 #' @name as.spectra
 #' @rdname Spectra-class
@@ -105,7 +106,7 @@ as.spectra <- function(spectra = matrix(0),
 }
 #' Create a Spectra or SpectraDatabase
 #'
-#' \code{as.spectra.database} creates a SpectraDatabase object.
+#' Constructor \code{as.spectra.database} creates a SpectraDatabase object.
 #'
 #' @rdname Spectra-class
 #' @examples
@@ -124,9 +125,10 @@ as.spectra.database <- function(spectra = matrix(0),
 #'
 #' SpectraMatrix is a extended 'Spectra' class.
 #'
-#' @name SpectraMatrix
+#' @name SpectraMatrix-class
 #' @rdname SpectraMaxtrix-class
-#' @aliases spectra.maxtrix
+#' @aliases SpectraMaxtrix-class,spectra.maxtrix
+#' @docType class
 #' @export
 #' @exportClass SpectraMatrix
 setClass("SpectraMatrix",
@@ -151,7 +153,7 @@ setMethod("initialize", "SpectraMatrix",
 )
 #' Create a SpectraMatrix
 #'
-#' \code{as.spectra.matrix} creates a SpectraMatrix object.
+#' Constructor \code{as.spectra.matrix} creates a SpectraMatrix object.
 #'
 #' @name as.spectra.matrix
 #' @rdname SpectraMaxtrix-class
@@ -172,14 +174,16 @@ as.spectra.matrix <- function(spectra = matrix(0),
   smat
 }
 
+
 #' Class 'SpectraDataFrame'
 #'
 #' SpectraDataFrame is an extended 'Spectra' class, with associated vegetation data ('data')
 #' in a \link{data.frame}.
 #'
-#' @name SpectraDataFrame
+#' @name SpectraDataFrame-class
 #' @rdname SpectraDataFrame-class
-#' @aliases spectra.data.frame
+#' @aliases SpectraDataFrame,spectra.data.frame
+#' @docType class
 #' @slot spectra A matrix
 #' @slot wavelength A numeric vector
 #' @slot w.unit A character string
@@ -210,10 +214,10 @@ setMethod("initialize", "SpectraDataFrame",
 )
 #' Create a SpectraDataFrame
 #'
-#' \code{as.spectra.data.frame} function creates a SpectraDataFrame object, which is equivalent to the use of \link{as.specdf}.
+#' Constructor \code{as.spectra.data.frame} function creates a SpectraDataFrame object, which is equivalent to the use of \link{as.specdf}.
 #'
 #' @name as.spectra.data.frame
-#' @rdname SpectraDataFrame-class
+#' @rdname SpectraDataFrame
 #' @aliases as.specdf
 #' @param data A data.frame
 #' @param spectra A matrix
