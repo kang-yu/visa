@@ -6,9 +6,9 @@
 #' It has `SpectraDatabase` as the alias.
 #'
 #' @name Spectra
+#' @rdname Spectra-class
 #' @aliases Spectra
 #' @docType class
-#' @rdname Spectra-class
 #' @slot spectra A matrix
 #' @slot wavelength A numeric vector
 #' @slot w.unit A character string
@@ -49,8 +49,8 @@ setMethod("initialize", "Spectra",
 #' in a \link{data.frame}.
 #'
 #' @name SpectraDatabase
-#' @aliases spectra.database
 #' @rdname SpectraDatabase-class
+#' @aliases spectra.database
 #' @slot spectra A matrix
 #' @slot wavelength A numeric vector
 #' @slot w.unit A character string
@@ -125,8 +125,8 @@ as.spectra.database <- function(spectra = matrix(0),
 #' SpectraMatrix is a extended 'Spectra' class.
 #'
 #' @name SpectraMatrix
-#' @aliases spectra.maxtrix
 #' @rdname SpectraMaxtrix-class
+#' @aliases spectra.maxtrix
 #' @export
 #' @exportClass SpectraMatrix
 setClass("SpectraMatrix",
@@ -178,7 +178,6 @@ as.spectra.matrix <- function(spectra = matrix(0),
 #' in a \link{data.frame}.
 #'
 #' @name SpectraDataFrame
-#' @aliases spectra.data.frame
 #' @rdname SpectraDataFrame-class
 #' @aliases spectra.data.frame
 #' @slot spectra A matrix
@@ -214,8 +213,8 @@ setMethod("initialize", "SpectraDataFrame",
 #' \code{as.spectra.data.frame} function creates a SpectraDataFrame object, which is equivalent to the use of \link{as.specdf}.
 #'
 #' @name as.spectra.data.frame
-#' @aliases as.specdf
 #' @rdname SpectraDataFrame-class
+#' @aliases as.specdf
 #' @param data A data.frame
 #' @param spectra A matrix
 #' @param wavelength A numeric vector

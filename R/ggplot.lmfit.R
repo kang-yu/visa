@@ -34,14 +34,19 @@ ggplot.lmfit <- function(x, y,
                        ... = ...,
                        environment = environment) +
     geom_smooth(method = "lm", se = FALSE, color = "blue", formula = my.formula) +
-    geom_point()
+    geom_point() +
+    stat_poly_eq(data = df, formula = my.formula, eq.with.lhs = "italic(y)~`=`~",
+                 aes(label = paste(stat(eq.label), stat(rr.label), sep = "~~~")),
+                 parse = TRUE, col = "blue", label.x = xrange[2]*0.5,
+                 label.y = yrange[2]*0.95, size = 4)
 
-  yrange <- ggplot_build(p)$panel$ranges[[1]]$y.range
-  xrange <- ggplot_build(p)$panel$ranges[[1]]$x.range
+  # yrange <- ggplot_build(p)$panel$ranges[[1]]$y.range
+  # xrange <- ggplot_build(p)$panel$ranges[[1]]$x.range
 
-  p <- p + stat_poly_eq(data = df, formula = my.formula, eq.with.lhs = "italic(y)~`=`~",
-                        aes(label = paste(stat(eq.label), stat(rr.label), sep = "~~~")),
-                        parse = TRUE, col = "blue", label.x = xrange[2]*0.5,
-                        label.y = yrange[2]*0.95, size = 4)
+  # p <- p + stat_poly_eq(data = df, formula = my.formula, eq.with.lhs = "italic(y)~`=`~",
+  #                       aes(label = paste(stat(eq.label), stat(rr.label), sep = "~~~")),
+  #                       parse = TRUE, col = "blue", label.x = xrange[2]*0.5,
+  #                       label.y = yrange[2]*0.95, size = 4)
+
   p
 }
