@@ -6,8 +6,8 @@
 #' added details of regression equation and R^2.
 #'
 #' @rdname ggplot-method
-#' @param x A numeric variable
-#' @param y A numeric variable
+#'
+#' @param x,y A dataframe
 #' @param ... Other arguments passed on to methods. Not currently used.
 #' @param environment If an variable defined in the aesthetic mapping is not
 #' found in the data, ggplot will look for it in this environment. It defaults
@@ -18,9 +18,10 @@
 #' library(visa)
 #' x <- 1:10
 #' y <- 2:11+0.5
-#' ggplot.lmfit(x,y)
+#' ggplot.lmfit(x, y)
 #' }
 #' @import ggplot2 ggpmisc
+#' @importFrom rlang .data
 #' @export ggplot.lmfit
 
 ggplot.lmfit <- function(x, y,
@@ -41,8 +42,6 @@ ggplot.lmfit <- function(x, y,
   p <- p + stat_poly_eq(data = df, formula = my.formula, eq.with.lhs = "italic(y)~`=`~",
                         aes(label = paste(stat(eq.label), stat(rr.label), sep = "~~~")),
                         parse = TRUE, col = "blue", label.x = xrange[2]*0.5,
-                        label.y = yrange[2]*0.95, size = 4,
-                        ... = ...,
-                        environment = environment)
+                        label.y = yrange[2]*0.95, size = 4)
   p
 }

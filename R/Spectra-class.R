@@ -6,8 +6,14 @@
 #' It has `SpectraDatabase` as the alias.
 #'
 #' @name Spectra
+#' @aliases Spectra
+#' @docType class
 #' @rdname Spectra-class
-#' @export
+#' @slot spectra A matrix
+#' @slot wavelength A numeric vector
+#' @slot w.unit A character string
+#' @slot data A data.frame
+#' @importFrom methods new
 #' @exportClass Spectra
 Spectra <- setClass("Spectra",
                     slots = c(spectra = "matrix",
@@ -43,6 +49,7 @@ setMethod("initialize", "Spectra",
 #' in a \link{data.frame}.
 #'
 #' @name SpectraDatabase
+#' @aliases spectra.database
 #' @rdname SpectraDatabase-class
 #' @slot spectra A matrix
 #' @slot wavelength A numeric vector
@@ -75,7 +82,7 @@ setMethod("initialize", "SpectraDatabase",
 
 #' Create a Spectra or SpectraDatabase
 #'
-#' This function creates a Spectra object.
+#' \code{as.spectra} creates a Spectra object.
 #'
 #' @name as.spectra
 #' @rdname Spectra-class
@@ -98,7 +105,7 @@ as.spectra <- function(spectra = matrix(0),
 }
 #' Create a Spectra or SpectraDatabase
 #'
-#' This function creates a Spectra object.
+#' \code{as.spectra.database} creates a SpectraDatabase object.
 #'
 #' @rdname Spectra-class
 #' @examples
@@ -115,7 +122,10 @@ as.spectra.database <- function(spectra = matrix(0),
 
 #' Class 'SpectraMatrix'
 #'
+#' SpectraMatrix is a extended 'Spectra' class.
+#'
 #' @name SpectraMatrix
+#' @aliases spectra.maxtrix
 #' @rdname SpectraMaxtrix-class
 #' @export
 #' @exportClass SpectraMatrix
@@ -141,7 +151,7 @@ setMethod("initialize", "SpectraMatrix",
 )
 #' Create a SpectraMatrix
 #'
-#' This function creates a SpectraMatrix object.
+#' \code{as.spectra.matrix} creates a SpectraMatrix object.
 #'
 #' @name as.spectra.matrix
 #' @rdname SpectraMaxtrix-class
@@ -168,6 +178,7 @@ as.spectra.matrix <- function(spectra = matrix(0),
 #' in a \link{data.frame}.
 #'
 #' @name SpectraDataFrame
+#' @aliases spectra.data.frame
 #' @rdname SpectraDataFrame-class
 #' @aliases spectra.data.frame
 #' @slot spectra A matrix
@@ -200,7 +211,7 @@ setMethod("initialize", "SpectraDataFrame",
 )
 #' Create a SpectraDataFrame
 #'
-#' This function creates a SpectraDataFrame object, which is equivalent to the use of \link{as.specdf}.
+#' \code{as.spectra.data.frame} function creates a SpectraDataFrame object, which is equivalent to the use of \link{as.specdf}.
 #'
 #' @name as.spectra.data.frame
 #' @aliases as.specdf

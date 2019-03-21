@@ -3,6 +3,7 @@
 \docType{class}
 \name{SpectraMatrix}
 \alias{SpectraMatrix}
+\alias{spectra.maxtrix}
 \alias{as.spectra.matrix}
 \title{Class 'SpectraMatrix'}
 \usage{
@@ -17,7 +18,9 @@ as.spectra.matrix(spectra = matrix(0), wavelength = numeric(0),
 \item{w.unit}{A character string}
 }
 \description{
-This function creates a SpectraMatrix object.
+SpectraMatrix is a extended 'Spectra' class.
+
+\code{as.spectra.matrix} creates a SpectraMatrix object.
 }
 \examples{
 smatrix <- as.spectra.matrix(matrix(1:10, 1), 1:10, "nm")

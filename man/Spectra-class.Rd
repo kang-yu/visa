@@ -25,10 +25,22 @@ as.spectra.database(spectra = matrix(0), wavelength = numeric(0),
 \item{...}{Other parameters}
 }
 \description{
-This function creates a Spectra object.
+\code{as.spectra} creates a Spectra object.
 
-This function creates a Spectra object.
+\code{as.spectra.database} creates a SpectraDatabase object.
 }
+\section{Slots}{
+
+\describe{
+\item{\code{spectra}}{A matrix}
+
+\item{\code{wavelength}}{A numeric vector}
+
+\item{\code{w.unit}}{A character string}
+
+\item{\code{data}}{A data.frame}
+}}
+
 \examples{
 \dontrun{
 s <- as.spectra(matrix(1:100, 4), 1:25, "nm", data.frame(x = letters[1:4]))

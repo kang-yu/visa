@@ -3,6 +3,7 @@
 \docType{class}
 \name{SpectraDatabase}
 \alias{SpectraDatabase}
+\alias{spectra.database}
 \title{Class 'SpectraDatabase'}
 \description{
 SpectraDatabase is an extended 'Spectra' class, with associated vegetation data ('data')

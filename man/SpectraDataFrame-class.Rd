@@ -26,7 +26,7 @@ as.spectra.data.frame(spectra = matrix(0), wavelength = numeric(0),
 SpectraDataFrame is an extended 'Spectra' class, with associated vegetation data ('data')
 in a \link{data.frame}.
 
-This function creates a SpectraDataFrame object, which is equivalent to the use of \link{as.specdf}.
+\code{as.spectra.data.frame} function creates a SpectraDataFrame object, which is equivalent to the use of \link{as.specdf}.
 }
 \section{Slots}{
 

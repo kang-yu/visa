@@ -8,9 +8,7 @@
 \method{ggplot}{lmfit}(x, y, ..., environment = parent.frame())
 }
 \arguments{
-\item{x}{A numeric variable}
-
-\item{y}{A numeric variable}
+\item{x, y}{A dataframe}
 
 \item{...}{Other arguments passed on to methods. Not currently used.}
 
@@ -30,6 +28,6 @@ added details of regression equation and R^2.
 library(visa)
 x <- 1:10
 y <- 2:11+0.5
-ggplot.lmfit(x,y)
+ggplot.lmfit(x, y)
 }
 }

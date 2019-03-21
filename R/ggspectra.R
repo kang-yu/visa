@@ -71,7 +71,7 @@ ggplot.spectra <- function(data, mapping = NULL, ...,
       mapping <- aes_string("Var2", "value")
     }
     ggplot2::ggplot(data = specdf,
-                    mapping =  mapping,
+                    mapping = mapping,
                     ... = ...,
                     environment = environment)
   }
