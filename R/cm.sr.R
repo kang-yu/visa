@@ -70,7 +70,7 @@ cm.sr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
   colnames(cm) <- paste(w, "nm")
 
   # cm plot
-  cm_plot <- plot.cm(cm, show.stat = FALSE)
+  cm_plot <- ggplot.cm(cm, show.stat = FALSE)
   if (isTRUE(cm.plot)) print(cm_plot)
   # cm.res <- list(cm = cm, cm.plot = cm_plot)
 

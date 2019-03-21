@@ -2,12 +2,9 @@
 % Please edit documentation in R/cm.nsr.R
 \name{cm.nsr}
 \alias{cm.nsr}
-\alias{plot.cm}
 \title{Selecting the best 2-Band combinations for Normalized Simple Ratio (NSR)}
 \usage{
 cm.nsr(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE)
-
-plot.cm(cm, show.stat = TRUE)
 }
 \arguments{
 \item{S}{A matrix of spectral data, a row is a spectrum across all spectral bands.}
@@ -19,15 +16,9 @@ plot.cm(cm, show.stat = TRUE)
 \item{w.unit}{Character string, default = NULL,}
 
 \item{cm.plot}{A logic value for whether plotting the coefficient matrix or not, default FALSE.}
-
-\item{cm}{A square matrix}
-
-\item{show.stat}{A logic value. whether show the best R^2 and bands.}
 }
 \value{
 \item{cm}{Returns a coorrelation coefficients matrix.}
-
-\item{cm_plot}{Returns a coorrelation-matrix plot.}
 }
 \description{
 This function developes a optimization algorithm based on correlation analysis between spectral matrix 'spectra' and the

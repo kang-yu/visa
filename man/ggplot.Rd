@@ -3,10 +3,14 @@
 \name{ggplot}
 \alias{ggplot}
 \alias{ggplot.spectra}
+\alias{ggplot.cm}
 \title{Create a new ggplot plot from spectra data}
 \usage{
 \method{ggplot}{spectra}(data, mapping = NULL, ..., wl = NULL,
   w.unit = "nm", environment = parent.frame())
+
+\method{ggplot}{cm}(data, mapping = NULL, ..., show.stat = TRUE,
+  environment = parent.frame())
 }
 \arguments{
 \item{data}{Default spectra database to use for plot. If not a spectra database, the
@@ -27,6 +31,11 @@ be used.}
 \item{environment}{If an variable defined in the aesthetic mapping is not
 found in the data, ggplot will look for it in this environment. It defaults
 to using the environment in which \code{ggplot()} is called.}
+
+\item{show.stat}{A logic value. whether show the best R^2 and bands.}
+}
+\value{
+\item{cm_plot}{Returns a ggplot object of coorrelation-matrix.}
 }
 \description{
 \code{ggplot()} initializes a ggplot object. It can be used to

@@ -1,4 +1,4 @@
-#' Plot Model Fit with Equation and R^2.
+#' Create a ggplot plot for linear fit with Equation and R^2.
 #'
 #' This functions plots model fit using ggplot.
 #'
@@ -23,21 +23,26 @@
 #' @import ggplot2 ggpmisc
 #' @export ggplot.lmfit
 
-ggplot.lmfit <- function(x, y, environment = parent.frame()){
+ggplot.lmfit <- function(x, y,
+                         ...,
+                         environment = parent.frame()){
 
   df <- data.frame(x,y)
   my.formula <- y ~ x
-  p <- ggplot2::ggplot(data = df, aes(x = x, y = y), environment = parent.frame()) +
+  p <- ggplot2::ggplot(data = df, aes(x = x, y = y),
+                       ... = ...,
+                       environment = environment) +
     geom_smooth(method = "lm", se = FALSE, color = "blue", formula = my.formula) +
     geom_point()
 
   yrange <- ggplot_build(p)$panel$ranges[[1]]$y.range
   xrange <- ggplot_build(p)$panel$ranges[[1]]$x.range
 
-  p <- p +
-    stat_poly_eq(formula = my.formula, eq.with.lhs = "italic(y)~`=`~",
-                 aes(label = paste(stat(eq.label), stat(rr.label), sep = "~~~")),
-                 parse = TRUE, col = "blue", label.x = xrange[2]*0.5,
-                 label.y = yrange[2]*0.95, size = 4)
+  p <- p + stat_poly_eq(formula = my.formula, eq.with.lhs = "italic(y)~`=`~",
+                        aes(label = paste(stat(eq.label), stat(rr.label), sep = "~~~")),
+                        parse = TRUE, col = "blue", label.x = xrange[2]*0.5,
+                        label.y = yrange[2]*0.95, size = 4,
+                        ... = ...,
+                        environment = environment)
   p
 }

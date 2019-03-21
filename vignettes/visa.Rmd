@@ -81,7 +81,7 @@ The correlation matrix plot is the plot of correlation coefficients (r/r2) by ba
 # use the output from last example
 # cm <- cm.nsr(S, x)
 # Plotting the correlation matrix
-plot.cm(cm)
+ggplot.cm(cm)
 
 ```
 
