@@ -8,6 +8,11 @@
 #' @rdname ggplot-method
 #' @param x A numeric variable
 #' @param y A numeric variable
+#' @param ... Other arguments passed on to methods. Not currently used.
+#' @param environment If an variable defined in the aesthetic mapping is not
+#' found in the data, ggplot will look for it in this environment. It defaults
+#' to using the environment in which \code{ggplot()} is called.
+#'
 #' @examples
 #' \dontrun{
 #' library(visa)

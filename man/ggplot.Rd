@@ -3,7 +3,7 @@
 \name{ggplot}
 \alias{ggplot}
 \alias{ggplot.spectra}
-\title{Create a new ggplot plot from time series data}
+\title{Create a new ggplot plot from spectra data}
 \usage{
 \method{ggplot}{spectra}(data, mapping = NULL, ..., wl = NULL,
   w.unit = "nm", environment = parent.frame())
@@ -15,7 +15,7 @@ If not specified,
 must be suppled in each layer added to the plot.}
 
 \item{mapping}{Default list of aesthetic mappings to use for plot.
-If not specified, in the case of spectral objects, a default mapping will
+If not specified, in the case of spectra objects, a default mapping will
 be used.}
 
 \item{...}{Other arguments passed on to methods. Not currently used.}
@@ -68,7 +68,11 @@ To add to the default mapping, aes() can be used by itself to compose
 the ggplot.
 }
 \examples{
+\dontrun{
 library(ggplot2)
 ggplot.spectra(NSpec.DF) + geom_line()
-
+}
+}
+\seealso{
+\code{?ggpmisc::ggplot()}
 }
