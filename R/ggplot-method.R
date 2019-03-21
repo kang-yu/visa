@@ -1,4 +1,4 @@
 #' Plot functions
 #'
-#' @name plot-method
+#' @name ggplot-method
 NULL
