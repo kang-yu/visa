@@ -11,7 +11,7 @@ This R package is to facilitate Vegetation Imaging Spectroscopy Analysis (VISA).
 
 ## Installation
 
-### install the released version from [CRAN]
+### install the released version from CRAN:
 
 ``` r
 # install.packages() # does not work currently
@@ -20,7 +20,7 @@ This R package is to facilitate Vegetation Imaging Spectroscopy Analysis (VISA).
 You might encounter problem of package dependencies, such as some functions depend on `ggplot`, `ggpmisc`. In such cases, you would have to install the all the dependencies.
 
 
-### install the dev-version of visa from github with:
+### install the dev-version from GitHub:
 
 ``` r
 if (!require("devtools", character.only = TRUE)) install.packages("devtools", dependencies = TRUE)
