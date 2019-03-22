@@ -1,4 +1,5 @@
 [![Travis build status](https://travis-ci.org/kang-yu/visa.svg?branch=master)](https://travis-ci.org/kang-yu/visa)
+[![Build status](https://ci.appveyor.com/api/projects/status/8rxdgcr4ro8ga0s4?svg=true)](https://ci.appveyor.com/project/kang-yu/visa)
 [![star this repo](http://githubbadges.com/star.svg?user=kang-yu&repo=visa&style=default)](https://github.com/kang-yu/visa)
 [![fork this repo](http://githubbadges.com/fork.svg?user=kang-yu&repo=visa&style=default)](https://github.com/kang-yu/visa/fork)
 [![HitCount](http://hits.dwyl.io/kang-yu/visa.svg)](http://hits.dwyl.io/kang-yu/visa)
