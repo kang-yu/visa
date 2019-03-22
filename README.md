@@ -1,7 +1,7 @@
 [![Travis build status](https://travis-ci.org/kang-yu/visa.svg?branch=master)](https://travis-ci.org/kang-yu/visa)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/kang-yu/visa/issues)
 [![HitCount](http://hits.dwyl.io/kang-yu/visa.svg)](http://hits.dwyl.io/kang-yu/visa)
-(https://img.shields.io/github/downloads/kang-yu/visa/total.svg)
+
 
 # visa
 This R package is to facilitate Vegetation Imaging Spectroscopy Analysis (VISA). For more details of this package, you can  `browseVignettes("visa")`. 
@@ -38,8 +38,8 @@ sr1 <- sr(s, 440, 445)
 plot(sr1)
 ```
 
-# Bug report
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/kang-yu/visa/issues)
+# Bug report [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/kang-yu/visa/issues)
+
 You can report your [issues of using visa here](https://github.com/kang-yu/visa/issues).
 
 RStudio's Instructions on [Writing Good Bug Reports](https://github.com/rstudio/rstudio/wiki/Writing-Good-Bug-Reports).
