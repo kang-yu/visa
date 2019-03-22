@@ -9,9 +9,9 @@
 This R package is to facilitate Vegetation Imaging Spectroscopy Analysis (VISA). For more details of this package, you can  `browseVignettes("visa")`. 
 
 
-# Installation
+## Installation
 
-install the released version from [CRAN]
+### install the released version from [CRAN]
 
 ``` r
 # install.packages() # does not work currently
@@ -20,17 +20,18 @@ install the released version from [CRAN]
 You might encounter problem of package dependencies, such as some functions depend on `ggplot`, `ggpmisc`. In such cases, you would have to install the all the dependencies.
 
 
-install the dev-version of visa from github with:
+### install the dev-version of visa from github with:
 
 ``` r
-# devtools::install_github(build_vignettes = TRUE) # to also install vignettes and suggested packages
-# install.packages("devtools")
+if (!require("devtools", character.only = TRUE)) install.packages("devtools", dependencies = TRUE)
 devtools::install_github("kang-yu/visa")
+# devtools::install_github("kang-yu/visa", build_vignettes = TRUE) # to also install vignettes and suggested packages
 ``` 
+
 You might encounter [this problem of install_github()](https://github.com/r-lib/devtools/issues/1978), and in this case, you could try update the {remotes} `devtools::install_github("r-lib/remotes")`.
 
 
-# Usage
+## Usage
 
 ```
 library(visa)
@@ -40,7 +41,7 @@ sr1 <- sr(s, 440, 445)
 plot(sr1)
 ```
 
-# Bug report [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/kang-yu/visa/issues)
+## Bug report [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/kang-yu/visa/issues)
 
 You can report your [issues of using visa here](https://github.com/kang-yu/visa/issues). Don't know how to report a bug? Check RStudio's Instructions on [Writing Good Bug Reports](https://github.com/rstudio/rstudio/wiki/Writing-Good-Bug-Reports).
 
