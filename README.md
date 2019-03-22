@@ -40,7 +40,5 @@ plot(sr1)
 
 # Bug report [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/kang-yu/visa/issues)
 
-You can report your [issues of using visa here](https://github.com/kang-yu/visa/issues).
-
-RStudio's Instructions on [Writing Good Bug Reports](https://github.com/rstudio/rstudio/wiki/Writing-Good-Bug-Reports).
+You can report your [issues of using visa here](https://github.com/kang-yu/visa/issues). Want to know how? Check RStudio's Instructions on [Writing Good Bug Reports](https://github.com/rstudio/rstudio/wiki/Writing-Good-Bug-Reports).
 
