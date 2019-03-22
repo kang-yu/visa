@@ -1,8 +1,8 @@
 #' Selecting the best 2-Band combinations for Simple Ratio (SR)
 #'
 #' @name cm.sr
-#' @description This function developes a optimization algorithm based on correlation analysis between spectral matrix 'spectra' and the
-#' getation variable of interest x, which
+#' @description This function develops a optimization algorithm based on correlation analysis between spectral matrix 'spectra' and the
+#' vegetation variable of interest x, which
 #' determines the best spectral band combinations of the full spectrum that are most predictive for 'x'.
 #'
 #' @details This function runs a calculation of \deqn{ NDVI = \lambda_i / \lambda_j } using all the possible pairs/combinations of any two bands (i,j)
@@ -12,7 +12,7 @@
 #'
 #' @inheritParams cm.nsr
 #' @return
-#'   \item{cm}{Returns a coorrelation coefficients matrix.}
+#'   \item{cm}{Returns a correlation coefficients matrix.}
 #' @seealso \code{\link{cm.nsr}}
 #' @examples
 #' \dontrun{

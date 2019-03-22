@@ -15,12 +15,12 @@
 #'
 #' @param data Default spectra database to use for plot. If not a spectra database, the
 #'   methods used will be those defined in package \code{ggplot2}. See \code{\link[ggplot2]{ggplot}}.
-#'   If not specified, must be suppled in each layer added to the plot.
+#'   If not specified, must be supplied in each layer added to the plot.
 #' @param mapping Default list of aesthetic mappings to use for plot.
 #'   If not specified, in the case of spectra objects, a default mapping will
 #'   be used.
 #' @param wl numeric The wavelength vector.
-#' @param w.unit character The wavelength unit fo the spectra.
+#' @param w.unit character The wavelength unit of the spectra.
 #' @param ... Other arguments passed on to methods. Not currently used.
 #' @param environment If an variable defined in the aesthetic mapping is not
 #'   found in the data, ggplot will look for it in this environment. It defaults
@@ -66,7 +66,7 @@ ggplot.spectra <- function(data, mapping = NULL, ...,
 #' @param show.stat A logic value. whether show the best R^2 and bands.
 #'
 #' @return
-#'   \item{cm_plot}{Returns a ggplot object of coorrelation-matrix.}
+#'   \item{cm_plot}{Returns a ggplot object of correlation-matrix.}
 #' @import ggplot2 reshape2 grDevices
 #' @export ggplot.cm
 

@@ -1,7 +1,7 @@
 #' Selecting the best 2-Band combinations for Normalized Simple Ratio (NSR)
 #'
-#' This function developes a optimization algorithm based on correlation analysis between spectral matrix 'spectra' and the
-#' getation variable of interest x, which
+#' This function develops a optimization algorithm based on correlation analysis between spectral matrix 'spectra' and the
+#' vegetation variable of interest x, which
 #' determines the best spectral band combinations of the full spectrum that are most predictive for 'x'.
 #'
 #' @param S A matrix of spectral data, a row is a spectrum across all spectral bands.
@@ -10,7 +10,7 @@
 #' @param w.unit Character string, default = NULL,
 #' @param cm.plot A logic value for whether plotting the coefficient matrix or not, default FALSE.
 #' @return
-#'   \item{cm}{Returns a coorrelation coefficients matrix.}
+#'   \item{cm}{Returns a correlation coefficients matrix.}
 #'
 #' @details
 #' This function runs a calculation of \deqn{ NDVI = (\lambda_i - \lambda_j)/(\lambda_i + \lambda_j) } using all the possible pairs/combinations of any two bands (i,j)
