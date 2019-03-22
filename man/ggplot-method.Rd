@@ -8,7 +8,7 @@
 \method{ggplot}{lmfit}(x, y, ..., environment = parent.frame())
 }
 \arguments{
-\item{x, y}{A dataframe}
+\item{x, y}{Two vectors}
 
 \item{...}{Other arguments passed on to methods. Not currently used.}
 

@@ -18,8 +18,7 @@ Imports:
     methods,
     Matrix,
     reshape2,
-    RColorBrewer,
-    rlang
+    RColorBrewer
 Suggests:
     devtools,
     testthat,

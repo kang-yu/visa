@@ -28,3 +28,4 @@
 #' @import ggpmisc
 "_PACKAGE"
 
+utils::globalVariables()
