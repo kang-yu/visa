@@ -15,7 +15,7 @@
 \arguments{
 \item{data}{Default spectra database to use for plot. If not a spectra database, the
 methods used will be those defined in package \code{ggplot2}. See \code{\link[ggplot2]{ggplot}}.
-If not specified, must be suppled in each layer added to the plot.}
+If not specified, must be supplied in each layer added to the plot.}
 
 \item{mapping}{Default list of aesthetic mappings to use for plot.
 If not specified, in the case of spectra objects, a default mapping will
@@ -25,7 +25,7 @@ be used.}
 
 \item{wl}{numeric The wavelength vector.}
 
-\item{w.unit}{character The wavelength unit fo the spectra.}
+\item{w.unit}{character The wavelength unit of the spectra.}
 
 \item{environment}{If an variable defined in the aesthetic mapping is not
 found in the data, ggplot will look for it in this environment. It defaults
@@ -34,7 +34,7 @@ to using the environment in which \code{ggplot()} is called.}
 \item{show.stat}{A logic value. whether show the best R^2 and bands.}
 }
 \value{
-\item{cm_plot}{Returns a ggplot object of coorrelation-matrix.}
+\item{cm_plot}{Returns a ggplot object of correlation-matrix.}
 }
 \description{
 \code{ggplot()} initializes a ggplot object. It can be used to

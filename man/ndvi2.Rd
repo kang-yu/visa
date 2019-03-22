@@ -21,7 +21,7 @@ This function calculates a 2-band NDVI using the \code{\link{nsr}} function.
 }
 \details{
 Calculate a NDVI with two specific bands of choice. The new NDVI follows the
-the standard fromula \deqn{NDVI = (\lambda_i + \lambda_j)/(\lambda_i - \lambda_j)}.
+the standard formula \deqn{NDVI = (\lambda_i + \lambda_j)/(\lambda_i - \lambda_j)}.
 Bands i and j correspond to the b1 and b2 input arguments, respectively. Wavelength
 indexes are determined based on the first argument 's'.
 }

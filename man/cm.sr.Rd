@@ -18,11 +18,11 @@ cm.sr(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE)
 \item{cm.plot}{A logic value for whether plotting the coefficient matrix or not, default FALSE.}
 }
 \value{
-\item{cm}{Returns a coorrelation coefficients matrix.}
+\item{cm}{Returns a correlation coefficients matrix.}
 }
 \description{
-This function developes a optimization algorithm based on correlation analysis between spectral matrix 'spectra' and the
-getation variable of interest x, which
+This function develops a optimization algorithm based on correlation analysis between spectral matrix 'spectra' and the
+vegetation variable of interest x, which
 determines the best spectral band combinations of the full spectrum that are most predictive for 'x'.
 }
 \details{
