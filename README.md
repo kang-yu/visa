@@ -1,7 +1,7 @@
 [![Travis build status](https://travis-ci.org/kang-yu/visa.svg?branch=master)](https://travis-ci.org/kang-yu/visa)
-[![HitCount](http://hits.dwyl.io/kang-yu/visa.svg)](http://hits.dwyl.io/kang-yu/visa)
 [![star this repo](http://githubbadges.com/star.svg?user=kang-yu&repo=visa&style=default)](https://github.com/kang-yu/visa)
 [![fork this repo](http://githubbadges.com/fork.svg?user=kang-yu&repo=visa&style=default)](https://github.com/kang-yu/visa/fork)
+[![HitCount](http://hits.dwyl.io/kang-yu/visa.svg)](http://hits.dwyl.io/kang-yu/visa)
 
 # visa
 This R package is to facilitate Vegetation Imaging Spectroscopy Analysis (VISA). For more details of this package, you can  `browseVignettes("visa")`. 
