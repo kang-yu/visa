@@ -1,9 +1,10 @@
+# visa
+
 [![Travis build status](https://travis-ci.org/kang-yu/visa.svg?branch=master)](https://travis-ci.org/kang-yu/visa)
 [![Build status](https://ci.appveyor.com/api/projects/status/8rxdgcr4ro8ga0s4?svg=true)](https://ci.appveyor.com/project/kang-yu/visa)
 [![codecov](https://codecov.io/gh/kang-yu/visa/branch/master/graph/badge.svg)](https://codecov.io/gh/kang-yu/visa)
 [![HitCount](http://hits.dwyl.io/kang-yu/visa.svg)](http://hits.dwyl.io/kang-yu/visa)
 
-# visa
 This R package is to facilitate Vegetation Imaging Spectroscopy Analysis (VISA). For more details of this package, you can  `browseVignettes("visa")`. 
 
 
@@ -23,7 +24,7 @@ You might encounter problem of package dependencies, such as some functions depe
 ``` r
 if (!require("devtools")) install.packages("devtools")
 # devtools::install_github("kang-yu/visa") # install without vignettes
-devtools::install_github("kang-yu/visa", build_opts = c("--no-resave-data", "--no-manual")
+devtools::install_github("kang-yu/visa", build_opts = c("--no-resave-data", "--no-manual"))
 ``` 
 
 You might encounter [this problem of install_github()](https://github.com/r-lib/devtools/issues/1978), and in this case, you could try update the {remotes} `devtools::install_github("r-lib/remotes")`.
