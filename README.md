@@ -21,9 +21,9 @@ You might encounter problem of package dependencies, such as some functions depe
 ### install the dev-version from GitHub:
 
 ``` r
-if (!require("devtools", character.only = TRUE)) install.packages("devtools", dependencies = TRUE)
+if (!require("devtools")) install.packages("devtools")
 devtools::install_github("kang-yu/visa")
-# devtools::install_github("kang-yu/visa", build_vignettes = TRUE) # to also install vignettes and suggested packages
+# devtools::install_github("kang-yu/visa", build_vignettes = TRUE) # to also install vignettes
 ``` 
 
 You might encounter [this problem of install_github()](https://github.com/r-lib/devtools/issues/1978), and in this case, you could try update the {remotes} `devtools::install_github("r-lib/remotes")`.
