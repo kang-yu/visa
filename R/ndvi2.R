@@ -13,11 +13,10 @@
 #' @return
 #' \item{ndvi}{The returned values are the new NDVI.}
 #' @examples
-#' \dontrun{
 #' library(visa)
 #' s <- NSpec.DF$spectra
 #' ndvi2(s, 780, 680)
-#' }
+#'
 #' @import ggplot2 ggpmisc
 #' @export
 ndvi2 <- function(s, b1, b2){

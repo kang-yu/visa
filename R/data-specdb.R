@@ -15,6 +15,7 @@
 #'   ...{currently not used}
 #' }
 #' @examples
+#' library(visa)
 #' data(NSpec.DB)
 #' str(NSpec.DB)
 #' @source \url{visa}

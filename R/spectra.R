@@ -13,14 +13,14 @@
 #' @param object A Spectra object, spectra.data.frame, or spectra.matrix.
 #' @param ... Other options.
 #' @examples
-#' \dontrun{
 #' # For the S4 class 'Spectra'
+#' library(visa)
 #' data(NSpec.DB)
 #' spectra_matrix <- spectra(NSpec.DB)
 #' # For the spectra data.frame
 #' data(NSpec.DF)
 #' spectra_matrix <- spectra(NSpec.DF)
-#' }
+#'
 #' @export spectra
 setGeneric("spectra", function(object, ...) standardGeneric("spectra"))
 

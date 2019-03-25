@@ -15,12 +15,12 @@
 #'   \item{cm}{Returns a correlation coefficients matrix.}
 #' @seealso \code{\link{cm.nsr}}
 #' @examples
-#' \dontrun{
+#' library(visa)
 #' data(NSpec.DF)
 #' x <- NSpec.DF$N # nitrogen
 #' S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 10 nm steps
-#' cm.sr(S, x, cm.plot = TRUE)
-#' }
+#' cm <- cm.sr(S, x, cm.plot = FALSE)
+#'
 #' @import ggplot2 Matrix reshape2 grDevices
 #' @export
 

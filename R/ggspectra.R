@@ -28,10 +28,10 @@
 #'
 #' @seealso \code{?ggpmisc::ggplot()}
 #' @examples
-#' \dontrun{
+#' library(visa)
 #' library(ggplot2)
 #' ggplot.spectra(NSpec.DF) + geom_line()
-#' }
+#'
 #' @note Current implementation does not merge default mapping with user
 #' supplied mapping. If user supplies a mapping, it is used as is.
 #' To add to the default mapping, aes() can be used by itself to compose
@@ -64,9 +64,16 @@ ggplot.spectra <- function(data, mapping = NULL, ...,
 #' @rdname ggplot
 #'
 #' @param show.stat A logic value. whether show the best R^2 and bands.
-#'
 #' @return
 #'   \item{cm_plot}{Returns a ggplot object of correlation-matrix.}
+#'
+#' @examples
+#' library(visa)
+#' data(NSpec.DF)
+#' x <- NSpec.DF$N # nitrogen
+#' S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 10 nm steps
+#' cm <- cm.sr(S, x, cm.plot = FALSE)
+#' ggplot.cm(cm)
 #' @import ggplot2 reshape2 grDevices
 #' @export ggplot.cm
 

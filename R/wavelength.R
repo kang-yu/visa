@@ -13,12 +13,12 @@
 #' @param object A object of Spectra
 #' @param ... Other options (... T/F with unit)
 #' @examples
-#' \dontrun{
+#' library(visa)
 #' # For S4 class Spectra
 #' wavelength(NSpec.DB)
 #' # For spectra data.frame format
 #' wavelength(NSpec.DF)
-#' }
+#'
 #' @export wavelength
 # setMethod("as.spectra",
 #           signature(spectra = "matrix", wavelength = "numeric"),

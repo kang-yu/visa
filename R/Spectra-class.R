@@ -93,10 +93,9 @@ setMethod("initialize", "SpectraDatabase",
 #' @param data A data.frame
 #' @param ... Other parameters
 #' @examples
-#' \dontrun{
 #' s <- as.spectra(matrix(1:100, 4), 1:25, "nm", data.frame(x = letters[1:4]))
 #' str(s)
-#' }
+#'
 #' @export
 as.spectra <- function(spectra = matrix(0),
                        wavelength = numeric(0),

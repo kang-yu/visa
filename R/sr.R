@@ -9,11 +9,10 @@
 #' @param b1 A integer number which defines the wavelength of the 1st spectral band.
 #' @param b2 A integer number which defines the wavelength of the 2nd spectral band.
 #' @examples
-#' \dontrun{
 #' library(visa)
 #' s <- NSpec.DF$spectra
 #' sr1 <- sr(s, 480, 550)
-#' }
+#'
 #' @import ggplot2 ggpmisc
 #' @export
 
@@ -36,10 +35,9 @@ sr <- function(s, b1, b2){
 #' @rdname sr
 #' @inheritParams sr
 #' @examples
-#' \dontrun{
 #' s <- NSpec.DF$spectra
 #' nsr1 <- nsr(s, 480, 550)
-#' }
+#'
 #' @export
 nsr <- function(s, b1, b2){
   sr <- sr(s, b1, b2)
@@ -53,11 +51,10 @@ nsr <- function(s, b1, b2){
 #' @inheritParams sr
 #' @param y A numeric variable to correlate with SR
 #' @examples
-#' \dontrun{
 #' s <- NSpec.DF
 #' y <- NSpec.DF$N
 #' lm.sr(s,600,500,y)
-#' }
+#'
 #' @export
 lm.sr <- function(s,b1,b2,y){
 
@@ -73,11 +70,10 @@ lm.sr <- function(s,b1,b2,y){
 #' @rdname sr
 #' @inheritParams lm.sr
 #' @examples
-#' \dontrun{
 #' s <- NSpec.DF
 #' y <- NSpec.DF$N
 #' lm.nsr(s,600,500,y)
-#' }
+#'
 #' @export
 lm.nsr <- function(s,b1,b2,y){
 

@@ -14,12 +14,11 @@
 #' to using the environment in which \code{ggplot()} is called.
 #'
 #' @examples
-#' \dontrun{
 #' library(visa)
 #' x <- 1:10
 #' y <- 2:11+0.5
 #' ggplot.lmfit(x, y)
-#' }
+#'
 #' @import ggplot2 ggpmisc
 #' @export ggplot.lmfit
 
