@@ -4,7 +4,8 @@ Title: Vegetation Imaging Spectroscopy Analyzer
 Version: 0.1.0
 Author: Kang Yu
 Maintainer: Kang Yu <kkaannggyu@gmail.com>
-Description: For an easy-to-use tool for working with Hyperspectral Remote Sensing (HRS, also known as Imaging Spectroscopy) data.
+Description: Provides easy-to-use tools for working with Hyperspectral Remote Sensing (also known as Imaging Spectroscopy) 
+data, with a particular focus on vegetation hyperspectral data analysis. Currently, orgnize hyperspectral data in For an easy-to-use tool for 
 License: GPL-3
 LazyData: true
 Encoding: UTF-8

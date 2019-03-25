@@ -1,4 +1,4 @@
-#' Example data in the Spectral data.frame. format
+#' Example data in the SpectraDataFrame format
 #'
 #' A dataset containing the plant Nitrogen content and spectra.
 #' The Spectra matrix is stored as a variable (in a column) of a data.frame.
@@ -14,6 +14,6 @@
 #' @examples
 #' data(NSpec.DF)
 #' str(NSpec.DF)
-#' @seealso \link{data.frame}
+#' @seealso \link{data.frame} and \code{\link{NSpec.DB}}
 #' @source \url{visa}
 "NSpec.DF"
