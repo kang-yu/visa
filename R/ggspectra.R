@@ -39,23 +39,23 @@
 #'
 #' @import reshape2 ggplot2
 #' @name ggplot
-#' @export
+#' @export ggplot.spectra
 ggplot.spectra <- function(data, mapping = NULL, ...,
-           wl = NULL,
-           w.unit = "nm",
-           environment = parent.frame()) {
-    spec <- spectra(data)
-    # wl <- wavelength(data)
-    specdf <- melt(spec)
-    specdf$Var2 <- as.numeric(gsub("\\D", "", specdf$Var2))
-    if (is.null(mapping)) {
-      mapping <- aes_string("Var2", "value")
-    }
-    ggplot2::ggplot(data = specdf,
-                    mapping = mapping,
-                    ... = ...,
-                    environment = environment)
+                           wl = NULL,
+                           w.unit = "nm",
+                           environment = parent.frame()) {
+  spec <- spectra(data)
+  # wl <- wavelength(data)
+  specdf <- melt(spec)
+  specdf$Var2 <- as.numeric(gsub("\\D", "", specdf$Var2))
+  if (is.null(mapping)) {
+    mapping <- aes_string("Var2", "value")
   }
+  ggplot2::ggplot(data = specdf,
+                  mapping = mapping,
+                  ... = ...,
+                  environment = environment)
+}
 
 
 #' Create a new ggplot plot from the correlation matrix derived from the
