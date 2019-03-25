@@ -32,12 +32,12 @@ Construct generic functions for the Spectra object, spectra.data.frame,
 and spectra.matrix.
 }
 \examples{
-\dontrun{
 # For the S4 class 'Spectra'
+library(visa)
 data(NSpec.DB)
 spectra_matrix <- spectra(NSpec.DB)
 # For the spectra data.frame
 data(NSpec.DF)
 spectra_matrix <- spectra(NSpec.DF)
-}
+
 }

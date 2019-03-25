@@ -4,10 +4,10 @@ Title: Vegetation Imaging Spectroscopy Analyzer
 Version: 0.1.0
 Author: Kang Yu
 Maintainer: Kang Yu <kkaannggyu@gmail.com>
-Description: Provides easy-to-use tools for data analysis and visualization in Hyperspectral Remote Sensing (also known as Imaging Spectroscopy), 
-with a particular focus on vegetation hyperspectral data analysis. It consists of a set of functions, ranging from the orgnization of hyperspectral data 
-in proper data structure for spectral feature selection, calculation of vegetation indices, multivariate analysis, as well as the visualization of spectra 
-and results of data analyis in the ggplot style.
+Description: Provides easy-to-use tools for data analysis and visualization in Hyperspectral Remote Sensing (also known as Imaging Spectroscopy), with 
+    a particular focus on vegetation hyperspectral data analysis. It consists of a set of functions, ranging from the orgnization of hyperspectral data 
+    in proper data structure for spectral feature selection, calculation of vegetation indices, multivariate analysis, as well as the visualization of 
+    spectra and results of data analyis in the ggplot style.
 License: GPL-3
 LazyData: true
 Encoding: UTF-8
@@ -36,8 +36,8 @@ Collate:
     'Spectra-class.R'
     'cm.nsr.R'
     'cm.sr.R'
+    'data-specdb.R'
     'data-specdf.R'
-    'data-specls.R'
     'ggplot-method.R'
     'ggplot.lmfit.R'
     'ggspectra.R'

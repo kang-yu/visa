@@ -44,10 +44,9 @@ Constructor \code{as.spectra.database} creates a SpectraDatabase object.
 }}
 
 \examples{
-\dontrun{
 s <- as.spectra(matrix(1:100, 4), 1:25, "nm", data.frame(x = letters[1:4]))
 str(s)
-}
+
 s <- as.spectra.database(matrix(1:100, 4), 1:25, "nm", data.frame(x = letters[1:4]))
 str(s)
 }

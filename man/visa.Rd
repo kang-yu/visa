@@ -6,7 +6,10 @@
 \alias{visa-package}
 \title{visa: Vegetation Imaging Spectroscopy Analyzer}
 \description{
-For an easy-to-use tool for working with Hyperspectral Remote Sensing (HRS, also known as Imaging Spectroscopy) data.
+Provides easy-to-use tools for data analysis and visualization in Hyperspectral Remote Sensing (also known as Imaging Spectroscopy), with 
+    a particular focus on vegetation hyperspectral data analysis. It consists of a set of functions, ranging from the orgnization of hyperspectral data 
+    in proper data structure for spectral feature selection, calculation of vegetation indices, multivariate analysis, as well as the visualization of 
+    spectra and results of data analyis in the ggplot style.
 }
 \details{
 The visa package provides a set of functions for hyperspectral data analysis, with the main idea

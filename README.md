@@ -33,10 +33,10 @@ You might encounter [this problem of install_github()](https://github.com/r-lib/
 
 ```
 library(visa)
-x <- NSpec.DF$N
-s <- NSpec.DF$spectra
-sr1 <- sr(s, 440, 445)
-plot(sr1)
+data(NSpec.DF)
+x <- NSpec.DF$N # nitrogen
+S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 10)] # resampled to 10 nm steps
+cm.nsr(S, x, cm.plot = TRUE)
 ```
 
 ## Bug report [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/kang-yu/visa/issues)

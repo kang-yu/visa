@@ -32,12 +32,12 @@ the correlation coefficients (r) which indicates the predictive performance of e
 output is the wavelength (nm) indicating the best two bands that produce the highest value of r.
 }
 \examples{
-\dontrun{
+library(visa)
 data(NSpec.DF)
 x <- NSpec.DF$N # nitrogen
-S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 10 nm steps
-cm.sr(S, x, cm.plot = TRUE)
-}
+S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 10)] # resampled to 10 nm steps
+cm <- cm.sr(S, x, cm.plot = FALSE)
+
 }
 \seealso{
 \code{\link{cm.nsr}}

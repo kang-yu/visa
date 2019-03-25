@@ -34,10 +34,10 @@ This call in turn calls the method for the generic function `initialize`.
 Construct a Spectra class by using the
 }
 \examples{
-\dontrun{
+library(visa)
 # For S4 class Spectra
 wavelength(NSpec.DB)
 # For spectra data.frame format
 wavelength(NSpec.DF)
-}
+
 }

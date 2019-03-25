@@ -22,7 +22,7 @@
 #' library(visa)
 #' data(NSpec.DF)
 #' x <- NSpec.DF$N # nitrogen
-#' S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 10 nm steps
+#' S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 5 nm steps
 #' cm <- cm.nsr(S, x, cm.plot = TRUE)
 #'
 #' @import ggplot2 Matrix reshape2 grDevices

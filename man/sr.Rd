@@ -36,23 +36,19 @@ Simple ratio and NDVI looking indices are the two groups of mostly used spectral
 As it exactly reads in its name, it is a normalization of the SR and ranges in (0,1).
 }
 \examples{
-\dontrun{
 library(visa)
 s <- NSpec.DF$spectra
 sr1 <- sr(s, 480, 550)
-}
-\dontrun{
+
 s <- NSpec.DF$spectra
 nsr1 <- nsr(s, 480, 550)
-}
-\dontrun{
+
 s <- NSpec.DF
 y <- NSpec.DF$N
 lm.sr(s,600,500,y)
-}
-\dontrun{
+
 s <- NSpec.DF
 y <- NSpec.DF$N
 lm.nsr(s,600,500,y)
-}
+
 }

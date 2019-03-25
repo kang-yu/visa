@@ -24,10 +24,9 @@ Visualization of linear fit (y = ax + b), using scatter plots and with regressio
 added details of regression equation and R^2.
 }
 \examples{
-\dontrun{
 library(visa)
 x <- 1:10
 y <- 2:11+0.5
 ggplot.lmfit(x, y)
-}
+
 }

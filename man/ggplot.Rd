@@ -57,10 +57,16 @@ To add to the default mapping, aes() can be used by itself to compose
 the ggplot.
 }
 \examples{
-\dontrun{
+library(visa)
 library(ggplot2)
 ggplot.spectra(NSpec.DF) + geom_line()
-}
+
+library(visa)
+data(NSpec.DF)
+x <- NSpec.DF$N # nitrogen
+S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 10 nm steps
+cm <- cm.sr(S, x, cm.plot = FALSE)
+ggplot.cm(cm)
 }
 \seealso{
 \code{?ggpmisc::ggplot()}

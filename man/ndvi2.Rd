@@ -26,9 +26,8 @@ Bands i and j correspond to the b1 and b2 input arguments, respectively. Wavelen
 indexes are determined based on the first argument 's'.
 }
 \examples{
-\dontrun{
 library(visa)
 s <- NSpec.DF$spectra
 ndvi2(s, 780, 680)
-}
+
 }
