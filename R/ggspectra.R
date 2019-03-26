@@ -1,7 +1,7 @@
-#' Create a new ggplot plot from spectra data
+#' Create a new ggplot plot with a geom_line() layer from spectra data
 #'
 #' \code{ggplot()} initializes a ggplot object. It can be used to
-#' declare the input spectral object for a graphic and to optionally specify the
+#' declare the input spectra object for a graphic and to optionally specify the
 #' set of plot aesthetics intended to be common throughout all
 #' subsequent layers unless specifically overridden.
 #'
@@ -30,7 +30,7 @@
 #' @examples
 #' library(visa)
 #' library(ggplot2)
-#' ggplot.spectra(NSpec.DF) + geom_line()
+#' ggplot.spectra(NSpec.DF)
 #'
 #' @note Current implementation does not merge default mapping with user
 #' supplied mapping. If user supplies a mapping, it is used as is.
@@ -47,14 +47,20 @@ ggplot.spectra <- function(data, mapping = NULL, ...,
   spec <- spectra(data)
   # wl <- wavelength(data)
   specdf <- melt(spec)
+  # "Var1" is the rownames
+  specdf$Var1 <- as.factor(specdf$Var1)
   specdf$Var2 <- as.numeric(gsub("\\D", "", specdf$Var2))
+  names(specdf)[1:2] <- c("spectrum_id", "band")
   if (is.null(mapping)) {
-    mapping <- aes_string("Var2", "value")
+    mapping <- aes_string(x = "band", y = "value",
+                          group = "spectrum_id",
+                          color = "spectrum_id")
   }
   ggplot2::ggplot(data = specdf,
                   mapping = mapping,
                   ... = ...,
-                  environment = environment)
+                  environment = environment) +
+    geom_line(show.legend = FALSE)
 }
 
 
