@@ -1,7 +1,8 @@
 Meta
 doc
-inst/doc
+figure
 foo.R
+inst/doc
 ZZZ-Rx
 .Rproj.user
 .Rhistory
