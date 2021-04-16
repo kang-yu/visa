@@ -1,6 +1,3 @@
-# visa 0.1.0  [2019-03-22]
+# visa 0.1.0  [2021-04-16]
 
--- R CMD check results ------------------------------------------------------------ visa 0.1.0 ----
-Duration: 1m 7.2s
-
-0 errors √ | 0 warnings √ | 0 notes √
+* This is a new release. 0.1.0.

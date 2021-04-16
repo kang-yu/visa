@@ -1,4 +1,4 @@
-## Re-submit 2019-03-25
+## Re-submit 2021-04-16
 
 ## R CMD check results 
 
@@ -6,7 +6,7 @@
 
 * This is a new release. 0.1.0.
 
-There was a NOTE: 
+There was a NOTE: (But not misspelling)
 
   Possibly mis-spelled words in DESCRIPTION:
     ggplot (10:47)
