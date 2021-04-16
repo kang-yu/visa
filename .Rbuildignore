@@ -1,0 +1,14 @@
+^.git
+^appveyor\.yml$
+^codecov.yml$
+^cran-comments\.md$
+^CRAN-RELEASE$
+^\.travis\.yml$
+^Meta$
+^doc$
+^.*\.Rproj$
+^\.Rproj\.user$
+^data-raw$
+^figure$
+^ZZZ-Rx$
+^foo.*
