@@ -26,4 +26,3 @@ import(grDevices)
 import(reshape2)
 importFrom(ggpmisc,stat_poly_eq)
 importFrom(methods,new)
-
