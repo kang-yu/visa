@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Meta
 doc
 figure
@@ -7,3 +8,14 @@ ZZZ-Rx
 .Rproj.user
 .Rhistory
 .RData
+=======
+Meta
+doc
+figure
+foo.R
+inst/doc
+ZZZ-Rx
+.Rproj.user
+.Rhistory
+.RData
+>>>>>>> fdcc887ca45316c73fbe6ef70768b77deffbc575

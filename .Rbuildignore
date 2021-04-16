@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ^.git
 ^appveyor\.yml$
 ^codecov.yml$
@@ -12,3 +13,17 @@
 ^figure$
 ^ZZZ-Rx$
 ^foo.*
+=======
+^appveyor\.yml$
+^codecov.yml$
+^cran-comments\.md$
+^CRAN-RELEASE$
+^\.travis\.yml$
+^Meta$
+^doc$
+^.*\.Rproj$
+^\.Rproj\.user$
+^data-raw$
+^ZZZ-Rx$
+^foo.*
+>>>>>>> fdcc887ca45316c73fbe6ef70768b77deffbc575
