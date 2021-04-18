@@ -16,9 +16,6 @@ A Spectra object with 19 rows and 4 slots (spectra, wavelength, w.unit, data).
   ...{currently not used}
 }
 }
-\source{
-\url{visa}
-}
 \usage{
 NSpec.DB
 }
@@ -31,5 +28,6 @@ such as here the plant N content.
 library(visa)
 data(NSpec.DB)
 str(NSpec.DB)
+
 }
 \keyword{datasets}

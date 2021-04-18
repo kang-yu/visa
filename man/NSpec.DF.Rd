@@ -14,9 +14,6 @@ A data frame with 19 rows and 2 variables:
   ...
 }
 }
-\source{
-\url{visa}
-}
 \usage{
 NSpec.DF
 }
