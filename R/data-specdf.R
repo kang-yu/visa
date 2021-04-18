@@ -16,6 +16,6 @@
 #' data(NSpec.DF)
 #' str(NSpec.DF)
 #' @seealso \link{data.frame} and \code{\link{NSpec.DB}}
-#' @source \url{visa}
+#'
 "NSpec.DF"
 

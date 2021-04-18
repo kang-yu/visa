@@ -18,5 +18,5 @@
 #' library(visa)
 #' data(NSpec.DB)
 #' str(NSpec.DB)
-#' @source \url{visa}
+#'
 "NSpec.DB"

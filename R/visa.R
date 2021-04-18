@@ -20,10 +20,11 @@
 #' ... not implemented yet
 #' The multivariate analysis use the spectra.data.frame format.
 #'
-#' @keywords internal
+#'
 #' @docType package
 #' @name visa
 #' @author Kang Yu
+#' @keywords internal
 #'
 #' @import ggplot2
 "_PACKAGE"
