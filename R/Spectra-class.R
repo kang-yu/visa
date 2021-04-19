@@ -159,6 +159,10 @@ setMethod("initialize", "SpectraMatrix",
 #' @param spectra A matrix
 #' @param wavelength A numeric vector
 #' @param w.unit A character string
+#'
+#' @return
+#'   \item{sdf}{Returns a SpectraDataFrame.}
+#'
 #' @examples
 #' smatrix <- as.spectra.matrix(matrix(1:10, 1), 1:10, "nm")
 #' str(smatrix)
@@ -223,6 +227,9 @@ setMethod("initialize", "SpectraDataFrame",
 #' @param wavelength A numeric vector
 #' @param w.unit A character string
 #' @param ... Other options for similar format of variables
+#'
+#' @return
+#'   \item{sdf}{Returns a SpectraDataFrame.}
 #' @examples
 #' sdf <- as.spectra.data.frame(matrix(1:10, 1), 1:10, "nm", data.frame(a = 1, b =2))
 #' str(sdf)
