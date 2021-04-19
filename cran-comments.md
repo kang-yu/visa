@@ -1,8 +1,13 @@
 ## Re-submit 2021-04-19
 
+This is resubmission.
+
 ## R CMD check results 
 
-0 errors | 0 warnings | 1 note
+R CMD check results ---- visa 0.1.0 ----
+Duration: 1m 32.7s
+
+0 errors √ | 0 warnings √ | 0 notes √
 
 * This is a new release. 0.1.0.
 
