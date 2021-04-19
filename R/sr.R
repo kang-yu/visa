@@ -8,6 +8,10 @@
 #' @param s Spectral data in the format of visa's Spectra object, spectra.data.frame or spectra.matrix.
 #' @param b1 A integer number which defines the wavelength of the 1st spectral band.
 #' @param b2 A integer number which defines the wavelength of the 2nd spectral band.
+#'
+#' @return
+#'   \item{sr}{Returns a simple ratio index.}
+#'
 #' @examples
 #' library(visa)
 #' s <- NSpec.DF$spectra
@@ -35,6 +39,9 @@ sr <- function(s, b1, b2){
 #'
 #' @rdname sr
 #' @inheritParams sr
+#'
+#' @return
+#'   \item{nsr}{Returns a NSR index.}
 #' @examples
 #' s <- NSpec.DF$spectra
 #' nsr1 <- nsr(s, 480, 550)
@@ -51,6 +58,9 @@ nsr <- function(s, b1, b2){
 #' @rdname sr
 #' @inheritParams sr
 #' @param y A numeric variable to correlate with SR
+#'
+#' @return
+#'   \item{p}{Returns a ggplot object.}
 #' @examples
 #' s <- NSpec.DF
 #' y <- NSpec.DF$N
@@ -66,10 +76,13 @@ lm.sr <- function(s,b1,b2,y){
     labs(x = bstr)
   p
 }
-#' Fit linear model for the Normalized Simple Ratio (SR) and another variable.
+#' Fit linear model for the Normalized Simple Ratio (NSR) and another variable.
 #'
 #' @rdname sr
 #' @inheritParams lm.sr
+#'
+#' @return
+#'   \item{p}{Returns a ggplot object.}
 #' @examples
 #' s <- NSpec.DF
 #' y <- NSpec.DF$N
