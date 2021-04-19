@@ -20,6 +20,9 @@ as.spectra.matrix(
 
 \item{w.unit}{A character string}
 }
+\value{
+\item{sdf}{Returns a SpectraDataFrame.}
+}
 \description{
 SpectraMatrix is a extended 'Spectra' class.
 

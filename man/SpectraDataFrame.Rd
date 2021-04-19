@@ -24,6 +24,9 @@ as.spectra.data.frame(
 
 \item{...}{Other options for similar format of variables}
 }
+\value{
+\item{sdf}{Returns a SpectraDataFrame.}
+}
 \description{
 Constructor \code{as.spectra.data.frame} function creates a SpectraDataFrame object, which is equivalent to the use of \link{as.specdf}.
 }

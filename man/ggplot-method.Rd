@@ -16,6 +16,9 @@
 found in the data, ggplot will look for it in this environment. It defaults
 to using the environment in which \code{ggplot()} is called.}
 }
+\value{
+\item{p}{Returns a ggplot object.}
+}
 \description{
 This functions plots model fit using ggplot.
 }

@@ -24,6 +24,15 @@ lm.nsr(s, b1, b2, y)
 
 \item{y}{A numeric variable to correlate with SR}
 }
+\value{
+\item{sr}{Returns a simple ratio index.}
+
+\item{nsr}{Returns a NSR index.}
+
+\item{p}{Returns a ggplot object.}
+
+\item{p}{Returns a ggplot object.}
+}
 \description{
 Simple Ratio is the ratio of the spectra (mostly reflectance) between two bands
 in the format of \deqn{SR = \lambda_i/\lambda_j}
