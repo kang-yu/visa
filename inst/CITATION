@@ -3,13 +3,18 @@ citHeader("To cite visa in publications use:")
 citEntry(
   entry    = "Article",
   title    = "Estimating leaf chlorophyll of barley at different growth stages using spectral indices to reduce soil background and canopy structure effects",
-  author   = "{Yu, Kang and Lenz-Wiedemann, Victoria and Chen, Xinping and Bareth, Georg",
+  author   = personList(as.person("Kang Yu"),
+                as.person("Victoria Lenz-Wiedemann"),
+                as.person("Xinping Chen"),
+                as.person("Georg Bareth")),
   journal  = "ISPRS Journal of Photogrammetry and Remote Sensing",
   year     = "2014",
   volume   = "97",
   pages    = "58--77",
   doi      = "10.1016/j.isprsjprs.2014.08.005",
-  textVersion = paste(
-
+  textVersion = paste("Yu, K., Lenz-Wiedemann, V., Chen, X., Bareth, G. (2014).",
+  "Estimating leaf chlorophyll of barley at different growth stages using spectral indices to reduce soil background and canopy structure effects.",
+  "ISPRS Journal of Photogrammetry and Remote Sensing, 97, 58-77.",
+  "doi:10.1016/j.isprsjprs.2014.08.005"
   )
 )
