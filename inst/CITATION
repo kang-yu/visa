@@ -1,0 +1,15 @@
+citHeader("To cite visa in publications use:")
+
+citEntry(
+  entry    = "Article",
+  title    = "Estimating leaf chlorophyll of barley at different growth stages using spectral indices to reduce soil background and canopy structure effects",
+  author   = "{Yu, Kang and Lenz-Wiedemann, Victoria and Chen, Xinping and Bareth, Georg",
+  journal  = "ISPRS Journal of Photogrammetry and Remote Sensing",
+  year     = "2014",
+  volume   = "97",
+  pages    = "58--77",
+  doi      = "10.1016/j.isprsjprs.2014.08.005",
+  textVersion = paste(
+
+  )
+)
