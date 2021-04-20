@@ -1,7 +1,7 @@
 Package: visa
 Type: Package
 Title: Vegetation Imaging Spectroscopy Analyzer
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: person("Kang", "Yu", email = "kang.yu@outlook.com",
   role = c("aut", "cre"))
 Description: Provides easy-to-use tools for data analysis and visualization for hyperspectral remote sensing (also known as imaging spectroscopy), with 
