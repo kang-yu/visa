@@ -29,12 +29,13 @@ Suggests:
     knitr,
     rmarkdown,
     stringi
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 Collate: 
     'visa.R'
     'Spectra-class.R'
     'cm.nsr.R'
+    'cm.rbd3.R'
     'cm.sr.R'
     'data-specdb.R'
     'data-specdf.R'

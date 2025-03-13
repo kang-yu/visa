@@ -1,4 +1,4 @@
-#' Access the spectra data of 'SpectraDatabase'.
+#' Access the spectra data of 'Spectra.Dataframe'.
 #'
 #' Functions to access slot data of the Class Spectra.
 #'
