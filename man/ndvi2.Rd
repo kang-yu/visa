@@ -7,7 +7,7 @@
 ndvi2(s, b1, b2)
 }
 \arguments{
-\item{s}{Spectral data in the format of visa's Spectra object, spectra.data.frame or spectra.matrix.}
+\item{s}{Spectral data in the format of visa's Spectra object, spectra.dataframe or spectra.matrix.}
 
 \item{b1}{A integer number which defines the wavelength of the 1st spectral band.}
 

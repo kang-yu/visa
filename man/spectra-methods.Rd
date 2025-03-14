@@ -9,7 +9,7 @@
 \alias{spectra,data.frame,ANY-method}
 \alias{spectra,matrix-method}
 \alias{spectra,matrix,ANY-method}
-\title{Access the spectra data of 'SpectraDatabase'.}
+\title{Access the spectra data of 'Spectra.Dataframe'.}
 \usage{
 spectra(object, ...)
 

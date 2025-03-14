@@ -2,14 +2,11 @@
 % Please edit documentation in R/visa.R
 \docType{package}
 \name{visa}
-\alias{visa}
 \alias{visa-package}
+\alias{visa}
 \title{visa: Vegetation Imaging Spectroscopy Analyzer}
 \description{
-Provides easy-to-use tools for data analysis and visualization for hyperspectral remote sensing (also known as imaging spectroscopy), with 
-    a particular focus on vegetation hyperspectral data analysis. It consists of a set of functions, ranging from the organization of hyperspectral data 
-    in the proper data structure for spectral feature selection, calculation of vegetation index, multivariate analysis, as well as to the visualization 
-    of spectra and results of analysis in the 'ggplot2' style.
+Provides easy-to-use tools for data analysis and visualization for hyperspectral remote sensing (also known as imaging spectroscopy), with a particular focus on vegetation hyperspectral data analysis. It consists of a set of functions, ranging from the organization of hyperspectral data in the proper data structure for spectral feature selection, calculation of vegetation index, multivariate analysis, as well as to the visualization of spectra and results of analysis in the 'ggplot2' style.
 }
 \details{
 The visa package provides a set of functions for hyperspectral data analysis, with the main purpose

@@ -43,30 +43,30 @@ setMethod("initialize", "Spectra",
           }
 )
 
-#' Class 'Spectra.Dataframe'
+#' Class 'SpectraDataFrame'
 #'
-#' \code{Spectra.Dataframe} is an extended \code{Spectra} class with associated vegetation data in a \code{data.frame}.
+#' \code{SpectraDataFrame} is an extended \code{Spectra} class with associated vegetation data in a \code{data.frame}.
 #'
-#' @name Spectra.Dataframe-class
-#' @rdname Spectra.Dataframe-class
-#' @aliases Spectra.Dataframe-class, spectra.df
+#' @name SpectraDataFrame-class
+#' @rdname SpectraDataFrame-class
+#' @aliases spectra.dataframe
 #' @docType class
 #' @slot spectra A matrix.
 #' @slot wavelength A numeric vector.
 #' @slot w.unit A character string.
 #' @slot data A data.frame of vegetation data corresponding to the spectra.
-#' @exportClass Spectra.Dataframe
-setClass("Spectra.Dataframe",
-         contains = "Spectra",
-         slots = c(data = "data.frame"),
-         validity = function(object){
-           w <- length(object)
-           if (length(w) != 0L && any(w != w[[1]]))
-             return("object width is not constant")
-           TRUE
-         }
+#' @exportClass SpectraDataFrame
+SpectraDataFrame <- setClass("SpectraDataFrame",
+                             contains = "Spectra",
+                             slots = c(data = "data.frame"),
+                             validity = function(object){
+                               w <- length(object)
+                               if (length(w) != 0L && any(w != w[[1]]))
+                                 return("object width is not constant")
+                               TRUE
+                             }
 )
-setMethod("initialize", "Spectra.Dataframe",
+setMethod("initialize", "SpectraDataFrame",
           function(.Object,
                    spectra = matrix(0),
                    wavelength = numeric(0),
@@ -101,41 +101,25 @@ as.spectra <- function(spectra = matrix(0),
   return(methods::new("Spectra", spectra, wavelength, w.unit, data, ...))
 }
 
-#' Create a Spectra Dataframe Object
+#' Class 'SpectraMatrix'
 #'
-#' The constructor \code{as.spectra.dataframe} creates a \code{Spectra.Dataframe} object.
+#' \code{SpectraMatrix} is an extended \code{Spectra} class.
 #'
-#' @rdname Spectra-class
-#' @examples
-#' s <- as.spectra.dataframe(matrix(1:100, 4), 1:25, "nm", data.frame(x = letters[1:4]))
-#' str(s)
-#' @export
-as.spectra.dataframe <- function(spectra = matrix(0),
-                                 wavelength = numeric(0),
-                                 w.unit = "nm",
-                                 data = data.frame(), ...){
-  return(methods::new("Spectra", spectra, wavelength, w.unit, data, ...))
-}
-
-#' Class 'Spectra.Matrix'
-#'
-#' \code{Spectra.Matrix} is an extended \code{Spectra} class.
-#'
-#' @name Spectra.Matrix-class
-#' @rdname Spectra.Matrix-class
-#' @aliases Spectra.Matrix-class, spectra.matrix
+#' @name SpectraMatrix-class
+#' @rdname SpectraMatrix-class
+#' @aliases spectra.matrix
 #' @docType class
-#' @exportClass Spectra.Matrix
-setClass("Spectra.Matrix",
-         contains = "Spectra",
-         validity = function(object){
-           w <- length(object)
-           if (length(w) != 0L && any(w != w[[1]]))
-             return("object width is not constant")
-           TRUE
-         }
+#' @exportClass SpectraMatrix
+SpectraMatrix <- setClass("SpectraMatrix",
+                           contains = "Spectra",
+                           validity = function(object){
+                             w <- length(object)
+                             if (length(w) != 0L && any(w != w[[1]]))
+                               return("object width is not constant")
+                             TRUE
+                           }
 )
-setMethod("initialize", "Spectra.Matrix",
+setMethod("initialize", "SpectraMatrix",
           function(.Object,
                    spectra = matrix(0),
                    wavelength = numeric(0),
@@ -147,7 +131,7 @@ setMethod("initialize", "Spectra.Matrix",
           }
 )
 
-#' Create a Spectra Matrix Object
+#' Create a SpectraMatrix Object
 #'
 #' The constructor \code{as.spectra.matrix} creates a \code{Spectra.Matrix} object.
 #'
@@ -164,55 +148,18 @@ setMethod("initialize", "Spectra.Matrix",
 as.spectra.matrix <- function(spectra = matrix(0),
                               wavelength = numeric(0),
                               w.unit = character(0)){
-  # Note: Updated to use "Spectra.Matrix" instead of "SpectraMatrix"
   sls <- methods::new("Spectra.Matrix", spectra, wavelength, w.unit)
   smat <- sls@spectra
   colnames(smat) <- paste(wavelength, w.unit)
   smat
 }
 
-#' Class 'Spectra.Dataframe'
+#' Create a Spectra.Dataframe Object
 #'
-#' \code{Spectra.Dataframe} is an extended \code{Spectra} class with associated vegetation data in a \code{data.frame}.
+#' The constructor \code{as.spectra.dataframe} creates a \code{Spectra.Dataframe} object.
 #'
-#' @name Spectra.Dataframe-class
-#' @rdname Spectra.Dataframe-class
-#' @aliases Spectra.Dataframe, spectra.data.frame
-#' @docType class
-#' @slot spectra A matrix.
-#' @slot wavelength A numeric vector.
-#' @slot w.unit A character string.
-#' @slot data A data.frame of vegetation data corresponding to the spectra.
-#' @exportClass Spectra.Dataframe
-setClass("Spectra.Dataframe",
-         contains = "Spectra",
-         slots = c(data = "data.frame"),
-         validity = function(object){
-           w <- length(object)
-           if (length(w) != 0L && any(w != w[[1]]))
-             return("object width is not constant")
-           TRUE
-         }
-)
-setMethod("initialize", "Spectra.Dataframe",
-          function(.Object,
-                   spectra = matrix,
-                   wavelength = numeric,
-                   w.unit = character,
-                   data = data.frame, ...){
-            .Object <- methods::callNextMethod()
-            if(nrow(.Object@spectra) != nrow(.Object@data) && length(.Object@wavelength) > 1)
-              stop("specified 'spectra' and 'data' of different lengths")
-            .Object
-          }
-)
-
-#' Create a Spectra DataFrame Object
-#'
-#' The constructor \code{as.spectra.data.frame} creates a \code{SpectraDataFrame} object.
-#'
-#' @name as.spectra.data.frame
-#' @rdname Spectra.Dataframe-class
+#' @name as.spectra.dataframe
+#' @rdname SpectraDataframe-class
 #' @aliases as.specdf
 #' @param spectra A matrix.
 #' @param wavelength A numeric vector.
@@ -221,13 +168,13 @@ setMethod("initialize", "Spectra.Dataframe",
 #' @param ... Other options.
 #' @return A \code{Spectra.Dataframe} with the spectra embedded in the data.frame.
 #' @examples
-#' sdf <- as.spectra.data.frame(matrix(1:10, 1), 1:10, "nm", data.frame(a = 1, b = 2))
+#' sdf <- as.spectra.dataframe(matrix(1:10, 1), 1:10, "nm", data.frame(a = 1, b = 2))
 #' str(sdf)
 #' @export
-as.spectra.data.frame <- function(spectra = matrix(0),
-                                  wavelength = numeric(0),
-                                  w.unit = character(0),
-                                  data = data.frame(0), ...){
+as.spectra.dataframe <- function(spectra = matrix(0),
+                                 wavelength = numeric(0),
+                                 w.unit = character(0),
+                                 data = data.frame(0), ...){
   sls <- methods::new("Spectra.Dataframe", spectra, wavelength, w.unit, data)
   spectra <- sls@spectra
   colnames(spectra) <- paste(wavelength, w.unit)

@@ -29,7 +29,7 @@ Suggests:
     knitr,
     rmarkdown,
     stringi
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 VignetteBuilder: knitr
 Collate: 
     'visa.R'
@@ -37,12 +37,12 @@ Collate:
     'cm.nsr.R'
     'cm.rbd3.R'
     'cm.sr.R'
-    'data-specdb.R'
     'data-specdf.R'
     'ggplot-method.R'
     'ggplot.lmfit.R'
     'ggspectra.R'
     'ndvi2.R'
+    'nsr.R'
     'spectra.R'
     'sr.R'
     'wavelength.R'
