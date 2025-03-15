@@ -49,9 +49,9 @@ class(NSpec.DF$spectra)
 There are already a lot of r packages for spectral data analysis, and some of them use the S4 class, e.g. the `hsdar` package. `visa` also supports the S4 format but in a simplified version, using only five slots currently. 
 
 ```
-# check the data type of `NSpec.DB`
-class(NSpec.DB) 
-class(NSpec.DB@spectra) 
+# check the data type of `NSpec.Lib`
+class(NSpec.Lib) 
+class(NSpec.Lib@spectra) 
 ```
 ![Storing spectra matrix as a slot of the S4 class](visa-db.PNG)
 
@@ -97,18 +97,18 @@ $NSR = (\lambda_i - \lambda_j)/(\lambda_i + \lambda_j)$
 To know more about the NDVI, please also check on Wikipedia^[Normalized difference vegetation index (https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index)].
 
 
-#### Example data `NSpec.DB`
+#### Example data `NSpec.Lib`
 
- The first type is the 'NSpec.DB' in the default S4 class 'Spectra'.
+ The first type is the 'NSpec.Lib' in the default S4 class 'Spectra'.
 
 ```{r, echo=TRUE, results='asis'}
 library(visa)
 # check the data type
-class(NSpec.DB) 
+class(NSpec.Lib) 
 # data structure
-# str(NSpec.DB)
+# str(NSpec.Lib)
 # print the first 10 columns
-knitr::kable(head(NSpec.DB@spectra[,1:10]))
+knitr::kable(head(NSpec.Lib@spectra[,1:10]))
 ```
 
 #### Example data `NSpec.DF`
@@ -118,7 +118,7 @@ The second type is a data.frame format, i.e., `NSpec.DF`.
 ```{r, echo=TRUE, results='asis'}
 # check the data type
 class(NSpec.DF) 
-# check whether it contains the same data as 'NSpec.DB'
+# check whether it contains the same data as 'NSpec.Lib'
 knitr::kable(head(NSpec.DF$spectra[,1:10]))
 ```
 

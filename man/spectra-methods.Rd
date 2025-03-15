@@ -9,7 +9,7 @@
 \alias{spectra,data.frame,ANY-method}
 \alias{spectra,matrix-method}
 \alias{spectra,matrix,ANY-method}
-\title{Access the spectra data of 'Spectra.Dataframe'.}
+\title{Access the spectra data of 'SpectraLibrary'.}
 \usage{
 spectra(object, ...)
 
@@ -34,8 +34,8 @@ and spectra.matrix.
 \examples{
 # For the S4 class 'Spectra'
 library(visa)
-data(NSpec.DB)
-spectra_matrix <- spectra(NSpec.DB)
+data(NSpec.Lib)
+spectra_matrix <- spectra(NSpec.Lib)
 # For the spectra data.frame
 data(NSpec.DF)
 spectra_matrix <- spectra(NSpec.DF)

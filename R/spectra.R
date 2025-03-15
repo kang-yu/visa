@@ -1,4 +1,4 @@
-#' Access the spectra data of 'Spectra.Dataframe'.
+#' Access the spectra data of 'SpectraLibrary'.
 #'
 #' Functions to access slot data of the Class Spectra.
 #'
@@ -15,8 +15,8 @@
 #' @examples
 #' # For the S4 class 'Spectra'
 #' library(visa)
-#' data(NSpec.DB)
-#' spectra_matrix <- spectra(NSpec.DB)
+#' data(NSpec.Lib)
+#' spectra_matrix <- spectra(NSpec.Lib)
 #' # For the spectra data.frame
 #' data(NSpec.DF)
 #' spectra_matrix <- spectra(NSpec.DF)

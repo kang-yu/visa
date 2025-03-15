@@ -61,8 +61,8 @@ class(speclass@spectra)
 str(speclass)
 rownames(speclass@spectra) # can be NULL or 's.id'
 
-NSpec.DB <- speclass
-devtools::use_data(NSpec.DB, overwrite = TRUE)
+NSpec.Lib <- speclass
+devtools::use_data(NSpec.Lib, overwrite = TRUE)
 
 
 

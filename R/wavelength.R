@@ -2,7 +2,7 @@
 #'
 #' Construct generic functions for the Spectra object, spectra.data.frame, and spectra.matrix.
 #'
-#' A call to {new} returns a newly allocated object from the class identified by the first argument.
+#' A call to \code{new} returns a newly allocated object from the class identified by the first argument.
 #' This call in turn calls the method for the generic function `initialize`.
 #' Construct a Spectra class by using the
 #'
@@ -15,7 +15,7 @@
 #' @examples
 #' library(visa)
 #' # For S4 class Spectra
-#' wavelength(NSpec.DB)
+#' wavelength(NSpec.Lib)
 #' # For spectra data.frame format
 #' wavelength(NSpec.DF)
 #'
