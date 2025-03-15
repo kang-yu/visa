@@ -5,7 +5,6 @@
 [![Travis build status](https://travis-ci.org/kang-yu/visa.svg?branch=master)](https://travis-ci.org/kang-yu/visa)
 [![Build status](https://ci.appveyor.com/api/projects/status/8rxdgcr4ro8ga0s4?svg=true)](https://ci.appveyor.com/project/kang-yu/visa)
 [![codecov](https://codecov.io/gh/kang-yu/visa/branch/master/graph/badge.svg)](https://codecov.io/gh/kang-yu/visa)
-[![HitCount](https://hits.dwyl.com/kang-yu/visa.svg)](https://hits.dwyl.com/kang-yu/visa)
 [![R-CMD-check](https://github.com/kang-yu/visa/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/kang-yu/visa/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
