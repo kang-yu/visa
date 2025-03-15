@@ -1,7 +1,7 @@
 ---
 title: "Introduction to visa"
 author: "Kang Yu"
-date: "2021-04-19"
+date: "2025-03-15"
 output: rmarkdown::html_vignette 
 vignette: >
   %\VignetteIndexEntry{Introduction to visa}
@@ -44,9 +44,9 @@ class(NSpec.DF$spectra)
 There are already a lot of r packages for spectral data analysis, and some of them use the S4 class, e.g. the `hsdar` package. `visa` also supports the S4 format but in a simplified version, using only five slots currently. 
 
 ```
-# check the data type of `NSpec.DB`
-class(NSpec.DB) 
-class(NSpec.DB@spectra) 
+# check the data type of `NSpec.Lib`
+class(NSpec.Lib) 
+class(NSpec.Lib@spectra) 
 ```
 ![Storing spectra matrix as a slot of the S4 class](visa-db.PNG)
 
@@ -60,7 +60,7 @@ The first idea of writing this package was to compute the correlation matrix for
 Here gives the example using the `cm.nsr` function, which can be used for non-spectra data as well.
 
 
-```r
+``` r
 library(visa)
 data(NSpec.DF)
 x <- NSpec.DF$N # nitrogen
@@ -78,7 +78,7 @@ cm <- cm.nsr(S, x, cm.plot = TRUE)
 The correlation matrix plot is the plot of correlation coefficients (r/r2) by bands in x- and y-axis. 
 
 
-```r
+``` r
 # use the output from last example
 # cm <- cm.nsr(S, x)
 # Plotting the correlation matrix
@@ -101,26 +101,26 @@ $NSR = (\lambda_i - \lambda_j)/(\lambda_i + \lambda_j)$
 To know more about the NDVI, please also check on Wikipedia^[Normalized difference vegetation index (https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index)].
 
 
-#### Example data `NSpec.DB`
+#### Example data `NSpec.Lib`
 
- The first type is the 'NSpec.DB' in the default S4 class 'Spectra'.
+ The first type is the 'NSpec.Lib' in the default S4 class 'Spectra'.
 
 
-```r
+``` r
 library(visa)
 # check the data type
-class(NSpec.DB) 
+class(NSpec.Lib) 
 ```
 
 [1] "Spectra"
 attr(,"package")
 [1] "visa"
 
-```r
+``` r
 # data structure
-# str(NSpec.DB)
+# str(NSpec.Lib)
 # print the first 10 columns
-knitr::kable(head(NSpec.DB@spectra[,1:10]))
+knitr::kable(head(NSpec.Lib@spectra[,1:10]))
 ```
 
 
@@ -134,20 +134,22 @@ knitr::kable(head(NSpec.DB@spectra[,1:10]))
 | 0.0104650| 0.0102510| 0.0101960| 0.0102150| 0.0101590| 0.0098056| 0.0097447| 0.0099987| 0.0099463| 0.0097695|
 | 0.0123460| 0.0122110| 0.0121620| 0.0121480| 0.0120900| 0.0121430| 0.0120990| 0.0119900| 0.0121290| 0.0121080|
 
+
+
 #### Example data `NSpec.DF`
 
 The second type is a data.frame format, i.e., `NSpec.DF`.
 
 
-```r
+``` r
 # check the data type
 class(NSpec.DF) 
 ```
 
 [1] "data.frame"
 
-```r
-# check whether it contains the same data as 'NSpec.DB'
+``` r
+# check whether it contains the same data as 'NSpec.Lib'
 knitr::kable(head(NSpec.DF$spectra[,1:10]))
 ```
 
@@ -161,6 +163,8 @@ knitr::kable(head(NSpec.DF$spectra[,1:10]))
 | 0.0104040| 0.0098426| 0.0098587| 0.0101030| 0.0100700| 0.0100920| 0.0100790| 0.0099628| 0.0097052| 0.0096571|
 | 0.0104650| 0.0102510| 0.0101960| 0.0102150| 0.0101590| 0.0098056| 0.0097447| 0.0099987| 0.0099463| 0.0097695|
 | 0.0123460| 0.0122110| 0.0121620| 0.0121480| 0.0120900| 0.0121430| 0.0120990| 0.0119900| 0.0121290| 0.0121080|
+
+
 
 #### Accessing data 
 

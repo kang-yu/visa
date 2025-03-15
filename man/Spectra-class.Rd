@@ -4,9 +4,10 @@
 \name{Spectra-class}
 \alias{Spectra-class}
 \alias{Spectra}
-\alias{Spectra,}
+\alias{Spectra,Spectra-class}
 \alias{as.spectra}
-\title{Create a Spectra Object}
+\alias{as.spectra.library}
+\title{Create a Spectra or SpectraLibrary}
 \usage{
 as.spectra(
   spectra = matrix(0),
@@ -15,34 +16,47 @@ as.spectra(
   data = data.frame(),
   ...
 )
+
+as.spectra.library(
+  spectra = matrix(0),
+  wavelength = numeric(0),
+  w.unit = "nm",
+  data = data.frame(),
+  ...
+)
 }
 \arguments{
-\item{spectra}{A matrix.}
+\item{spectra}{A matrix}
 
-\item{wavelength}{A numeric vector.}
+\item{wavelength}{A numeric vector}
 
-\item{w.unit}{A character string.}
+\item{w.unit}{A character string}
 
-\item{data}{A data.frame.}
+\item{data}{A data.frame}
 
-\item{...}{Other parameters.}
+\item{...}{Other parameters}
 }
 \description{
-The constructor \code{as.spectra} creates a \code{Spectra} object.
+Constructor \code{as.spectra} creates a Spectra object.
+
+Constructor \code{as.spectra.library} creates a SpectraLibrary object.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{spectra}}{A matrix.}
+\item{\code{spectra}}{A matrix}
 
-\item{\code{wavelength}}{A numeric vector.}
+\item{\code{wavelength}}{A numeric vector}
 
-\item{\code{w.unit}}{A character string.}
+\item{\code{w.unit}}{A character string}
 
-\item{\code{data}}{A data.frame.}
+\item{\code{data}}{A data.frame}
 }}
 
 \examples{
 s <- as.spectra(matrix(1:100, 4), 1:25, "nm", data.frame(x = letters[1:4]))
+str(s)
+
+s <- as.spectra.library(matrix(1:100, 4), 1:25, "nm", data.frame(x = letters[1:4]))
 str(s)
 }

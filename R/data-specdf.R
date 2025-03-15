@@ -15,7 +15,7 @@
 #' library(visa)
 #' data(NSpec.DF)
 #' str(NSpec.DF)
-#' @seealso \link{data.frame} and \code{\link{NSpec.DB}}
+#' @seealso \link{data.frame} and \code{\link{NSpec.Lib}}
 #'
 "NSpec.DF"
 

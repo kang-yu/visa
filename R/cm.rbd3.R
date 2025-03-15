@@ -1,4 +1,4 @@
-#' Calculate 3-Band Correlation Array for Spectral Data
+#' Calculate 3-Band Correlation Array for Spectral Data correlating with another variable x
 #'
 #' This function computes the squared Pearson correlation (\eqn{R^2}) between a response vector \code{x}
 #' and a derived variable \eqn{V} for every possible combination of three distinct spectral bands. The derived variable \eqn{V}
@@ -10,7 +10,7 @@
 #' of the correlation array using \code{plot3D::slice3D}.
 #'
 #' @param S A spectral data object or matrix. Each column corresponds to a spectral band.
-#' @param x A numeric vector representing the response variable (e.g., vegetation index).
+#' @param x A numeric vector representing the response variable (e.g., chlorophyll).
 #' @param w A numeric vector of wavelengths; by default, it is derived using \code{wavelength(S)}.
 #' @param w.unit Character string specifying the unit of wavelengths (optional).
 #' @param cm.plot Logical. If \code{TRUE}, a 3D slice plot of the correlation array is generated.
@@ -38,7 +38,7 @@
 #' @export
 cm.rbd3 <- function(S, x, w = wavelength(S),
                     w.unit = NULL, cm.plot = FALSE,
-                    plot.method = "plotly") {
+                    plot.method = "default") {
 
   # Extract spectral data
   spectra <- spectra(S)

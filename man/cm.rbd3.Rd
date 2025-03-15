@@ -2,7 +2,7 @@
 % Please edit documentation in R/cm.rbd3.R
 \name{cm.rbd3}
 \alias{cm.rbd3}
-\title{Calculate 3-Band Correlation Array for Spectral Data}
+\title{Calculate 3-Band Correlation Array for Spectral Data correlating with another variable x}
 \usage{
 cm.rbd3(
   S,
@@ -10,13 +10,13 @@ cm.rbd3(
   w = wavelength(S),
   w.unit = NULL,
   cm.plot = FALSE,
-  plot.method = "plotly"
+  plot.method = "default"
 )
 }
 \arguments{
 \item{S}{A spectral data object or matrix. Each column corresponds to a spectral band.}
 
-\item{x}{A numeric vector representing the response variable (e.g., vegetation index).}
+\item{x}{A numeric vector representing the response variable (e.g., chlorophyll).}
 
 \item{w}{A numeric vector of wavelengths; by default, it is derived using \code{wavelength(S)}.}
 
