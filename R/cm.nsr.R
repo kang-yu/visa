@@ -1,82 +1,89 @@
 #' Selecting the best 2-Band combinations for Normalized Simple Ratio (NSR)
 #'
-#' This function develops a optimization algorithm based on correlation analysis between spectral matrix 'spectra' and the
-#' vegetation variable of interest x, which
-#' determines the best spectral band combinations of the full spectrum that are most predictive for 'x'.
+#' This function develops an optimization algorithm based on correlation analysis between the spectral matrix \code{spectra} and the
+#' vegetation variable of interest \code{x}. It determines the best spectral band combinations (i, j) of the full spectrum that are most predictive for \code{x}.
 #'
-#' @param S A matrix of spectral data, a row is a spectrum across all spectral bands.
-#' @param x A vector.
-#' @param w A vector of wavelength.
-#' @param w.unit Character string, default = NULL,
-#' @param cm.plot A logic value for whether plotting the coefficient matrix or not, default FALSE.
+#' @param S A matrix of spectral data, where each row is a spectrum across all spectral bands.
+#' @param x A numeric vector (e.g., a vegetation variable).
+#' @param w A numeric vector of wavelengths; by default it is derived using \code{wavelength(S)}.
+#' @param w.unit A character string specifying the unit of wavelengths (default is \code{NULL}).
+#' @param cm.plot Logical. If \code{TRUE}, the correlation coefficient matrix is plotted.
+#'
 #' @return
-#'   \item{cm}{Returns a correlation coefficients matrix.}
+#'   \item{cm}{A correlation coefficient matrix with squared Pearson correlation values.}
 #'
 #' @details
-#' This function runs a calculation of \deqn{ NDVI = (\lambda_i - \lambda_j)/(\lambda_i + \lambda_j) } using all the possible pairs/combinations of any two bands (i,j)
-#' within the full spectrum range thoroughly. A correlation analysis is then performed between the x and all possible NDVIs, and it calculates
-#' the correlation coefficients (r) which indicates the predictive performance of each NDVI and its corresponding two-band combination. The
-#' output is the wavelength (nm) indicating the best two bands that produce the highest value of r.
+#' For every possible pair of distinct bands (i, j), the function calculates
+#' \deqn{ \mathrm{NSR} = \frac{R_j - R_i}{R_j + R_i} }
+#' and then computes the squared Pearson correlation (\eqn{R^2}) between \code{x} and the resulting NSR values.
+#'
+#' If the two bands are identical or the standard deviation of computed \code{VI} (for a given band combination) is zero, the correlation is set to 0,
+#' thereby avoiding warnings.
+#'
 #' @seealso \code{\link{cor}}
+#'
 #' @examples
-#' library(visa)
-#' data(NSpec.DF)
-#' x <- NSpec.DF$N # nitrogen
-#' S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 5 nm steps
-#' cm <- cm.nsr(S, x, cm.plot = TRUE)
+#' \dontrun{
+#'   library(visa)
+#'   data(NSpec.DF)
+#'   X <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)]  # resampled to 5 nm steps
+#'   y <- NSpec.DF$N  # nitrogen
+#'   cm <- cm.nsr(X, y, cm.plot = TRUE)
+#' }
 #'
 #' @import ggplot2 Matrix reshape2 grDevices
 #' @export
-
 cm.nsr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
 
-  # determin the format of spectra
-  # if (is(spectra, "Spectra")) w <- wavelength(spectra)
-  # if (is(spectra, "data.frame")) w <- wavelength(spectra) # shoudl be numeric
-  # if (is(spectra, "matrix")) w <- wavelength(spectra) # shoudl be numeric
-  # n <- length(spectra)
-
+  # Determine the format of spectra
   spectra <- spectra(S)
   if (is.matrix(spectra) && is.null(colnames(spectra)) && length(w) == 0)
     stop("Wavelength for the spectra matrix is not correctly defined")
 
-  n <- dim(spectra)[2] # Returns the Number of wavebands, should equal w
+  n <- dim(spectra)[2]  # Number of wavebands, should equal length(w)
 
-  ## (Rj-Ri)/(Rj+Ri)
-
+  ## Compute (Rj-Ri)/(Rj+Ri) for all band combinations
   R2 <- Matrix::Matrix(0, n, n, sparse = TRUE)  # Zero sparse matrix
   Rj <- spectra
+  ones <- matrix(1, 1, n)
 
-  ones <- matrix(1,1,n)
-
-  for (cI in 1:n){
-    Ri <- spectra[,cI]
-    Ri <- Ri %*% ones  # to matrix
-    # VI formular
-    V <- (Rj-Ri)/(Rj+Ri)
-    # Squared values (R2) of the Pearson Correlation coefficients
-    Rcorr <- (stats::cor(x, V))^2
-    # To store the value of R2
-    # spR <- Matrix::sparseMatrix(i = c(1:n),j = rep(cI,n), x = as.numeric(Rcorr), dims = c(n,n))
-    spR <- Matrix::sparseMatrix(i = rep(cI,n), j =  c(1:n), x = as.numeric(Rcorr), dims = c(n,n))
-    R2 <- R2 + spR
+  for (cI in 1:n) {
+    Ri <- spectra[, cI]
+    Ri <- Ri %*% ones  # Convert to matrix (each column is Ri)
+    # Calculate V for each band (column)
+    V <- (Rj - Ri) / (Rj + Ri)
+    # Compute correlation for each column in V, avoiding warning if sd is zero
+    rvals <- apply(V, 2, function(v) {
+      if (sd(v) == 0) 0 else stats::cor(x, v)
+    })
+    Rcorr2 <- rvals^2
+    # Store the squared correlations in the corresponding column of R2
+    spR2 <- Matrix::sparseMatrix(i = rep(cI, n),
+                                j = 1:n,
+                                x = as.numeric(Rcorr2),
+                                dims = c(n, n))
+    R2 <- R2 + spR2
   }
+
+  #row_names <- paste(w, "nm")
+  #col_names <- paste(w, "nm")
+  #cm <- as.matrix(R2, dimnames = list(row_names, col_names)) # failed to save names to cm!
+
   cm <- as.matrix(R2)
-  # str(cm)
-  # max(cm, na.rm = TRUE)
-  colnames(cm) <- paste(w, "nm")
+  rownames(cm) <- w # 2025-03-16 specify row/col names to return cm with row/column names
+  colnames(cm) <- w # 2025-03-16 specify row/col names to return cm with row/column names
 
   R2max <- max(cm, na.rm = TRUE)
-  print(paste('The max value of R^2 is', as.character(round(R2max,4))))
+  print(paste('The max value of R^2 is', as.character(round(R2max, 4))))
   ind_max <- which(cm == R2max, arr.ind = TRUE)
-  bestBands = w[ind_max[1,]]
+  bestBands <- w[ind_max[1, ]]
   print(paste(c("i", "j"), as.vector(bestBands), sep = "_"))
 
-  # cm plot
-  cm_plot <- ggplot.cm(cm, show.stat = FALSE)
-  if (isTRUE(cm.plot)) print(cm_plot)
-  # cm.res <- list(cm = cm, cm.plot = cm_plot)
+  if (isTRUE(cm.plot)) {
+    cm_plot <- ggplot.cm(cm, show.stat = FALSE)
+    print(cm_plot)
+  }
 
-  cm <- cm
+  cm
 }
 

@@ -19,13 +19,13 @@ This function identifies the best band combination from the \link{cm.nsr} or \li
 calculated correlation coefficients - a numeric matrix (2D), or the \link{cm.rbd3} returned array (3D)
 by locating the maximum value in the input \code{R} and returning the corresponding wavelengths
 from \code{w}. For a 2D matrix, it returns a two-element vector (i, j); for a 3D array, a three-element
-vector (i, k, j).
+vector (i, j, k).
 }
 \details{
 The function first verifies that \code{R} has dimensions. It then computes the maximum value in \code{R},
 retrieves the indices corresponding to that value, and extracts the wavelengths from \code{w} based on the
 dimensionality of \code{R}. If \code{R} is 2D, the order is assumed to be (i, j); if \code{R} is 3D, the order
-is (i, k, j).
+is (i, j, k).
 }
 \examples{
 # Example for a 2D matrix:

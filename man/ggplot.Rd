@@ -3,7 +3,6 @@
 \name{ggplot}
 \alias{ggplot}
 \alias{ggplot.spectra}
-\alias{ggplot.cm}
 \title{Create a new ggplot plot with a geom_line() layer from spectra data}
 \usage{
 \method{ggplot}{spectra}(
@@ -12,14 +11,6 @@
   ...,
   wl = NULL,
   w.unit = "nm",
-  environment = parent.frame()
-)
-
-\method{ggplot}{cm}(
-  data,
-  mapping = NULL,
-  ...,
-  show.stat = TRUE,
   environment = parent.frame()
 )
 }
@@ -41,11 +32,6 @@ be used.}
 \item{environment}{If an variable defined in the aesthetic mapping is not
 found in the data, ggplot will look for it in this environment. It defaults
 to using the environment in which \code{ggplot()} is called.}
-
-\item{show.stat}{A logic value. whether show the best R^2 and bands.}
-}
-\value{
-\item{cm_plot}{Returns a ggplot object of correlation-matrix.}
 }
 \description{
 \code{ggplot()} initializes a ggplot object. It can be used to
@@ -72,12 +58,6 @@ library(visa)
 library(ggplot2)
 ggplot.spectra(NSpec.DF)
 
-library(visa)
-data(NSpec.DF)
-x <- NSpec.DF$N # nitrogen
-S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 10 nm steps
-cm <- cm.sr(S, x, cm.plot = FALSE)
-ggplot.cm(cm)
 }
 \seealso{
 \code{?ggpmisc::ggplot()}

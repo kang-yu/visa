@@ -41,6 +41,7 @@ Collate:
     'data-speclib.R'
     'find.bestBands.R'
     'ggplot-method.R'
+    'ggplot.cm.R'
     'ggplot.lmfit.R'
     'ggspectra.R'
     'ndvi2.R'

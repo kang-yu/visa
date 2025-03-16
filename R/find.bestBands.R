@@ -4,7 +4,7 @@
 #' calculated correlation coefficients - a numeric matrix (2D), or the \link{cm.rbd3} returned array (3D)
 #' by locating the maximum value in the input \code{R} and returning the corresponding wavelengths
 #' from \code{w}. For a 2D matrix, it returns a two-element vector (i, j); for a 3D array, a three-element
-#' vector (i, k, j).
+#' vector (i, j, k).
 #'
 #' @param R A numeric matrix (2D) or array (3D) containing metric values (e.g., correlation values).
 #' @param w A numeric vector of wavelengths corresponding to the bands.
@@ -15,7 +15,7 @@
 #' The function first verifies that \code{R} has dimensions. It then computes the maximum value in \code{R},
 #' retrieves the indices corresponding to that value, and extracts the wavelengths from \code{w} based on the
 #' dimensionality of \code{R}. If \code{R} is 2D, the order is assumed to be (i, j); if \code{R} is 3D, the order
-#' is (i, k, j).
+#' is (i, j, k).
 #'
 #' @examples
 #' # Example for a 2D matrix:
@@ -43,9 +43,9 @@ find.bestBands <- function(R, w){
 
   # Check the dimensionality of R and extract the best bands accordingly.
   if (length(dim(R)) == 3) {
-    # For 3D array: assume order is (i, k, j)
+    # For 3D array: assume order is (i, j, k)
     bestBands <- w[ind_max[1, ]]
-    cat("Best band combination (i, k, j):", paste(bestBands, collapse = ", "), "\n")
+    cat("Best band combination (i, j, k):", paste(bestBands, collapse = ", "), "\n")
   } else if (length(dim(R)) == 2) {
     # For 2D matrix: assume order is (i, j)
     bestBands <- w[ind_max[1, ]]

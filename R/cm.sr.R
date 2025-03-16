@@ -1,79 +1,90 @@
 #' Selecting the best 2-Band combinations for Simple Ratio (SR)
 #'
 #' @name cm.sr
-#' @description This function develops a optimization algorithm based on correlation analysis between spectral matrix 'spectra' and the
-#' vegetation variable of interest x, which
-#' determines the best spectral band combinations of the full spectrum that are most predictive for 'x'.
+#' @description This function develops an optimization algorithm based on correlation analysis between the spectral matrix \code{spectra} and the
+#' vegetation variable of interest \code{x}. It determines the best spectral band combinations of the full spectrum that are most predictive for \code{x}.
 #'
-#' @details This function runs a calculation of \deqn{ NDVI = \lambda_i / \lambda_j } using all the possible pairs/combinations of any two bands (i,j)
-#' within the full spectrum range thoroughly. A correlation analysis is then performed between the x and all possible NDVIs, and it calculates
-#' the correlation coefficients (r) which indicates the predictive performance of each NDVI and its corresponding two-band combination. The
-#' output is the wavelength (nm) indicating the best two bands that produce the highest value of r.
+#' @details This function runs a calculation of \deqn{ SR = \lambda_i / \lambda_j } using the spectra data for all the possible pairs/combinations of any two bands (i, j)
+#' within the full spectrum range. Next, correlation analysis is then performed between all possible SR values and another vector variable \code{y}, and it returns
+#' the squared Pearson correlation (\eqn{R^2}) which indicates the predictive performance of each SR and its corresponding two-band combination. The
+#' output is the wavelength (nm) indicating the best two bands that produce the highest value of \eqn{R^2}.
 #'
 #' @inheritParams cm.nsr
 #' @return
 #'   \item{cm}{Returns a correlation coefficients matrix.}
 #' @seealso \code{\link{cm.nsr}}
 #' @examples
-#' library(visa)
-#' data(NSpec.DF)
-#' x <- NSpec.DF$N # nitrogen
-#' S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 10)] # resampled to 10 nm steps
-#' cm <- cm.sr(S, x, cm.plot = FALSE)
+#' \dontrun{
+#'   library(visa)
+#'   data(NSpec.DF)
+#'   # Using the example spectra matrix of the spectra.dataframe
+#'   X <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 10)]  # resampled to 10 nm steps
+#'   y <- NSpec.DF$N  # nitrogen
+#'   cm <- cm.sr(X, y, cm.plot = FALSE)
+#' }
 #'
 #' @import ggplot2 Matrix reshape2 grDevices
 #' @export
-
 cm.sr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
 
-  # account for the format of spectra
-  # check nsr
-
+  # Account for the format of spectra
   spectra <- spectra(S)
   if (is.matrix(spectra) && is.null(colnames(spectra)) && length(w) == 0)
     stop("Wavelength for the spectra matrix is not correctly defined")
 
-  n <- dim(spectra)[2] # Returns the Number of wavebands, should equal w
+  n <- dim(spectra)[2]  # Number of wavebands, should equal length(w)
 
-  dn <- list(paste0("i_", w), paste0("j_",w))
-  ## Ri/Rj
+  dn <- list(paste0("i_", w), paste0("j_", w))
+
+  ## Compute SR for each combination: SR = Ri/Rj
 
   R2 <- Matrix::Matrix(0, n, n, dimnames = dn, sparse = TRUE)  # Zero sparse matrix
-  # str(R2)
   Rj <- spectra
+  ones <- matrix(1, 1, n)
 
-  ones <- matrix(1,1,n)
-
-  for (cI in 1:n){
-    Ri <- spectra[,cI]
-    Ri <- Ri %*% ones  # to matrix
-    # VI formular
-    V <- Ri/Rj
-    # Squared values (R2) of the Pearson Correlation coefficients
-    Rcorr <- (stats::cor(x, V))^2
-    # To store the value of R2
-    spR <- Matrix::sparseMatrix(i = rep(cI,n),j = c(1:n), x = as.numeric(Rcorr), dims = c(n,n), dimnames = dn)
-    R2 <- R2 + spR
-    # image(R2)
+  for (cI in 1:n) {
+    Ri <- spectra[, cI]
+    Ri <- Ri %*% ones  # Convert to matrix (each column is Ri)
+    # Calculate SR for each band j
+    V <- Ri / Rj
+    # Compute correlation for each column of V, avoiding division by zero in sd.
+    Rvals <- apply(V, 2, function(v) {
+      if (sd(v) == 0) 0 else stats::cor(x, v)
+    })
+    Rcorr2 <- Rvals^2
+    # Store the squared correlations in the corresponding column of R2
+    spR2 <- Matrix::sparseMatrix(i = rep(cI, n),
+                                j = 1:n,
+                                x = as.numeric(Rcorr2),
+                                dims = c(n, n),
+                                dimnames = dn)
+    R2 <- R2 + spR2
   }
-  cm <- Matrix::as.matrix(R2)
-  R2max <- max(cm, na.rm = TRUE)
-  print(paste('The max value of R^2 is', as.character(round(R2max,4))))
-  ind_max <- which(cm == R2max, arr.ind = TRUE)
 
-  # ind_max
-  bestBands = w[ind_max[1,]]
+  row_names <- w
+  col_names <- w
+  #cm <- as.matrix(R2, dimnames = list(row_names, col_names)) # base func failed to save names to cm!
+  cm <- Matrix::as.matrix(R2, dimnames = list(row_names, col_names)) # Matrix package
+
+  #cm <- as.matrix(R2)
+  #rownames(cm) <- w # 2025-03-16 specify row/col names to return cm with row/column names
+  #colnames(cm) <- w # 2025-03-16 specify row/col names to return cm with row/column names
+
+
+  R2max <- max(cm, na.rm = TRUE)
+  print(paste('The max value of R^2 is', as.character(round(R2max, 4))))
+  ind_max <- which(cm == R2max, arr.ind = TRUE)
+  bestBands <- w[ind_max[1,]]
   print(paste(c("i", "j"), as.vector(bestBands), sep = "_"))
 
-  # str(cm)
-  # max(cm, na.rm = TRUE)
-  colnames(cm) <- paste(w, "nm")
+  # Set column names to include wavelengths (in nm)
+  #colnames(cm) <- paste(w, "nm")
 
-  # cm plot
-  cm_plot <- ggplot.cm(cm, show.stat = FALSE)
-  if (isTRUE(cm.plot)) print(cm_plot)
-  # cm.res <- list(cm = cm, cm.plot = cm_plot)
+  # Plot the correlation matrix if requested
+  if (isTRUE(cm.plot)) {
+    cm_plot <- ggplot.cm(cm, show.stat = FALSE)
+    print(cm_plot)
+  }
 
-  cm <- cm
+  cm
 }
-
