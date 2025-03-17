@@ -80,7 +80,7 @@ cm.nsr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
   print(paste(c("i", "j"), as.vector(bestBands), sep = "_"))
 
   if (isTRUE(cm.plot)) {
-    cm_plot <- ggplot.cm(cm, show.stat = FALSE)
+    cm_plot <- plot.2dcm(cm, show.stat = FALSE)
     print(cm_plot)
   }
 

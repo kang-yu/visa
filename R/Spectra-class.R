@@ -127,8 +127,8 @@ as.spectra.library <- function(spectra = matrix(0),
 #' SpectraMatrix is a extended 'Spectra' class.
 #'
 #' @name SpectraMatrix-class
-#' @rdname SpectraMaxtrix-class
-#' @aliases SpectraMaxtrix-class, spectra.maxtrix
+#' @rdname SpectraMatrix-class
+#' @aliases SpectraMatrix-class, spectra.maxtrix
 #' @docType class
 #' @export
 #' @exportClass SpectraMatrix
@@ -157,7 +157,7 @@ setMethod("initialize", "SpectraMatrix",
 #' Constructor \code{as.spectra.matrix} creates a SpectraMatrix object.
 #'
 #' @name as.spectra.matrix
-#' @rdname SpectraMaxtrix-class
+#' @rdname SpectraMatrix-class
 #' @param spectra A matrix
 #' @param wavelength A numeric vector
 #' @param w.unit A character string

@@ -18,7 +18,7 @@
 #'
 #' @section Multivariate analysis:
 #' ... not implemented yet
-#' The multivariate analysis use the spectra.data.frame format.
+#' The multivariate analysis use the Spectra.Dataframe format.
 #'
 #'
 #' @docType package

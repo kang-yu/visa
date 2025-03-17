@@ -7,36 +7,39 @@
 cm.nsr(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE)
 }
 \arguments{
-\item{S}{A matrix of spectral data, a row is a spectrum across all spectral bands.}
+\item{S}{A matrix of spectral data, where each row is a spectrum across all spectral bands.}
 
-\item{x}{A vector.}
+\item{x}{A numeric vector (e.g., a vegetation variable).}
 
-\item{w}{A vector of wavelength.}
+\item{w}{A numeric vector of wavelengths; by default it is derived using \code{wavelength(S)}.}
 
-\item{w.unit}{Character string, default = NULL,}
+\item{w.unit}{A character string specifying the unit of wavelengths (default is \code{NULL}).}
 
-\item{cm.plot}{A logic value for whether plotting the coefficient matrix or not, default FALSE.}
+\item{cm.plot}{Logical. If \code{TRUE}, the correlation coefficient matrix is plotted.}
 }
 \value{
-\item{cm}{Returns a correlation coefficients matrix.}
+\item{cm}{A correlation coefficient matrix with squared Pearson correlation values.}
 }
 \description{
-This function develops a optimization algorithm based on correlation analysis between spectral matrix 'spectra' and the
-vegetation variable of interest x, which
-determines the best spectral band combinations of the full spectrum that are most predictive for 'x'.
+This function develops an optimization algorithm based on correlation analysis between the spectral matrix \code{spectra} and the
+vegetation variable of interest \code{x}. It determines the best spectral band combinations (i, j) of the full spectrum that are most predictive for \code{x}.
 }
 \details{
-This function runs a calculation of \deqn{ NDVI = (\lambda_i - \lambda_j)/(\lambda_i + \lambda_j) } using all the possible pairs/combinations of any two bands (i,j)
-within the full spectrum range thoroughly. A correlation analysis is then performed between the x and all possible NDVIs, and it calculates
-the correlation coefficients (r) which indicates the predictive performance of each NDVI and its corresponding two-band combination. The
-output is the wavelength (nm) indicating the best two bands that produce the highest value of r.
+For every possible pair of distinct bands (i, j), the function calculates
+\deqn{ \mathrm{NSR} = \frac{R_j - R_i}{R_j + R_i} }
+and then computes the squared Pearson correlation (\eqn{R^2}) between \code{x} and the resulting NSR values.
+
+If the two bands are identical or the standard deviation of computed \code{VI} (for a given band combination) is zero, the correlation is set to 0,
+thereby avoiding warnings.
 }
 \examples{
-library(visa)
-data(NSpec.DF)
-x <- NSpec.DF$N # nitrogen
-S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 5 nm steps
-cm <- cm.nsr(S, x, cm.plot = TRUE)
+\dontrun{
+  library(visa)
+  data(NSpec.DF)
+  X <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)]  # resampled to 5 nm steps
+  y <- NSpec.DF$N  # nitrogen
+  cm <- cm.nsr(X, y, cm.plot = TRUE)
+}
 
 }
 \seealso{

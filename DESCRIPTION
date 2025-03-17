@@ -46,6 +46,8 @@ Collate:
     'ggspectra.R'
     'ndvi2.R'
     'nsr.R'
+    'plot.2dcm.R'
+    'plot.3dcm_best.R'
     'spectra.R'
     'sr.R'
     'wavelength.R'

@@ -55,7 +55,7 @@ where the slices correspond to the wavelengths of the bands.
   library(visa)
   data(NSpec.DF)
   x <- NSpec.DF$N # nitrogen
-  S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)]
+  S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 20)] # Resampling to 20 nm for fast computations
   # S is a spectral data object and x is a numeric vector.
   Rsq3 <- cm.rbd3(S, x, cm.plot = TRUE)
 }

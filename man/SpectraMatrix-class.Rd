@@ -3,7 +3,7 @@
 \docType{class}
 \name{SpectraMatrix-class}
 \alias{SpectraMatrix-class}
-\alias{SpectraMaxtrix-class,}
+\alias{SpectraMatrix-class,}
 \alias{spectra.maxtrix}
 \alias{as.spectra.matrix}
 \title{Class 'SpectraMatrix'}

@@ -7,36 +7,38 @@
 cm.sr(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE)
 }
 \arguments{
-\item{S}{A matrix of spectral data, a row is a spectrum across all spectral bands.}
+\item{S}{A matrix of spectral data, where each row is a spectrum across all spectral bands.}
 
-\item{x}{A vector.}
+\item{x}{A numeric vector (e.g., a vegetation variable).}
 
-\item{w}{A vector of wavelength.}
+\item{w}{A numeric vector of wavelengths; by default it is derived using \code{wavelength(S)}.}
 
-\item{w.unit}{Character string, default = NULL,}
+\item{w.unit}{A character string specifying the unit of wavelengths (default is \code{NULL}).}
 
-\item{cm.plot}{A logic value for whether plotting the coefficient matrix or not, default FALSE.}
+\item{cm.plot}{Logical. If \code{TRUE}, the correlation coefficient matrix is plotted.}
 }
 \value{
 \item{cm}{Returns a correlation coefficients matrix.}
 }
 \description{
-This function develops a optimization algorithm based on correlation analysis between spectral matrix 'spectra' and the
-vegetation variable of interest x, which
-determines the best spectral band combinations of the full spectrum that are most predictive for 'x'.
+This function develops an optimization algorithm based on correlation analysis between the spectral matrix \code{spectra} and the
+vegetation variable of interest \code{x}. It determines the best spectral band combinations of the full spectrum that are most predictive for \code{x}.
 }
 \details{
-This function runs a calculation of \deqn{ NDVI = \lambda_i / \lambda_j } using all the possible pairs/combinations of any two bands (i,j)
-within the full spectrum range thoroughly. A correlation analysis is then performed between the x and all possible NDVIs, and it calculates
-the correlation coefficients (r) which indicates the predictive performance of each NDVI and its corresponding two-band combination. The
-output is the wavelength (nm) indicating the best two bands that produce the highest value of r.
+This function runs a calculation of \deqn{ SR = \lambda_i / \lambda_j } using the spectra data for all the possible pairs/combinations of any two bands (i, j)
+within the full spectrum range. Next, correlation analysis is then performed between all possible SR values and another vector variable \code{y}, and it returns
+the squared Pearson correlation (\eqn{R^2}) which indicates the predictive performance of each SR and its corresponding two-band combination. The
+output is the wavelength (nm) indicating the best two bands that produce the highest value of \eqn{R^2}.
 }
 \examples{
-library(visa)
-data(NSpec.DF)
-x <- NSpec.DF$N # nitrogen
-S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 10)] # resampled to 10 nm steps
-cm <- cm.sr(S, x, cm.plot = FALSE)
+\dontrun{
+  library(visa)
+  data(NSpec.DF)
+  # Using the example spectra matrix of the spectra.dataframe
+  X <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 10)]  # resampled to 10 nm steps
+  y <- NSpec.DF$N  # nitrogen
+  cm <- cm.sr(X, y, cm.plot = FALSE)
+}
 
 }
 \seealso{

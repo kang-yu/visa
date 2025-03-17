@@ -1,7 +1,7 @@
 ---
 title: "Introduction to visa"
 author: "Kang Yu"
-date: "2025-03-15"
+date: "2025-03-17"
 output: rmarkdown::html_vignette 
 vignette: >
   %\VignetteIndexEntry{Introduction to visa}
@@ -70,7 +70,7 @@ cm <- cm.nsr(S, x, cm.plot = TRUE)
 #> [1] "i_460" "j_450"
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png)
+![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png)
 
 
 ### Plotting correlation matrix
@@ -82,12 +82,14 @@ The correlation matrix plot is the plot of correlation coefficients (r/r2) by ba
 # use the output from last example
 # cm <- cm.nsr(S, x)
 # Plotting the correlation matrix
-ggplot.cm(cm)
+#ggplot.cm(cm)
+
+plot.2dcm(cm) # new function replacing ggplot.cm
 #> [1] "The max value of R^2 is 0.5333"
 #> [1] "i_460" "j_450"
 ```
 
-![Plot of correlation matrix](figure/unnamed-chunk-2-1.png)
+![Plot of correlation matrix](figure/unnamed-chunk-9-1.png)
 
 
 #### More Examples and Details
@@ -189,7 +191,3 @@ Regarding compatibility for future development, special focuses will be put on:
 
 
 
-
-*`visa` believes:*
-
-> "Software probably makes knowledge gaps, but should not be due to the access to software."
