@@ -70,7 +70,7 @@ cm <- cm.nsr(S, x, cm.plot = TRUE)
 #> [1] "i_460" "j_450"
 ```
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png)
+![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png)
 
 
 ### Plotting correlation matrix
@@ -89,7 +89,7 @@ plot.2dcm(cm) # new function replacing ggplot.cm
 #> [1] "i_460" "j_450"
 ```
 
-![Plot of correlation matrix](figure/unnamed-chunk-9-1.png)
+![Plot of correlation matrix](figure/unnamed-chunk-2-1.png)
 
 
 #### More Examples and Details
