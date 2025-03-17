@@ -2,7 +2,7 @@
 % Please edit documentation in R/ggplot.cm.R
 \name{ggplot.cm}
 \alias{ggplot.cm}
-\title{Create a ggplot Plot from Correlation Coefficients}
+\title{Create a ggplot Plot from Correlation Coefficients (Deprecated)}
 \usage{
 \method{ggplot}{cm}(
   data,
@@ -13,46 +13,43 @@
 )
 }
 \arguments{
-\item{data}{A numeric 2D matrix or 3D array of correlation coefficients.}
+\item{data}{A numeric 2D matrix of correlation coefficients. (For 3D arrays, a warning is issued.)}
 
 \item{mapping}{Optional ggplot2 aesthetic mapping.}
 
-\item{...}{Additional arguments passed to ggplot.}
+\item{...}{Additional arguments passed to \code{ggplot}.}
 
-\item{show.stat}{Logical. If \code{TRUE}, prints the best R\eqn{^2} value and corresponding bands.}
+\item{show.stat}{Logical. If \code{TRUE}, prints the best \eqn{R^2} value and corresponding bands.}
 
 \item{environment}{The environment in which to evaluate the plot. Defaults to \code{parent.frame()}.}
 }
 \value{
-\item{cm_plot}{A ggplot object visualizing the correlation matrix (or matrices).}
+A ggplot object visualizing the correlation matrix. For 3D arrays, returns \code{NULL}.
 }
 \description{
-This function creates a ggplot visualization from a correlation matrix or array.
-It works for both 2D correlation matrices (e.g., from \code{cm.sr} or \code{cm.nsr})
-and 3D correlation arrays (e.g., from \code{cm.rbd3}). For 2D matrices, a single heatmap
-is produced. For 3D arrays, a faceted heatmap is produced for each slice along the third dimension (\code{k}).
+**Deprecated:** This function is deprecated and will be removed in a future release.
+Please use \code{plot.2dcm} for 2D correlation matrices or the appropriate new functions for 3D plots.
 }
 \details{
-For a 2D matrix, the function extracts wavelengths from the column names (assuming they are numeric) and produces a heatmap.
-For a 3D array, it assumes the dimensions correspond to bands (i, j, k) and produces a faceted heatmap with each facet
-representing a slice for a given value of k.
+This function creates a ggplot visualization from a 2D correlation matrix.
+It attempts to extract numeric wavelengths from the column names of the input matrix.
+
+This function extracts numeric wavelengths from the column names of \code{data}. If these
+cannot be determined, sequential indices are used instead.
 }
 \examples{
 \dontrun{
   library(visa)
   data(NSpec.DF)
-  x <- NSpec.DF$N # nitrogen
-  S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)] # resampled to 10 nm steps
-
-  # 2D correlation matrix example (from cm.sr or cm.nsr):
+  x <- NSpec.DF$N  # nitrogen
+  S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)]  # resampled to 10 nm steps
   cm2d <- cm.sr(S, x, cm.plot = FALSE)
   p2d <- ggplot.cm(cm2d)
   print(p2d)
 
-  # 3D correlation array example (from cm.rbd3):
+  # For 3D arrays, this function is deprecated:
   cm3d <- cm.rbd3(S, x, cm.plot = FALSE)
-  p3d <- ggplot.cm(cm3d)
-  print(p3d)
+  p3d <- ggplot.cm(cm3d)  # This will issue a warning and return NULL.
 }
 
 }
