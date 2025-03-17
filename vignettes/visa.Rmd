@@ -1,6 +1,6 @@
 ---
 title: "Introduction to visa"
-author: "Kang Yu"
+author: "Kang Yu ([GitHub Profile](https://github.com/kang-yu))"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette 
 vignette: >
@@ -21,12 +21,21 @@ Imaging Spectroscopy (also known as Hyperspectral Remote Sensing, HRS) technolog
 
 Future development of this tool has a long-term goal to include: i) implement the state-of-the-art applications of vegetation spectral indicators, ii) provide a platform to share vegetation spectral data to address certain questions of interest or applications in a broad context, and iii) make it compatible with more data formats and tools, such as the r package hsdar^[ Lukas W. Lehnert, Hanna Meyer, Joerg Bendix (2018). hsdar: Manage, analyse and simulate hyperspectral data in R].
 
-Currently, `visa` can be installed via my [GitHub repository visa](https://github.com/kang-yu/visa), by `devtools::install_github("kang-yu/visa")`, and its submission to CRAN is in progress. This vignette will introduces the design and features of `visa` from the following aspects:
+Currently, `visa` can be installed:  
+
+- from CRAN, either from command line 'install.packages("visa")' or from the Rstudio Packages installation tab.
+
+- from my [GitHub repository visa](https://github.com/kang-yu/visa), using `devtools::install_github("kang-yu/visa")`. 
+
+This vignette will introduces the design and features of `visa` from the following aspects:
 
 - Data
 - Functions 
 - Compatibility 
 
+## New features in the updates
+
+- Compute three-band Ratio of Band Difference (RBD) $RBD = (\lambda_k - \lambda_j)/(\lambda_j - \lambda_i)$, and plotting of the three dimensional output array. 
 
 ## Data 
 
@@ -37,28 +46,33 @@ The `visa` package intends to simplify the use and reduce the limit of data form
 Why i call it a hacking use is because a data.frame is a table organized by variables, and it is ideal to store every spectral band in as a variable. Imaging that you have thousands of columns and you have to refer to thousands of bands when using data.frame. Then, why not just store all the spectral bands, ie. the spectral matrix in a single variable, like the example data `NSpec.DF`. 
 
 This will be ease your coding for analysis, and you write your argument as '*y ~ spectra*' instead of '*y ~ band1 + band2 + band3 + ... *' 
-```
+
+```{r, echo=TRUE}
 # check the data type of `NSpec.DF`
+library(visa)
+data(NSpec.DF)
 class(NSpec.DF) 
-class(NSpec.DF$spectra) 
+class(NSpec.DF$spectra)
+str(NSpec.DF$spectra)
 ```
+
 ![Storing spectra matrix as a variable in data.frame](visa-df.PNG)
 
 ### S4 class `Spectra` and `SpectraDatabase`
 
 There are already a lot of r packages for spectral data analysis, and some of them use the S4 class, e.g. the `hsdar` package. `visa` also supports the S4 format but in a simplified version, using only five slots currently. 
 
-```
+```{r, echo=TRUE}
 # check the data type of `NSpec.Lib`
 class(NSpec.Lib) 
 class(NSpec.Lib@spectra) 
+str(NSpec.Lib@spectra)
 ```
-![Storing spectra matrix as a slot of the S4 class](visa-db.PNG)
 
 Notice that the small difference of accessing data in two types of data, i.e., using `$` and `@`, respectively.  
 
 ## Functions 
-### Computing correlation matrix
+### Computing correlation matrix between 2-band NSR and another variable  
 
 The first idea of writing this package was to compute the correlation matrix for the thorough analysis of correlations between, on one hand, the combinations of spectral bands, and on the other hand, the vegetation variables of interest. 
 
@@ -73,7 +87,7 @@ cm <- cm.nsr(S, x, cm.plot = TRUE)
 ```
 
 
-### Plotting correlation matrix
+### Plotting correlation matrix (2D array)
 
 The correlation matrix plot is the plot of correlation coefficients (r/r2) by bands in x- and y-axis. 
 
@@ -92,12 +106,14 @@ plot.2dcm(cm) # new function replacing ggplot.cm
 
 The computation of SR and NSR follow the equations, e.g.:
 
+##### 2-band combinations
 $SR = \lambda_i / \lambda_j$
-
 $NSR = (\lambda_i - \lambda_j)/(\lambda_i + \lambda_j)$
 
 To know more about the NDVI, please also check on Wikipedia^[Normalized difference vegetation index (https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index)].
 
+##### 3-band combinations
+$RBD = (\lambda_k - \lambda_j)/(\lambda_j - \lambda_i)$
 
 #### Example data `NSpec.Lib`
 
@@ -126,24 +142,55 @@ knitr::kable(head(NSpec.DF$spectra[,1:10]))
 
 #### Accessing data 
 
-`spectra`
+The `spectra` function access the spectral data stored in the Spectra.Dataframe or Spectra.Library formats.
 
-`wavelength`
+```{r, echo=TRUE, results='asis'}
+#library(visa)
+#data(NSpec.DF)
+spec <- spectra(NSpec.DF)
+# check whether it contains the same data as 'NSpec.Lib'
+knitr::kable(head(spec[,1:10]))
+```
+
+The `wavelength` function access the wavelengths of bands stored in the Spectra.Dataframe or Spectra.Library formats.
+
+```{r, echo=TRUE, results='asis'}
+#library(visa)
+#data(NSpec.DF)
+spec <- wavelength(NSpec.DF)
+# check whether it contains the same data as 'NSpec.Lib'
+str(spec)
+```
 
 ## Compatibility
 ### Data format conversion
 
-`as.spectra`
+The `as.spectra` function save spectral data in the format of Spectra.Library. 
+```{r, echo=TRUE, results='asis'}
+slib <- as.spectra(spectra = matrix(rnorm(100), nrow = 10), 
+                   wavelength = 1:10, 
+                   w.unit = "nm", 
+                   data = data.frame(y=rnorm(10))
+                   )
+str(slib)
+```
 
-`as.spectra.dataframe`
-
+The `as.spectra.dataframe` function save spectral data in the format of Spectra.Dataframe. The Spectra.Dataframe is actually a data.frame. 
+```{r, echo=TRUE, results='asis'}
+s.df <- as.spectra.dataframe(spectra = matrix(rnorm(100), nrow = 10),
+                             wavelength = 1:10,
+                             w.unit = "nm",
+                             data = data.frame(y=rnorm(10))
+                             )
+str(s.df)
+```
 
 ### Future development
 Regarding compatibility for future development, special focuses will be put on:
 
+- spectral image analysis
 - spatial data integration
-- image analysis
-- machine learning deep learning
+- Functions for simplifying integrated analysis such as using radiative transfer models and machine learning models
 
 
 

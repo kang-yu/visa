@@ -1,6 +1,6 @@
 citHeader("To cite visa in publications use:")
 
-bitentry(
+bibentry(
   entry    = "Article",
   title    = "Estimating leaf chlorophyll of barley at different growth stages using spectral indices to reduce soil background and canopy structure effects",
   author   = c(as.person("Kang Yu"),

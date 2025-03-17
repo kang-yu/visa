@@ -2,7 +2,7 @@
 * Main changes: 
 * adding cm.rbd3, find.bestBands, with visualization via plot3D.
 * modify defined database to library in spectra-class.
-* Renamed function `ggplot.cm` to `plot.2dcm`.
+* replaced function `ggplot.cm` to `plot.2dcm`.
 * two plot.3dcm functions
 * major version number update to 1.0.0
 

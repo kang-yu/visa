@@ -1,6 +1,6 @@
 ---
 title: "Introduction to visa"
-author: "Kang Yu"
+author: "Kang Yu ([GitHub Profile](https://github.com/kang-yu))"
 date: "2025-03-17"
 output: rmarkdown::html_vignette 
 vignette: >
@@ -16,12 +16,21 @@ Imaging Spectroscopy (also known as Hyperspectral Remote Sensing, HRS) technolog
 
 Future development of this tool has a long-term goal to include: i) implement the state-of-the-art applications of vegetation spectral indicators, ii) provide a platform to share vegetation spectral data to address certain questions of interest or applications in a broad context, and iii) make it compatible with more data formats and tools, such as the r package hsdar^[ Lukas W. Lehnert, Hanna Meyer, Joerg Bendix (2018). hsdar: Manage, analyse and simulate hyperspectral data in R].
 
-Currently, `visa` can be installed via my [GitHub repository visa](https://github.com/kang-yu/visa), by `devtools::install_github("kang-yu/visa")`, and its submission to CRAN is in progress. This vignette will introduces the design and features of `visa` from the following aspects:
+Currently, `visa` can be installed:  
+
+- from CRAN, either from command line 'install.packages("visa")' or from the Rstudio Packages installation tab.
+
+- from my [GitHub repository visa](https://github.com/kang-yu/visa), using `devtools::install_github("kang-yu/visa")`. 
+
+This vignette will introduces the design and features of `visa` from the following aspects:
 
 - Data
 - Functions 
 - Compatibility 
 
+## New features in the updates
+
+- Compute three-band Ratio of Band Difference (RBD) $RBD = (\lambda_k - \lambda_j)/(\lambda_j - \lambda_i)$, and plotting of the three dimensional output array. 
 
 ## Data 
 
@@ -32,28 +41,49 @@ The `visa` package intends to simplify the use and reduce the limit of data form
 Why i call it a hacking use is because a data.frame is a table organized by variables, and it is ideal to store every spectral band in as a variable. Imaging that you have thousands of columns and you have to refer to thousands of bands when using data.frame. Then, why not just store all the spectral bands, ie. the spectral matrix in a single variable, like the example data `NSpec.DF`. 
 
 This will be ease your coding for analysis, and you write your argument as '*y ~ spectra*' instead of '*y ~ band1 + band2 + band3 + ... *' 
-```
+
+
+``` r
 # check the data type of `NSpec.DF`
+library(visa)
+data(NSpec.DF)
 class(NSpec.DF) 
-class(NSpec.DF$spectra) 
+#> [1] "data.frame"
+class(NSpec.DF$spectra)
+#> [1] "matrix" "array"
+str(NSpec.DF$spectra)
+#>  num [1:19, 1:651] 0.01078 0.01059 0.00942 0.0104 0.01047 ...
+#>  - attr(*, "dimnames")=List of 2
+#>   ..$ : NULL
+#>   ..$ : chr [1:651] "350 nm" "351 nm" "352 nm" "353 nm" ...
 ```
+
 ![Storing spectra matrix as a variable in data.frame](visa-df.PNG)
 
 ### S4 class `Spectra` and `SpectraDatabase`
 
 There are already a lot of r packages for spectral data analysis, and some of them use the S4 class, e.g. the `hsdar` package. `visa` also supports the S4 format but in a simplified version, using only five slots currently. 
 
-```
+
+``` r
 # check the data type of `NSpec.Lib`
 class(NSpec.Lib) 
+#> [1] "Spectra"
+#> attr(,"package")
+#> [1] "visa"
 class(NSpec.Lib@spectra) 
+#> [1] "matrix" "array"
+str(NSpec.Lib@spectra)
+#>  num [1:19, 1:651] 0.01078 0.01059 0.00942 0.0104 0.01047 ...
+#>  - attr(*, "dimnames")=List of 2
+#>   ..$ : NULL
+#>   ..$ : chr [1:651] "350 nm" "351 nm" "352 nm" "353 nm" ...
 ```
-![Storing spectra matrix as a slot of the S4 class](visa-db.PNG)
 
 Notice that the small difference of accessing data in two types of data, i.e., using `$` and `@`, respectively.  
 
 ## Functions 
-### Computing correlation matrix
+### Computing correlation matrix between 2-band NSR and another variable  
 
 The first idea of writing this package was to compute the correlation matrix for the thorough analysis of correlations between, on one hand, the combinations of spectral bands, and on the other hand, the vegetation variables of interest. 
 
@@ -70,10 +100,10 @@ cm <- cm.nsr(S, x, cm.plot = TRUE)
 #> [1] "i_460" "j_450"
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png)
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
 
 
-### Plotting correlation matrix
+### Plotting correlation matrix (2D array)
 
 The correlation matrix plot is the plot of correlation coefficients (r/r2) by bands in x- and y-axis. 
 
@@ -89,19 +119,21 @@ plot.2dcm(cm) # new function replacing ggplot.cm
 #> [1] "i_460" "j_450"
 ```
 
-![Plot of correlation matrix](figure/unnamed-chunk-2-1.png)
+![Plot of correlation matrix](figure/unnamed-chunk-5-1.png)
 
 
 #### More Examples and Details
 
 The computation of SR and NSR follow the equations, e.g.:
 
+##### 2-band combinations
 $SR = \lambda_i / \lambda_j$
-
 $NSR = (\lambda_i - \lambda_j)/(\lambda_i + \lambda_j)$
 
 To know more about the NDVI, please also check on Wikipedia^[Normalized difference vegetation index (https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index)].
 
+##### 3-band combinations
+$RBD = (\lambda_k - \lambda_j)/(\lambda_j - \lambda_i)$
 
 #### Example data `NSpec.Lib`
 
@@ -170,24 +202,88 @@ knitr::kable(head(NSpec.DF$spectra[,1:10]))
 
 #### Accessing data 
 
-`spectra`
+The `spectra` function access the spectral data stored in the Spectra.Dataframe or Spectra.Library formats.
 
-`wavelength`
+
+``` r
+#library(visa)
+#data(NSpec.DF)
+spec <- spectra(NSpec.DF)
+# check whether it contains the same data as 'NSpec.Lib'
+knitr::kable(head(spec[,1:10]))
+```
+
+
+
+|    350 nm|    351 nm|    352 nm|    353 nm|    354 nm|    355 nm|    356 nm|    357 nm|    358 nm|    359 nm|
+|---------:|---------:|---------:|---------:|---------:|---------:|---------:|---------:|---------:|---------:|
+| 0.0107850| 0.0103620| 0.0105130| 0.0107780| 0.0105690| 0.0104170| 0.0104270| 0.0105240| 0.0104590| 0.0103860|
+| 0.0105900| 0.0101850| 0.0101270| 0.0102320| 0.0101690| 0.0101270| 0.0101720| 0.0102500| 0.0101840| 0.0102270|
+| 0.0094211| 0.0088921| 0.0091092| 0.0095035| 0.0093468| 0.0090576| 0.0089967| 0.0091336| 0.0090165| 0.0089895|
+| 0.0104040| 0.0098426| 0.0098587| 0.0101030| 0.0100700| 0.0100920| 0.0100790| 0.0099628| 0.0097052| 0.0096571|
+| 0.0104650| 0.0102510| 0.0101960| 0.0102150| 0.0101590| 0.0098056| 0.0097447| 0.0099987| 0.0099463| 0.0097695|
+| 0.0123460| 0.0122110| 0.0121620| 0.0121480| 0.0120900| 0.0121430| 0.0120990| 0.0119900| 0.0121290| 0.0121080|
+
+
+
+The `wavelength` function access the wavelengths of bands stored in the Spectra.Dataframe or Spectra.Library formats.
+
+
+``` r
+#library(visa)
+#data(NSpec.DF)
+spec <- wavelength(NSpec.DF)
+# check whether it contains the same data as 'NSpec.Lib'
+str(spec)
+```
+
+ num [1:651] 350 351 352 353 354 355 356 357 358 359 ...
 
 ## Compatibility
 ### Data format conversion
 
-`as.spectra`
+The `as.spectra` function save spectral data in the format of Spectra.Library. 
 
-`as.spectra.data.frame`
+``` r
+slib <- as.spectra(spectra = matrix(rnorm(100), nrow = 10), 
+                   wavelength = 1:10, 
+                   w.unit = "nm", 
+                   data = data.frame(y=rnorm(10))
+                   )
+str(slib)
+```
 
+Formal class 'Spectra' [package "visa"] with 4 slots
+  ..@ spectra   : num [1:10, 1:10] 0.273 -0.971 0.3 1.135 1.971 ...
+  ..@ wavelength: int [1:10] 1 2 3 4 5 6 7 8 9 10
+  ..@ w.unit    : chr "nm"
+  ..@ data      :'data.frame':	10 obs. of  1 variable:
+  .. ..$ y: num [1:10] -0.134 2.915 -2.952 -0.715 -0.963 ...
+
+The `as.spectra.dataframe` function save spectral data in the format of Spectra.Dataframe. The Spectra.Dataframe is actually a data.frame. 
+
+``` r
+s.df <- as.spectra.dataframe(spectra = matrix(rnorm(100), nrow = 10),
+                             wavelength = 1:10,
+                             w.unit = "nm",
+                             data = data.frame(y=rnorm(10))
+                             )
+str(s.df)
+```
+
+'data.frame':	10 obs. of  2 variables:
+ $ y      : num  0.876 -0.7 0.459 0.618 -0.261 ...
+ $ spectra: num [1:10, 1:10] -0.532 0.95 0.518 1.804 1.568 ...
+  ..- attr(*, "dimnames")=List of 2
+  .. ..$ : NULL
+  .. ..$ : chr [1:10] "1 nm" "2 nm" "3 nm" "4 nm" ...
 
 ### Future development
 Regarding compatibility for future development, special focuses will be put on:
 
+- spectral image analysis
 - spatial data integration
-- image analysis
-- deep learning
+- Functions for simplifying integrated analysis such as using radiative transfer models and machine learning models
 
 
 
