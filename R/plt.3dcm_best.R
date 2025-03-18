@@ -26,6 +26,7 @@
 #'
 #' @import grDevices RColorBrewer
 #' @importFrom plotly plot_ly add_surface layout
+#' @importFrom magrittr %>%
 #' @export
 plt.3dcm_best <- function(R3, colorscale = "Spectral"){
 
