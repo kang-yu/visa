@@ -1,55 +1,60 @@
-#' Access the wavelength of Spectra
+#' Retrieve Wavelength Information from Spectra Objects
 #'
-#' Construct generic functions for the Spectra object, spectra.data.frame, and spectra.matrix.
+#' This function extracts the wavelength information from various representations of spectra.
+#' It supports the S4 class \code{Spectra}, as well as data.frame and matrix representations.
 #'
-#' A call to \code{new} returns a newly allocated object from the class identified by the first argument.
-#' This call in turn calls the method for the generic function `initialize`.
-#' Construct a Spectra class by using the
+#' For an object of class \code{Spectra}, the method returns the value stored in the \code{wavelength}
+#' slot. For a data.frame or matrix, it extracts numeric values from the column names (by removing
+#' non-digit characters) of the spectra data.
 #'
 #' @docType methods
 #' @name wavelength
-#' @rdname wavelength-methods
-#' @aliases waveband
-#' @param object A object of Spectra
-#' @param ... Other options (... T/F with unit)
-#' @examples
-#' library(visa)
-#' # For S4 class Spectra
-#' wavelength(NSpec.Lib)
-#' # For spectra data.frame format
-#' wavelength(NSpec.DF)
+#' @rdname wavelength
+#' @aliases wavlen
 #'
-#' @export wavelength
-# setMethod("as.spectra",
-#           signature(spectra = "matrix", wavelength = "numeric"),
-#           function(spectra, wavelength, ...){
-#             return(as.spectra(spectra, wavelength, ...))
-#           }
-# )
+#' @param object An object containing spectra data. This can be an S4 object of class \code{Spectra},
+#'   a \code{data.frame}, or a \code{matrix}.
+#' @param ... Additional arguments for future extensions (currently not used).
+#'
+#' @return A numeric vector representing the wavelength information extracted from the object.
+#'
+#' @examples
+#' \dontrun{
+#'   library(visa)
+#'
+#'   # For an S4 Spectra object
+#'   wavelengths <- wavelength(NSpec.Lib)
+#'
+#'   # For spectra stored in a data.frame
+#'   wavelengths <- wavelength(NSpec.DF)
+#'
+#'   # For spectra stored in a matrix
+#'   wavelengths <- wavelength(spectra_matrix)
+#' }
+#'
+#' @export
 setGeneric("wavelength", function(object, ...) standardGeneric("wavelength"))
 
-#' @rdname wavelength-methods
+#' @rdname wavelength
 #' @aliases wavelength,Spectra,ANY-method
 setMethod("wavelength", signature(object = "Spectra"),
-          function(object, ...){
-            w <- object@wavelength
-            w
+          function(object, ...) {
+            object@wavelength
           }
 )
 
-#' @rdname wavelength-methods
+#' @rdname wavelength
 #' @aliases wavelength,data.frame,ANY-method
 setMethod("wavelength", signature(object = "data.frame"),
-          function(object, ...){
+          function(object, ...) {
             as.numeric(gsub("\\D", "", colnames(object$spectra)))
           }
 )
 
-#' @rdname wavelength-methods
+#' @rdname wavelength
 #' @aliases wavelength,matrix,ANY-method
 setMethod("wavelength", signature(object = "matrix"),
-          function(object, ...){
+          function(object, ...) {
             as.numeric(gsub("\\D", "", colnames(object)))
           }
 )
-
