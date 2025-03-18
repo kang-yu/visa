@@ -21,6 +21,7 @@ Imports:
     methods,
     Matrix,
     plot3D,
+    plotly,
     reshape2,
     RColorBrewer
 Suggests:
