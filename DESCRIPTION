@@ -19,6 +19,7 @@ Imports:
     ggplot2,
     ggpmisc,
     methods,
+    magrittr,
     Matrix,
     plot3D,
     plotly,
