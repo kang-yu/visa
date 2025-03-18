@@ -8,7 +8,8 @@
 [![Codecov test coverage](https://codecov.io/gh/kang-yu/visa/graph/badge.svg)](https://app.codecov.io/gh/kang-yu/visa)
 <!-- badges: end -->
 
-This R package is to facilitate Vegetation Imaging Spectroscopy Analysis (VISA). For more details of this package, you can  `browseVignettes("visa")`. 
+This R package is to facilitate Vegetation Imaging Spectroscopy Analysis (VISA). 
+For more details of this package, you can  `browseVignettes("visa")`. 
 
 
 ## Installation
@@ -19,15 +20,20 @@ The very first version of visa (0.1.0) is now on CRAN.
 install.packages("visa")
 ``` 
 
-You might encounter problem of package dependencies, such as some functions depend on `ggplot2`, `ggpmisc`. In such cases, you would have to install the all the dependencies.
+You might encounter problem of package dependencies, such as some functions 
+depend on `ggplot2`, `ggpmisc`. In such cases, you would have to install all 
+the dependencies.
 
 ### install the dev-version from GitHub:
+The current version on GitHub is v1.0.0. 
 
 ``` r
 if (!require("devtools")) install.packages("devtools")
 # devtools::install_github("kang-yu/visa") # install without vignettes
 devtools::install_github("kang-yu/visa", build_opts = c("--no-resave-data", "--no-manual"))
 ``` 
+* The v1.0.0 requires support for interactive plotting. Installation on Max OS may 
+cause error [X11 library is missing](https://github.com/kang-yu/visa/issues/3). 
 
 ## Usage
 
