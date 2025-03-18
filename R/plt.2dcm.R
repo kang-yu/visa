@@ -7,7 +7,7 @@
 #'
 #' It replaces the former \code{ggplot.cm()}.
 #'
-#' @rdname plot.2dcm
+#' @rdname plt.2dcm
 #'
 #' @param data A numeric 2D matrix of correlation coefficients.
 #' @param mapping Optional ggplot2 aesthetic mapping.
@@ -27,13 +27,13 @@
 #'   x <- NSpec.DF$N  # nitrogen
 #'   S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 10)]  # resampled to 10 nm steps
 #'   cm2d <- cm.sr(S, x, cm.plot = FALSE)
-#'   p2d <- plot.2dcm(cm2d)
+#'   p2d <- plt.2dcm(cm2d)
 #'   print(p2d)
 #' }
 #'
 #' @import ggplot2 reshape2 grDevices RColorBrewer
-#' @export plot.2dcm
-plot.2dcm <- function(data, mapping = NULL, ...,
+#' @export
+plt.2dcm <- function(data, mapping = NULL, ...,
                       show.stat = TRUE,
                       environment = parent.frame()){
 

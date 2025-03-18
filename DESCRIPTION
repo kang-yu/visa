@@ -21,7 +21,6 @@ Imports:
     methods,
     Matrix,
     plot3D,
-    plotly,
     reshape2,
     RColorBrewer
 Suggests:
@@ -44,11 +43,11 @@ Collate:
     'ggplot-method.R'
     'ggplot.cm.R'
     'ggplot.lmfit.R'
-    'ggspectra.R'
+    'ggplot.spectra.R'
     'ndvi2.R'
     'nsr.R'
-    'plot.2dcm.R'
-    'plot.3dcm_best.R'
+    'plt.2dcm.R'
+    'plt.3dcm_best.R'
     'spectra.R'
     'sr.R'
     'wavelength.R'

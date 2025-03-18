@@ -9,7 +9,6 @@
 #' @param colorscale A character string specifying the colorscale to use. If \code{"Spectral"}, a custom
 #'   colorscale is created using \code{colorRampPalette(rev(RColorBrewer::brewer.pal(11, "Spectral")), space = "Lab")(100)}.
 #'   Otherwise, the provided value is used (default is \code{"Spectral"}).
-#' @param ... Additional arguments passed to Plotly functions.
 #'
 #' @return An interactive Plotly figure showing three surfaces corresponding to constant slices along dimensions i, j, and k.
 #'
@@ -22,14 +21,13 @@
 #' @examples
 #' \dontrun{
 #'   # Assume cm3d is a 3D correlation array with proper dimnames.
-#'   plot.3dcm_best(cm3d)
+#'   plt.3dcm_best(cm3d)
 #' }
 #'
-#' @import plotly RColorBrewer
+#' @import grDevices RColorBrewer
+#' @importFrom plotly plot_ly add_surface layout
 #' @export
-plot.3dcm_best <- function(R3, colorscale = "Spectral", ...){
-  library(plotly)
-  library(RColorBrewer)
+plt.3dcm_best <- function(R3, colorscale = "Spectral"){
 
   dims <- dim(R3)
   dn <- dimnames(R3)
@@ -89,7 +87,7 @@ plot.3dcm_best <- function(R3, colorscale = "Spectral", ...){
 
   # Create a custom colorscale as a list of stops.
   if (colorscale == "Spectral") {
-    col_vec <- colorRampPalette(rev(RColorBrewer::brewer.pal(11, "Spectral")), space = "Lab")(100)
+    col_vec <- colorRampPalette(rev(RColorBrewer::brewer.pal(11, "Spectral")),space = "Lab")(100)
     colorscale_val <- lapply(seq_along(col_vec) - 1, function(i) {
       list(i / (length(col_vec) - 1), col_vec[i + 1])
     })
@@ -98,7 +96,7 @@ plot.3dcm_best <- function(R3, colorscale = "Spectral", ...){
   }
 
   # Build the Plotly figure with three surfaces.
-  fig <- plot_ly() %>%
+  fig <- plotly::plot_ly() %>%
     add_surface(x = grid_i, y = grid_j, z = grid_k,
                 surfacecolor = surface_i,
                 colorscale = colorscale_val,
@@ -106,7 +104,7 @@ plot.3dcm_best <- function(R3, colorscale = "Spectral", ...){
                   x = 1.05,         # move the colorbar to the right of the plot
                   y = 0.5,          # center it vertically
                   yanchor = "middle",
-                  title = "R²"
+                  title = "R^2"
                 ),
                 showscale = TRUE,
                 name = paste("Slice at i =", bestBands[1])) %>%

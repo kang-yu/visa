@@ -1,7 +1,7 @@
 #' Create a ggplot Plot from Correlation Coefficients (Deprecated)
 #'
 #' **Deprecated:** This function is deprecated and will be removed in a future release.
-#' Please use \code{plot.2dcm} for 2D correlation matrices or the appropriate new functions for 3D plots.
+#' Please use \code{plt.2dcm} for 2D correlation matrices or the appropriate new functions for 3D plots.
 #'
 #' This function creates a ggplot visualization from a 2D correlation matrix.
 #' It attempts to extract numeric wavelengths from the column names of the input matrix.
@@ -24,14 +24,12 @@
 #'   library(visa)
 #'   data(NSpec.DF)
 #'   x <- NSpec.DF$N  # nitrogen
-#'   S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)]  # resampled to 10 nm steps
+#'    # resampled to 10 nm steps
+#'   S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 10)]
 #'   cm2d <- cm.sr(S, x, cm.plot = FALSE)
 #'   p2d <- ggplot.cm(cm2d)
 #'   print(p2d)
 #'
-#'   # For 3D arrays, this function is deprecated:
-#'   cm3d <- cm.rbd3(S, x, cm.plot = FALSE)
-#'   p3d <- ggplot.cm(cm3d)  # This will issue a warning and return NULL.
 #' }
 #'
 #' @import ggplot2 reshape2 grDevices RColorBrewer
@@ -39,8 +37,8 @@
 ggplot.cm <- function(data, mapping = NULL, ...,
                       show.stat = TRUE,
                       environment = parent.frame()){
-  .Deprecated("plot.2dcm", package = "visa",
-              msg = "ggplot.cm() is deprecated. Please use plot.2dcm() for 2D correlation plots.")
+  .Deprecated("plt.2dcm", package = "visa",
+              msg = "ggplot.cm() is deprecated. Please use plt.2dcm() for 2D correlation plots.")
 
   dims <- dim(data)
 

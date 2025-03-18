@@ -24,6 +24,7 @@
 #' }
 #'
 #' @import ggplot2 Matrix reshape2 grDevices
+#' @importFrom stats sd
 #' @export
 cm.sr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
 
@@ -82,7 +83,7 @@ cm.sr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
 
   # Plot the correlation matrix if requested
   if (isTRUE(cm.plot)) {
-    cm_plot <- plot.2dcm(cm, show.stat = FALSE)
+    cm_plot <- plt.2dcm(cm, show.stat = FALSE)
     print(cm_plot)
   }
 

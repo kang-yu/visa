@@ -28,7 +28,7 @@ A ggplot object visualizing the correlation matrix. For 3D arrays, returns \code
 }
 \description{
 **Deprecated:** This function is deprecated and will be removed in a future release.
-Please use \code{plot.2dcm} for 2D correlation matrices or the appropriate new functions for 3D plots.
+Please use \code{plt.2dcm} for 2D correlation matrices or the appropriate new functions for 3D plots.
 }
 \details{
 This function creates a ggplot visualization from a 2D correlation matrix.
@@ -42,14 +42,12 @@ cannot be determined, sequential indices are used instead.
   library(visa)
   data(NSpec.DF)
   x <- NSpec.DF$N  # nitrogen
-  S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 5)]  # resampled to 10 nm steps
+   # resampled to 10 nm steps
+  S <- NSpec.DF$spectra[, seq(1, ncol(NSpec.DF$spectra), 10)]
   cm2d <- cm.sr(S, x, cm.plot = FALSE)
   p2d <- ggplot.cm(cm2d)
   print(p2d)
 
-  # For 3D arrays, this function is deprecated:
-  cm3d <- cm.rbd3(S, x, cm.plot = FALSE)
-  p3d <- ggplot.cm(cm3d)  # This will issue a warning and return NULL.
 }
 
 }

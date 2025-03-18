@@ -38,7 +38,7 @@
 #' the ggplot.
 #'
 #' @import reshape2 ggplot2
-#' @name ggplot
+#' @name ggplot.spectra
 #' @export ggplot.spectra
 ggplot.spectra <- function(data, mapping = NULL, ...,
                            wl = NULL,

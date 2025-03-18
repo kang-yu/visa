@@ -1,7 +1,7 @@
 ---
 title: "Introduction to visa"
 author: "Kang Yu ([GitHub Profile](https://github.com/kang-yu))"
-date: "2025-03-17"
+date: "2025-03-18"
 output: rmarkdown::html_vignette 
 vignette: >
   %\VignetteIndexEntry{Introduction to visa}
@@ -100,7 +100,7 @@ cm <- cm.nsr(S, x, cm.plot = TRUE)
 #> [1] "i_460" "j_450"
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
 
 
 ### Plotting correlation matrix (2D array)
@@ -112,14 +112,14 @@ The correlation matrix plot is the plot of correlation coefficients (r/r2) by ba
 # use the output from last example
 # cm <- cm.nsr(S, x)
 # Plotting the correlation matrix
-#ggplot.cm(cm)
+#ggplot.cm(cm) # deprecated
 
-plot.2dcm(cm) # new function replacing ggplot.cm
+plt.2dcm(cm) # new function replacing ggplot.cm
 #> [1] "The max value of R^2 is 0.5333"
 #> [1] "i_460" "j_450"
 ```
 
-![Plot of correlation matrix](figure/unnamed-chunk-5-1.png)
+![Plot of correlation matrix](figure/unnamed-chunk-4-1.png)
 
 
 #### More Examples and Details
@@ -254,11 +254,11 @@ str(slib)
 ```
 
 Formal class 'Spectra' [package "visa"] with 4 slots
-  ..@ spectra   : num [1:10, 1:10] 0.273 -0.971 0.3 1.135 1.971 ...
+  ..@ spectra   : num [1:10, 1:10] -0.3035 -2.4017 0.4717 -0.8398 -0.0151 ...
   ..@ wavelength: int [1:10] 1 2 3 4 5 6 7 8 9 10
   ..@ w.unit    : chr "nm"
   ..@ data      :'data.frame':	10 obs. of  1 variable:
-  .. ..$ y: num [1:10] -0.134 2.915 -2.952 -0.715 -0.963 ...
+  .. ..$ y: num [1:10] -0.072 -0.846 -0.317 0.512 0.599 ...
 
 The `as.spectra.dataframe` function save spectral data in the format of Spectra.Dataframe. The Spectra.Dataframe is actually a data.frame. 
 
@@ -272,8 +272,8 @@ str(s.df)
 ```
 
 'data.frame':	10 obs. of  2 variables:
- $ y      : num  0.876 -0.7 0.459 0.618 -0.261 ...
- $ spectra: num [1:10, 1:10] -0.532 0.95 0.518 1.804 1.568 ...
+ $ y      : num  -1.68 0.346 -0.732 2.365 1.253 ...
+ $ spectra: num [1:10, 1:10] -0.657 -0.217 -0.356 0.864 -1.964 ...
   ..- attr(*, "dimnames")=List of 2
   .. ..$ : NULL
   .. ..$ : chr [1:10] "1 nm" "2 nm" "3 nm" "4 nm" ...
