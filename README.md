@@ -15,7 +15,7 @@ For more details of this package, you can  `browseVignettes("visa")`.
 ## Installation
 
 ### install the released version from CRAN:
-The very first version of visa (0.1.0) is now on CRAN. 
+The very first version of visa (0.1.0) is on CRAN. 
 ``` r
 install.packages("visa")
 ``` 
@@ -29,8 +29,8 @@ The current version on GitHub is v1.0.0.
 
 ``` r
 if (!require("devtools")) install.packages("devtools")
-# devtools::install_github("kang-yu/visa") # install without vignettes
-devtools::install_github("kang-yu/visa", build_opts = c("--no-resave-data", "--no-manual"))
+devtools::install_github("kang-yu/visa")
+
 ``` 
 * The v1.0.0 requires support for interactive plotting. Installation on Max OS may 
 cause error [X11 library is missing](https://github.com/kang-yu/visa/issues/3). 
