@@ -14,7 +14,7 @@ For more details of this package, you can  `browseVignettes("visa")`.
 
 ## Installation
 
-### install the released stable version from CRAN:
+### Install the released stable version:
 To install the stable version (v1.0.0) available on CRAN. 
 ``` r
 install.packages("visa")
@@ -27,7 +27,7 @@ the dependencies.
 * The v1.0.0 requires support for interactive plotting. Installation on Max OS may 
 cause error [X11 library is missing](https://github.com/kang-yu/visa/issues/3). 
 
-### install the latest dev-version from GitHub:
+### Install the latest dev-version:
 ``` r
 if (!require("devtools")) install.packages("devtools")
 devtools::install_github("kang-yu/visa")
