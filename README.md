@@ -1,6 +1,7 @@
 # visa
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/visa)](https://CRAN.R-project.org/package=visa)
+[![CRAN downloads](https://cranlogs.r-pkg.org/badges/visa)](https://cran.r-project.org/package=visa)
 [![R-CMD-check](https://github.com/kang-yu/visa/workflows/R-CMD-check/badge.svg)](https://github.com/kang-yu/visa/actions)
 [![Travis build status](https://travis-ci.org/kang-yu/visa.svg?branch=master)](https://app.travis-ci.com/gh/kang-yu/visa)
 [![Build status](https://ci.appveyor.com/api/projects/status/8rxdgcr4ro8ga0s4?svg=true)](https://ci.appveyor.com/project/kang-yu/visa)
@@ -15,7 +16,7 @@ For more details of this package, you can  `browseVignettes("visa")`.
 ## Installation
 
 ### install the released version from CRAN:
-The version v1.0.0 is available on CRAN. 
+To install the stable version (v1.0.0) available on CRAN. 
 ``` r
 install.packages("visa")
 ``` 
