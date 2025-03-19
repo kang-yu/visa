@@ -5,7 +5,6 @@
 [![R-CMD-check](https://github.com/kang-yu/visa/workflows/R-CMD-check/badge.svg)](https://github.com/kang-yu/visa/actions)
 [![Travis build status](https://travis-ci.org/kang-yu/visa.svg?branch=master)](https://app.travis-ci.com/gh/kang-yu/visa)
 [![Build status](https://ci.appveyor.com/api/projects/status/8rxdgcr4ro8ga0s4?svg=true)](https://ci.appveyor.com/project/kang-yu/visa)
-[![R-CMD-check](https://github.com/kang-yu/visa/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/kang-yu/visa/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/kang-yu/visa/graph/badge.svg)](https://app.codecov.io/gh/kang-yu/visa)
 <!-- badges: end -->
 
@@ -15,7 +14,7 @@ For more details of this package, you can  `browseVignettes("visa")`.
 
 ## Installation
 
-### install the released version from CRAN:
+### install the released stable version from CRAN:
 To install the stable version (v1.0.0) available on CRAN. 
 ``` r
 install.packages("visa")
@@ -28,9 +27,7 @@ the dependencies.
 * The v1.0.0 requires support for interactive plotting. Installation on Max OS may 
 cause error [X11 library is missing](https://github.com/kang-yu/visa/issues/3). 
 
-### install the dev-version from GitHub:
-The current version on GitHub is v1.0.0. 
-
+### install the latest dev-version from GitHub:
 ``` r
 if (!require("devtools")) install.packages("devtools")
 devtools::install_github("kang-yu/visa")
