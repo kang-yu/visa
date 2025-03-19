@@ -1,5 +1,5 @@
 # A update version visa 1.0.0 [2025-03-15]
-* Main changes: 
+V1.0.0 main changes: 
 * adding cm.rbd3, find.bestBands, visualization via plot3D.
 * modify defined database to library in spectra-class.
 * replaced function `ggplot.cm` with `plt.2dcm`.

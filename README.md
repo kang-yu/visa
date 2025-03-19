@@ -15,7 +15,7 @@ For more details of this package, you can  `browseVignettes("visa")`.
 ## Installation
 
 ### install the released version from CRAN:
-The very first version of visa (0.1.0) is on CRAN. 
+The version v1.0.0 is available on CRAN. 
 ``` r
 install.packages("visa")
 ``` 
@@ -23,6 +23,9 @@ install.packages("visa")
 You might encounter problem of package dependencies, such as some functions 
 depend on `ggplot2`, `ggpmisc`. In such cases, you would have to install all 
 the dependencies.
+
+* The v1.0.0 requires support for interactive plotting. Installation on Max OS may 
+cause error [X11 library is missing](https://github.com/kang-yu/visa/issues/3). 
 
 ### install the dev-version from GitHub:
 The current version on GitHub is v1.0.0. 
@@ -32,8 +35,6 @@ if (!require("devtools")) install.packages("devtools")
 devtools::install_github("kang-yu/visa")
 
 ``` 
-* The v1.0.0 requires support for interactive plotting. Installation on Max OS may 
-cause error [X11 library is missing](https://github.com/kang-yu/visa/issues/3). 
 
 ## Usage
 
