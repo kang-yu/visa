@@ -5,31 +5,40 @@
 \alias{ggplot.lmfit}
 \title{Plot functions}
 \usage{
-\method{ggplot}{lmfit}(x, y, ..., environment = parent.frame())
+\method{ggplot}{lmfit}(data, mapping = NULL, ..., environment = parent.frame())
 }
 \arguments{
-\item{x, y}{Two vectors}
+\item{data}{Either a numeric vector (to be used as x) or an object containing the data (e.g., a data frame).}
 
-\item{...}{Other arguments passed on to methods. Not currently used.}
+\item{mapping}{Either a numeric vector (to be used as y when data is numeric) or an aesthetic mapping
+created with \code{ggplot2::aes()}. If \code{mapping} is missing and \code{data} is a data frame,
+the default mapping \code{aes(x, y)} is used.}
 
-\item{environment}{If an variable defined in the aesthetic mapping is not
-found in the data, ggplot will look for it in this environment. It defaults
-to using the environment in which \code{ggplot()} is called.}
+\item{...}{Other arguments passed to ggplot2 components.}
+
+\item{environment}{The environment in which to evaluate the plot. Defaults to \code{parent.frame()}.}
 }
 \value{
-\item{p}{Returns a ggplot object.}
+A ggplot object.
 }
 \description{
-This functions plots model fit using ggplot.
+This function plots a linear model fit using ggplot2. It creates a scatter plot with a regression line,
+and displays the regression equation along with the R² value.
 }
 \details{
-Visualization of linear fit (y = ax + b), using scatter plots and with regression line, as well as
-added details of regression equation and R^2.
+When provided with two numeric vectors, the function treats them as x and y values, respectively,
+constructs a data frame, and applies a default mapping. Alternatively, if a data frame is provided,
+an aesthetic mapping (or default mapping) will be used.
 }
 \examples{
-library(visa)
-x <- 1:10
-y <- 2:11+0.5
-ggplot.lmfit(x, y)
+\dontrun{
+  library(visa)
+  # Using numeric vectors for x and y:
+  ggplot.lmfit(1:10, 2:11)
+
+  # Using a data frame:
+  df <- data.frame(x = runif(10, 1, 10), y = runif(10, 2, 11) + 0.5)
+  ggplot.lmfit(df, aes(x, y))
+}
 
 }

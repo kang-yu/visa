@@ -9,11 +9,12 @@
 Provides easy-to-use tools for data analysis and visualization for hyperspectral remote sensing (also known as imaging spectroscopy), with a particular focus on vegetation hyperspectral data analysis. It consists of a set of functions, ranging from the organization of hyperspectral data in the proper data structure for spectral feature selection, calculation of vegetation index, multivariate analysis, as well as to the visualization of spectra and results of analysis in the 'ggplot2' style.
 }
 \details{
-The visa package provides a set of functions for hyperspectral data analysis, with the main purpose
-of simplifying the analysis and interpretation of vegetation spectral data.
+The visa package provides a set of functions for hyperspectral data analysis,
+with the main purpose of simplifying the analysis and interpretation of
+vegetation spectral data.
 
-It implement two categories of important functions, including its own function and also
-some built on other r packages.
+It implement two categories of important functions, including its own function
+and also some built on other r packages.
 
 \itemize{
 \item vegetation indices, and
@@ -25,7 +26,8 @@ To know more about visa, check the vignettes:
 }
 \section{Vegetation Indices}{
 
-Support the calculation of vegetation indices from literature, as well as creation of new indices.
+Support the calculation of vegetation indices from literature, as well as
+creation of new indices.
 }
 
 \section{Multivariate analysis}{

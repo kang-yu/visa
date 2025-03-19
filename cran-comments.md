@@ -1,20 +1,13 @@
-## Re-submit 2021-04-19
-
-This is resubmission.
+## A major update v1.0.0 [2025-03-19]
+This is re-submission which solved the 1 NOTE issue:
+S3 generic/method consistency ... NOTE
 
 ## R CMD check results 
 
-R CMD check results ---- visa 0.1.0 ----
-Duration: 1m 32.7s
+── R CMD check results ─────────────────────────── visa 1.0.0 ────
+Duration: 2m 36.8s
 
-0 errors √ | 0 warnings √ | 0 notes √
+❯ checking for future file timestamps ... NOTE
+  unable to verify current time
 
-* This is a new release. 0.1.0.
-
-There was a NOTE: (But not misspelling)
-
-  Possibly mis-spelled words in DESCRIPTION:
-    ggplot (10:47)
-    Hyperspectral (7:81)
-    hyperspectral (8:38, 8:135)
-
+0 errors ✔ | 0 warnings ✔ | 1 note ✖

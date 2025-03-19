@@ -1,9 +1,10 @@
 #' @details
-#' The visa package provides a set of functions for hyperspectral data analysis, with the main purpose
-#' of simplifying the analysis and interpretation of vegetation spectral data.
+#' The visa package provides a set of functions for hyperspectral data analysis,
+#' with the main purpose of simplifying the analysis and interpretation of
+#' vegetation spectral data.
 #'
-#' It implement two categories of important functions, including its own function and also
-#' some built on other r packages.
+#' It implement two categories of important functions, including its own function
+#' and also some built on other r packages.
 #'
 #' \itemize{
 #' \item vegetation indices, and
@@ -14,7 +15,8 @@
 #' `browseVignettes("visa")`
 #'
 #' @section Vegetation Indices:
-#' Support the calculation of vegetation indices from literature, as well as creation of new indices.
+#' Support the calculation of vegetation indices from literature, as well as
+#' creation of new indices.
 #'
 #' @section Multivariate analysis:
 #' ... not implemented yet
