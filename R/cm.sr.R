@@ -51,7 +51,7 @@ cm.sr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
     # Compute correlation for each column of V, avoiding division by zero in sd.
     Rvals <- apply(V, 2, function(v) {
       # Bugfix: adding isTRUE() to fix sd() returns NaN
-      if (isTUE((sd(v)==0))) 0 else stats::cor(x, v)
+      if (isTRUE((sd(v)==0))) 0 else stats::cor(x, v)
     })
     Rcorr2 <- Rvals^2
     # Store the squared correlations in the corresponding column of R2
