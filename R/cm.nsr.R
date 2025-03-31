@@ -55,7 +55,8 @@ cm.nsr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
     V <- (Rj - Ri) / (Rj + Ri)
     # Compute correlation for each column in V, avoiding warning if sd is zero
     rvals <- apply(V, 2, function(v) {
-      if (sd(v) == 0) 0 else stats::cor(x, v)
+      # Bugfix: adding isTRUE() to fix sd() returns NaN
+      if (isTRUE(sd(v)==0)) 0 else stats::cor(x, v)
     })
     Rcorr2 <- rvals^2
     # Store the squared correlations in the corresponding column of R2

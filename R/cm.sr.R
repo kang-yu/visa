@@ -44,13 +44,14 @@ cm.sr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
   ones <- matrix(1, 1, n)
 
   for (cI in 1:n) {
-    Ri <- spectra[, cI]
-    Ri <- Ri %*% ones  # Convert to matrix (each column is Ri)
+    Ri <- spectra[, cI] # take a column/band i
+    Ri <- Ri %*% ones   # Convert to matrix (each column is Ri)
     # Calculate SR for each band j
     V <- Ri / Rj
     # Compute correlation for each column of V, avoiding division by zero in sd.
     Rvals <- apply(V, 2, function(v) {
-      if (sd(v) == 0) 0 else stats::cor(x, v)
+      # Bugfix: adding isTRUE() to fix sd() returns NaN
+      if (isTUE((sd(v)==0))) 0 else stats::cor(x, v)
     })
     Rcorr2 <- Rvals^2
     # Store the squared correlations in the corresponding column of R2
@@ -70,7 +71,6 @@ cm.sr <- function(S, x, w = wavelength(S), w.unit = NULL, cm.plot = FALSE){
   #cm <- as.matrix(R2)
   #rownames(cm) <- w # 2025-03-16 specify row/col names to return cm with row/column names
   #colnames(cm) <- w # 2025-03-16 specify row/col names to return cm with row/column names
-
 
   R2max <- max(cm, na.rm = TRUE)
   print(paste('The max value of R^2 is', as.character(round(R2max, 4))))
